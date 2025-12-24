@@ -1,0 +1,427 @@
+[12/22 20:10:49] detectron2 INFO: Rank of current process: 0. World size: 4
+[12/22 20:10:50] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 20:10:50] detectron2 INFO: Command line arguments: Namespace(config_file='configs/uodd/vitb_shot1_uodd_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/uodd_1shot/'])
+[12/22 20:10:50] detectron2 INFO: Contents of args.config_file=configs/uodd/vitb_shot1_uodd_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/UODD_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 3
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("UODD_1shot",)
+  TEST: ("UODD_test",)
+TEST:
+  EVAL_PERIOD: 80
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (30, 60)
+  MAX_ITER: 80
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 80
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 20:10:50] detectron2 INFO: Full config saved to output/vitb/uodd_1shot/config.yaml
+[12/22 22:33:49] detectron2 INFO: Rank of current process: 0. World size: 4
+[12/22 22:33:50] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 22:33:50] detectron2 INFO: Command line arguments: Namespace(config_file='configs/uodd/vitb_shot1_uodd_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/uodd_1shot/'])
+[12/22 22:33:50] detectron2 INFO: Contents of args.config_file=configs/uodd/vitb_shot1_uodd_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/UODD_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 3
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("UODD_1shot",)
+  TEST: ("UODD_test",)
+TEST:
+  EVAL_PERIOD: 80
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (30, 60)
+  MAX_ITER: 80
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 80
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 22:33:50] detectron2 INFO: Full config saved to output/vitb/uodd_1shot/config.yaml
+[12/22 22:33:55] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[12/22 22:33:55] d2.data.datasets.coco INFO: Loaded 3 images in COCO format from datasets/UODD/annotations/1_shot.json
+[12/22 22:33:55] d2.data.build INFO: Removed 0 images with no usable annotations. 3 images left.
+[12/22 22:33:55] d2.data.build INFO: Distribution of instances among all 3 categories:
+[36m|  category   | #instances   |  category  | #instances   |  category  | #instances   |
+|:-----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+| seacucumber | 1            | seaurchin  | 1            |  scallop   | 1            |
+|             |              |            |              |            |              |
+|    total    | 3            |            |              |            |              |[0m
+[12/22 22:33:55] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 22:33:55] d2.data.build INFO: Using training sampler TrainingSampler
+[12/22 22:33:56] d2.data.common INFO: Serializing 3 elements to byte tensors and concatenating them all ...
+[12/22 22:33:56] d2.data.common INFO: Serialized dataset takes 0.00 MiB
+[12/22 22:33:56] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 22:33:57] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (3, 768) in the model! You might want to double check if this is expected.
+[12/22 22:33:57] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mdomain_prompter.weight[0m
+[34mprototype_classifier.linear.{bias, weight}[0m
+[34mtest_class_weight[0m
+[12/22 22:33:57] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+[12/22 22:33:57] d2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 22:34:19] d2.utils.events INFO:  eta: 0:00:44  iter: 19  roi_cover_ratio: 0.8805  cls_acc: 0.9531  fg_cls_acc: 0.9187  false_neg_ratio: 0.04196  total_loss: 4.007  aux_bce_loss_0: 0.2536  aux_dice_loss_0: 0.1719  rg_l1_loss_0: 0.05361  aux_bce_loss_1: 0.2154  aux_dice_loss_1: 0.148  rg_l1_loss_1: 0.04061  aux_bce_loss_2: 0.1715  aux_dice_loss_2: 0.1188  rg_l1_loss_2: 0.03389  aux_bce_loss_3: 0.1495  aux_dice_loss_3: 0.1059  rg_l1_loss_3: 0.02947  aux_bce_loss_4: 0.1353  aux_dice_loss_4: 0.09717  rg_l1_loss_4: 0.02672  focal_loss_0: 0.07044  focal_loss_1: 0.04729  focal_loss_2: 0.03135  bbox_loss: 0.07024  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.086  proto_contrastive_loss: 0.9686  time: 0.7504  data_time: 0.3534  lr: 0.0019001  max_mem: 2425M
+[12/22 22:34:35] d2.utils.events INFO:  eta: 0:00:29  iter: 39  roi_cover_ratio: 0.8856  cls_acc: 0.9805  fg_cls_acc: 0.9744  false_neg_ratio: 0.02564  total_loss: 3.034  aux_bce_loss_0: 0.1736  aux_dice_loss_0: 0.1134  rg_l1_loss_0: 0.03463  aux_bce_loss_1: 0.1117  aux_dice_loss_1: 0.06759  rg_l1_loss_1: 0.02213  aux_bce_loss_2: 0.07833  aux_dice_loss_2: 0.05108  rg_l1_loss_2: 0.01768  aux_bce_loss_3: 0.06893  aux_dice_loss_3: 0.04262  rg_l1_loss_3: 0.01509  aux_bce_loss_4: 0.06291  aux_dice_loss_4: 0.041  rg_l1_loss_4: 0.01493  focal_loss_0: 0.03415  focal_loss_1: 0.01564  focal_loss_2: 0.009675  bbox_loss: 0.0396  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.026  proto_contrastive_loss: 0.9652  time: 0.7569  data_time: 0.0067  lr: 0.0002  max_mem: 2460M
+[12/22 22:34:50] d2.utils.events INFO:  eta: 0:00:14  iter: 59  roi_cover_ratio: 0.8769  cls_acc: 0.9873  fg_cls_acc: 1  false_neg_ratio: 0  total_loss: 2.846  aux_bce_loss_0: 0.1541  aux_dice_loss_0: 0.1068  rg_l1_loss_0: 0.02673  aux_bce_loss_1: 0.09404  aux_dice_loss_1: 0.06388  rg_l1_loss_1: 0.01642  aux_bce_loss_2: 0.0639  aux_dice_loss_2: 0.04493  rg_l1_loss_2: 0.0132  aux_bce_loss_3: 0.05367  aux_dice_loss_3: 0.03736  rg_l1_loss_3: 0.0121  aux_bce_loss_4: 0.05019  aux_dice_loss_4: 0.03647  rg_l1_loss_4: 0.01076  focal_loss_0: 0.02252  focal_loss_1: 0.01195  focal_loss_2: 0.008348  bbox_loss: 0.02881  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.018  proto_contrastive_loss: 0.9625  time: 0.7573  data_time: 0.0069  lr: 0.0002  max_mem: 2460M
+[12/22 22:35:05] fvcore.common.checkpoint INFO: Saving checkpoint to output/vitb/uodd_1shot/model_0000079.pth
+[12/22 22:35:06] fvcore.common.checkpoint INFO: Saving checkpoint to output/vitb/uodd_1shot/model_final.pth
+[12/22 22:35:07] d2.utils.events INFO:  eta: 0:00:00  iter: 79  roi_cover_ratio: 0.8417  cls_acc: 0.9912  fg_cls_acc: 1  false_neg_ratio: 0  total_loss: 2.8  aux_bce_loss_0: 0.1471  aux_dice_loss_0: 0.1059  rg_l1_loss_0: 0.02963  aux_bce_loss_1: 0.0914  aux_dice_loss_1: 0.06194  rg_l1_loss_1: 0.01669  aux_bce_loss_2: 0.06066  aux_dice_loss_2: 0.04263  rg_l1_loss_2: 0.01299  aux_bce_loss_3: 0.05247  aux_dice_loss_3: 0.03575  rg_l1_loss_3: 0.01204  aux_bce_loss_4: 0.0491  aux_dice_loss_4: 0.03446  rg_l1_loss_4: 0.01089  focal_loss_0: 0.019  focal_loss_1: 0.01163  focal_loss_2: 0.006689  bbox_loss: 0.02927  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.015  proto_contrastive_loss: 0.9624  time: 0.7594  data_time: 0.0065  lr: 2e-05  max_mem: 2474M
+[12/22 22:35:07] d2.engine.hooks INFO: Overall training speed: 78 iterations in 0:00:59 (0.7594 s / it)
+[12/22 22:35:07] d2.engine.hooks INFO: Total training time: 0:01:00 (0:00:01 on hooks)
+[12/22 22:35:07] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[12/22 22:35:07] d2.data.datasets.coco INFO: Loaded 506 images in COCO format from datasets/UODD/annotations/test.json
+[12/22 22:35:07] d2.data.build INFO: Distribution of instances among all 3 categories:
+[36m|  category   | #instances   |  category  | #instances   |  category  | #instances   |
+|:-----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+| seacucumber | 739          | seaurchin  | 2216         |  scallop   | 263          |
+|             |              |            |              |            |              |
+|    total    | 3218         |            |              |            |              |[0m
+[12/22 22:35:07] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 22:35:07] d2.data.common INFO: Serializing 506 elements to byte tensors and concatenating them all ...
+[12/22 22:35:07] d2.data.common INFO: Serialized dataset takes 0.19 MiB
+[12/22 22:35:07] d2.evaluation.evaluator INFO: Start inference on 127 batches
+[12/22 22:35:27] d2.evaluation.evaluator INFO: Inference done 11/127. Dataloading: 0.0012 s / iter. Inference: 0.2353 s / iter. Eval: 0.0002 s / iter. Total: 0.2367 s / iter. ETA=0:00:27
+[12/22 22:35:33] d2.evaluation.evaluator INFO: Inference done 33/127. Dataloading: 0.0016 s / iter. Inference: 0.2339 s / iter. Eval: 0.0002 s / iter. Total: 0.2358 s / iter. ETA=0:00:22
+[12/22 22:35:38] d2.evaluation.evaluator INFO: Inference done 43/127. Dataloading: 0.0017 s / iter. Inference: 0.3041 s / iter. Eval: 0.0002 s / iter. Total: 0.3061 s / iter. ETA=0:00:25
+[12/22 22:35:43] d2.evaluation.evaluator INFO: Inference done 56/127. Dataloading: 0.0017 s / iter. Inference: 0.3262 s / iter. Eval: 0.0002 s / iter. Total: 0.3281 s / iter. ETA=0:00:23
+[12/22 22:35:48] d2.evaluation.evaluator INFO: Inference done 75/127. Dataloading: 0.0016 s / iter. Inference: 0.3108 s / iter. Eval: 0.0002 s / iter. Total: 0.3127 s / iter. ETA=0:00:16
+[12/22 22:35:53] d2.evaluation.evaluator INFO: Inference done 94/127. Dataloading: 0.0017 s / iter. Inference: 0.3002 s / iter. Eval: 0.0002 s / iter. Total: 0.3022 s / iter. ETA=0:00:09
+[12/22 22:35:58] d2.evaluation.evaluator INFO: Inference done 111/127. Dataloading: 0.0017 s / iter. Inference: 0.3003 s / iter. Eval: 0.0002 s / iter. Total: 0.3023 s / iter. ETA=0:00:04
+[12/22 22:36:22] d2.evaluation.evaluator INFO: Total inference time: 0:00:56.472653 (0.462891 s / iter per device, on 4 devices)
+[12/22 22:36:22] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:36 (0.296765 s / iter per device, on 4 devices)
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: Saving results to output/vitb/uodd_1shot/inference/coco_instances_results.json
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[12/22 22:36:23] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[12/22 22:36:23] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.11 seconds.
+[12/22 22:36:23] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[12/22 22:36:23] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.03 seconds.
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 2.384 | 5.694  | 1.083  | 2.539 | 3.435 | 7.359 |
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: target AP50: -1
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: base AP50: 0.05693994617100789
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: all AP50: 0.05693994617100789
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: target AP75: -1
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: base AP75: 0.010831632831146026
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: all AP75: 0.010831632831146026
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: target mAP: -1.0
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: base mAP: 0.02383868905362796
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: all mAP: 0.02383868905362796
+[12/22 22:36:23] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category    | AP    | category   | AP    | category   | AP    |
+|:------------|:------|:-----------|:------|:-----------|:------|
+| seacucumber | 0.035 | seaurchin  | 6.012 | scallop    | 1.105 |
+[12/22 22:36:23] d2.engine.defaults INFO: Evaluation results for UODD_test in csv format:
+[12/22 22:36:23] d2.evaluation.testing INFO: copypaste: Task: bbox
+[12/22 22:36:23] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[12/22 22:36:23] d2.evaluation.testing INFO: copypaste: 2.3839,5.6940,1.0832,2.5389,3.4347,7.3585
+[12/22 22:36:23] d2.evaluation.testing INFO: ###################### ('AP', 2.3838689053627955) ######################
+[12/23 20:02:13] detectron2 INFO: Rank of current process: 0. World size: 4
+[12/23 20:02:14] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 20:02:14] detectron2 INFO: Command line arguments: Namespace(config_file='configs/uodd/vitb_shot1_uodd_finetune.yaml', resume=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/uodd_1shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/uodd_1shot/', 'SOLVER.IMS_PER_BATCH', '4', 'INPUT.MIN_SIZE_TEST', '600', 'INPUT.MAX_SIZE_TEST', '1000'])
+[12/23 20:02:14] detectron2 INFO: Contents of args.config_file=configs/uodd/vitb_shot1_uodd_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/UODD_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 3
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("UODD_1shot",)
+  TEST: ("UODD_test",)
+TEST:
+  EVAL_PERIOD: 80
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (30, 60)
+  MAX_ITER: 80
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 80
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 20:02:14] detectron2 INFO: Full config saved to output/vitb/uodd_1shot/config.yaml
+[12/23 20:02:19] fvcore.common.checkpoint INFO: [Checkpointer] Loading from output/vitb/uodd_1shot/model_final.pth ...
+[12/23 20:02:24] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[12/23 20:02:24] d2.data.datasets.coco INFO: Loaded 506 images in COCO format from datasets/UODD/annotations/test.json
+[12/23 20:02:25] d2.data.build INFO: Distribution of instances among all 3 categories:
+|  category   | #instances   |  category  | #instances   |  category  | #instances   |
+|:-----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+| seacucumber | 739          | seaurchin  | 2216         |  scallop   | 263          |
+|             |              |            |              |            |              |
+|    total    | 3218         |            |              |            |              |
+[12/23 20:02:25] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(600, 600), max_size=1000, sample_style='choice')]
+[12/23 20:02:25] d2.data.common INFO: Serializing 506 elements to byte tensors and concatenating them all ...
+[12/23 20:02:25] d2.data.common INFO: Serialized dataset takes 0.19 MiB
+[12/23 20:02:25] d2.evaluation.evaluator INFO: Start inference on 127 batches
+[12/23 20:02:50] d2.evaluation.evaluator INFO: Inference done 11/127. Dataloading: 0.0010 s / iter. Inference: 0.4895 s / iter. Eval: 0.0003 s / iter. Total: 0.4908 s / iter. ETA=0:00:56
+[12/23 20:02:55] d2.evaluation.evaluator INFO: Inference done 19/127. Dataloading: 0.0013 s / iter. Inference: 0.5915 s / iter. Eval: 0.0003 s / iter. Total: 0.5932 s / iter. ETA=0:01:04
+[12/23 20:03:01] d2.evaluation.evaluator INFO: Inference done 29/127. Dataloading: 0.0015 s / iter. Inference: 0.5630 s / iter. Eval: 0.0003 s / iter. Total: 0.5649 s / iter. ETA=0:00:55
+[12/23 20:03:07] d2.evaluation.evaluator INFO: Inference done 35/127. Dataloading: 0.0014 s / iter. Inference: 0.6459 s / iter. Eval: 0.0003 s / iter. Total: 0.6477 s / iter. ETA=0:00:59
+[12/23 20:03:12] d2.evaluation.evaluator INFO: Inference done 40/127. Dataloading: 0.0014 s / iter. Inference: 0.7139 s / iter. Eval: 0.0003 s / iter. Total: 0.7157 s / iter. ETA=0:01:02
+[12/23 20:03:18] d2.evaluation.evaluator INFO: Inference done 44/127. Dataloading: 0.0014 s / iter. Inference: 0.7762 s / iter. Eval: 0.0003 s / iter. Total: 0.7780 s / iter. ETA=0:01:04
+[12/23 20:03:24] d2.evaluation.evaluator INFO: Inference done 49/127. Dataloading: 0.0014 s / iter. Inference: 0.8323 s / iter. Eval: 0.0003 s / iter. Total: 0.8342 s / iter. ETA=0:01:05
+[12/23 20:03:30] d2.evaluation.evaluator INFO: Inference done 53/127. Dataloading: 0.0014 s / iter. Inference: 0.8832 s / iter. Eval: 0.0003 s / iter. Total: 0.8850 s / iter. ETA=0:01:05
+[12/23 20:03:36] d2.evaluation.evaluator INFO: Inference done 57/127. Dataloading: 0.0014 s / iter. Inference: 0.9314 s / iter. Eval: 0.0003 s / iter. Total: 0.9332 s / iter. ETA=0:01:05
+[12/23 20:03:41] d2.evaluation.evaluator INFO: Inference done 62/127. Dataloading: 0.0014 s / iter. Inference: 0.9468 s / iter. Eval: 0.0003 s / iter. Total: 0.9486 s / iter. ETA=0:01:01
+[12/23 20:03:47] d2.evaluation.evaluator INFO: Inference done 68/127. Dataloading: 0.0014 s / iter. Inference: 0.9522 s / iter. Eval: 0.0003 s / iter. Total: 0.9539 s / iter. ETA=0:00:56
+[12/23 20:03:53] d2.evaluation.evaluator INFO: Inference done 73/127. Dataloading: 0.0014 s / iter. Inference: 0.9665 s / iter. Eval: 0.0003 s / iter. Total: 0.9682 s / iter. ETA=0:00:52
+[12/23 20:03:58] d2.evaluation.evaluator INFO: Inference done 78/127. Dataloading: 0.0013 s / iter. Inference: 0.9752 s / iter. Eval: 0.0003 s / iter. Total: 0.9769 s / iter. ETA=0:00:47
+[12/23 20:04:04] d2.evaluation.evaluator INFO: Inference done 83/127. Dataloading: 0.0013 s / iter. Inference: 0.9848 s / iter. Eval: 0.0003 s / iter. Total: 0.9865 s / iter. ETA=0:00:43
+[12/23 20:04:10] d2.evaluation.evaluator INFO: Inference done 88/127. Dataloading: 0.0013 s / iter. Inference: 0.9952 s / iter. Eval: 0.0003 s / iter. Total: 0.9969 s / iter. ETA=0:00:38
+[12/23 20:04:15] d2.evaluation.evaluator INFO: Inference done 94/127. Dataloading: 0.0013 s / iter. Inference: 0.9884 s / iter. Eval: 0.0003 s / iter. Total: 0.9902 s / iter. ETA=0:00:32
+[12/23 20:04:21] d2.evaluation.evaluator INFO: Inference done 100/127. Dataloading: 0.0013 s / iter. Inference: 0.9875 s / iter. Eval: 0.0003 s / iter. Total: 0.9892 s / iter. ETA=0:00:26
+[12/23 20:04:27] d2.evaluation.evaluator INFO: Inference done 104/127. Dataloading: 0.0013 s / iter. Inference: 1.0105 s / iter. Eval: 0.0003 s / iter. Total: 1.0122 s / iter. ETA=0:00:23
+[12/23 20:04:34] d2.evaluation.evaluator INFO: Inference done 109/127. Dataloading: 0.0013 s / iter. Inference: 1.0275 s / iter. Eval: 0.0003 s / iter. Total: 1.0292 s / iter. ETA=0:00:18
+[12/23 20:04:41] d2.evaluation.evaluator INFO: Inference done 114/127. Dataloading: 0.0013 s / iter. Inference: 1.0397 s / iter. Eval: 0.0003 s / iter. Total: 1.0414 s / iter. ETA=0:00:13
+[12/23 20:04:46] d2.evaluation.evaluator INFO: Inference done 117/127. Dataloading: 0.0013 s / iter. Inference: 1.0580 s / iter. Eval: 0.0003 s / iter. Total: 1.0597 s / iter. ETA=0:00:10
+[12/23 20:04:52] d2.evaluation.evaluator INFO: Inference done 122/127. Dataloading: 0.0013 s / iter. Inference: 1.0672 s / iter. Eval: 0.0003 s / iter. Total: 1.0690 s / iter. ETA=0:00:05
+[12/23 20:04:58] d2.evaluation.evaluator INFO: Inference done 126/127. Dataloading: 0.0013 s / iter. Inference: 1.0782 s / iter. Eval: 0.0003 s / iter. Total: 1.0799 s / iter. ETA=0:00:01
+[12/23 20:05:19] d2.evaluation.evaluator INFO: Total inference time: 0:02:32.095712 (1.246686 s / iter per device, on 4 devices)
+[12/23 20:05:19] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:02:11 (1.080799 s / iter per device, on 4 devices)
+[12/23 20:05:43] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[12/23 20:05:43] d2.evaluation.coco_evaluation INFO: Saving results to output/vitb/uodd_1shot/inference/coco_instances_results.json
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[12/23 20:05:44] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[12/23 20:05:44] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.22 seconds.
+[12/23 20:05:44] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[12/23 20:05:44] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.05 seconds.
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 3.162 | 8.530  | 1.051  | 3.310 | 5.076 | 7.653 |
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: target AP50: -1
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: base AP50: 0.08529861164121887
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: all AP50: 0.08529861164121887
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: target AP75: -1
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: base AP75: 0.010511442017857768
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: all AP75: 0.010511442017857768
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: target mAP: -1.0
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: base mAP: 0.031615110872589905
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: all mAP: 0.031615110872589905
+[12/23 20:05:44] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category    | AP    | category   | AP    | category   | AP    |
+|:------------|:------|:-----------|:------|:-----------|:------|
+| seacucumber | 0.373 | seaurchin  | 7.806 | scallop    | 1.305 |
+[12/23 20:05:44] d2.engine.defaults INFO: Evaluation results for UODD_test in csv format:
+[12/23 20:05:44] d2.evaluation.testing INFO: copypaste: Task: bbox
+[12/23 20:05:44] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[12/23 20:05:44] d2.evaluation.testing INFO: copypaste: 3.1615,8.5299,1.0511,3.3105,5.0761,7.6527
+[12/23 20:05:44] d2.evaluation.testing INFO: ###################### ('AP', 3.1615110872589898) ######################

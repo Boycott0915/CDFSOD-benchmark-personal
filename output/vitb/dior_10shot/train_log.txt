@@ -1,0 +1,141 @@
+xFormers not available
+Command Line Args: Namespace(config_file='configs/dior/vitb_shot10_dior_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['OUTPUT_DIR', 'output/vitb/dior_10shot/', 'SOLVER.IMS_PER_BATCH', '4', 'SOLVER.BASE_LR', '0.0001'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+[12/23 21:56:49 detectron2]: Rank of current process: 0. World size: 4
+[12/23 21:56:50 detectron2]: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 21:56:50 detectron2]: Command line arguments: Namespace(config_file='configs/dior/vitb_shot10_dior_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['OUTPUT_DIR', 'output/vitb/dior_10shot/', 'SOLVER.IMS_PER_BATCH', '4', 'SOLVER.BASE_LR', '0.0001'])
+[12/23 21:56:50 detectron2]: Contents of args.config_file=configs/dior/vitb_shot10_dior_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/DIOR_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("DIOR_10shot",)
+  TEST: ("DIOR_test",)
+TEST:
+  EVAL_PERIOD: 500
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (250, 400)
+  MAX_ITER: 500
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 500
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 21:56:50 detectron2]: Full config saved to output/vitb/dior_10shot/config.yaml
+('DIOR_test',)
+('DIOR_test',)
+('DIOR_test',)
+('DIOR_test',)
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 67, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 3 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 125, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 196, in main
+    trainer = Trainer(cfg)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 381, in __init__
+    model = self.build_model(cfg)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 521, in build_model
+    model = build_model(cfg)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/build.py", line 22, in build_model
+    model = META_ARCH_REGISTRY.get(meta_arch)(cfg)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/config/config.py", line 174, in wrapped
+    explicit_args = _get_args_from_config(from_config_func, *args, **kwargs)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/config/config.py", line 229, in _get_args_from_config
+    ret = from_config_func(*args, **kwargs)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/devit.py", line 839, in from_config
+    offline_cfg.merge_from_file(cfg.DE.OFFLINE_RPN_CONFIG)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/config/config.py", line 30, in merge_from_file
+    assert PathManager.isfile(cfg_filename), f"Config file '{cfg_filename}' does not exist!"
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/iopath/common/file_io.py", line 1160, in isfile
+    return self.__get_path_handler(path)._isfile(  # type: ignore
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/iopath/common/file_io.py", line 884, in __get_path_handler
+    path = os.fspath(path)  # pyre-ignore
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+

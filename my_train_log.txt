@@ -1,0 +1,1701 @@
+mpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/
+csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+xFormers not available
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[12/22 22:29:54 d2.utils.events]:  eta: 0:02:30  iter: 19  roi_cover_ratio: 0.729  cls_acc: 0.8291  fg_cls_acc: 0.6509  false_neg_ratio: 0.196  total_loss: 7.109  aux_bce_loss_0:
+ 0.3859  aux_dice_loss_0: 0.226  rg_l1_loss_0: 0.07341  aux_bce_loss_1: 0.3545  aux_dice_loss_1: 0.195  rg_l1_loss_1: 0.0638  aux_bce_loss_2: 0.3395  aux_dice_loss_2: 0.1813  rg_
+l1_loss_2: 0.05858  aux_bce_loss_3: 0.3237  aux_dice_loss_3: 0.1744  rg_l1_loss_3: 0.05631  aux_bce_loss_4: 0.3237  aux_dice_loss_4: 0.167  rg_l1_loss_4: 0.054  focal_loss_0: 0.1
+465  focal_loss_1: 0.1197  focal_loss_2: 0.1045  bbox_loss: 0.22  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.795  proto_contrastive_loss: 1.707  time: 0.
+8395  data_time: 0.3512  lr: 0.00076124  max_mem: 3242M
+[12/22 22:30:11 d2.utils.events]:  eta: 0:02:15  iter: 39  roi_cover_ratio: 0.6106  cls_acc: 0.9111  fg_cls_acc: 0.8965  false_neg_ratio: 0.1035  total_loss: 6.105  aux_bce_loss_
+0: 0.3117  aux_dice_loss_0: 0.1771  rg_l1_loss_0: 0.0578  aux_bce_loss_1: 0.2736  aux_dice_loss_1: 0.1535  rg_l1_loss_1: 0.04776  aux_bce_loss_2: 0.2464  aux_dice_loss_2: 0.1399
+ rg_l1_loss_2: 0.04277  aux_bce_loss_3: 0.2258  aux_dice_loss_3: 0.1316  rg_l1_loss_3: 0.03887  aux_bce_loss_4: 0.2193  aux_dice_loss_4: 0.1258  rg_l1_loss_4: 0.03718  focal_loss
+_0: 0.07525  focal_loss_1: 0.06584  focal_loss_2: 0.06241  bbox_loss: 0.1599  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.786  proto_contrastive_loss: 1.7
+06  time: 0.8413  data_time: 0.0062  lr: 0.0015604  max_mem: 3242M
+[12/22 22:30:28 d2.utils.events]:  eta: 0:01:58  iter: 59  roi_cover_ratio: 0.6435  cls_acc: 0.9268  fg_cls_acc: 0.8863  false_neg_ratio: 0.1137  total_loss: 5.589  aux_bce_loss_
+0: 0.2829  aux_dice_loss_0: 0.1566  rg_l1_loss_0: 0.05327  aux_bce_loss_1: 0.2307  aux_dice_loss_1: 0.1251  rg_l1_loss_1: 0.03957  aux_bce_loss_2: 0.1995  aux_dice_loss_2: 0.1082
+  rg_l1_loss_2: 0.03506  aux_bce_loss_3: 0.1828  aux_dice_loss_3: 0.09966  rg_l1_loss_3: 0.03242  aux_bce_loss_4: 0.1742  aux_dice_loss_4: 0.09466  rg_l1_loss_4: 0.02982  focal_l
+oss_0: 0.04699  focal_loss_1: 0.04079  focal_loss_2: 0.038  bbox_loss: 0.1244  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.768  proto_contrastive_loss: 1.
+704  time: 0.8469  data_time: 0.0061  lr: 0.002  max_mem: 3366M
+[12/22 22:30:45 d2.utils.events]:  eta: 0:01:41  iter: 79  roi_cover_ratio: 0.6693  cls_acc: 0.9492  fg_cls_acc: 0.9731  false_neg_ratio: 0.02695  total_loss: 5.368  aux_bce_loss
+_0: 0.263  aux_dice_loss_0: 0.1512  rg_l1_loss_0: 0.05255  aux_bce_loss_1: 0.207  aux_dice_loss_1: 0.1202  rg_l1_loss_1: 0.03745  aux_bce_loss_2: 0.1805  aux_dice_loss_2: 0.1011
+ rg_l1_loss_2: 0.0312  aux_bce_loss_3: 0.1633  aux_dice_loss_3: 0.09052  rg_l1_loss_3: 0.02802  aux_bce_loss_4: 0.1553  aux_dice_loss_4: 0.08635  rg_l1_loss_4: 0.02641  focal_los
+s_0: 0.03938  focal_loss_1: 0.03248  focal_loss_2: 0.03047  bbox_loss: 0.1044  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.744  proto_contrastive_loss: 1.
+704  time: 0.8476  data_time: 0.0056  lr: 0.002  max_mem: 3366M
+[12/22 22:31:02 d2.utils.events]:  eta: 0:01:24  iter: 99  roi_cover_ratio: 0.6512  cls_acc: 0.96  fg_cls_acc: 0.9646  false_neg_ratio: 0.03542  total_loss: 5.083  aux_bce_loss_0
+: 0.235  aux_dice_loss_0: 0.141  rg_l1_loss_0: 0.04833  aux_bce_loss_1: 0.1838  aux_dice_loss_1: 0.1067  rg_l1_loss_1: 0.03366  aux_bce_loss_2: 0.1522  aux_dice_loss_2: 0.08754
+rg_l1_loss_2: 0.02795  aux_bce_loss_3: 0.1351  aux_dice_loss_3: 0.07614  rg_l1_loss_3: 0.02472  aux_bce_loss_4: 0.1272  aux_dice_loss_4: 0.07234  rg_l1_loss_4: 0.02308  focal_los
+s_0: 0.03221  focal_loss_1: 0.02612  focal_loss_2: 0.02398  bbox_loss: 0.09416  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.721  proto_contrastive_loss: 1
+.703  time: 0.8474  data_time: 0.0063  lr: 0.002  max_mem: 3366M
+[12/22 22:31:19 d2.utils.events]:  eta: 0:01:07  iter: 119  roi_cover_ratio: 0.6103  cls_acc: 0.9619  fg_cls_acc: 0.9704  false_neg_ratio: 0.02965  total_loss: 4.952  aux_bce_los
+s_0: 0.232  aux_dice_loss_0: 0.1379  rg_l1_loss_0: 0.04683  aux_bce_loss_1: 0.1705  aux_dice_loss_1: 0.09929  rg_l1_loss_1: 0.03108  aux_bce_loss_2: 0.1393  aux_dice_loss_2: 0.07
+946  rg_l1_loss_2: 0.02524  aux_bce_loss_3: 0.1199  aux_dice_loss_3: 0.06714  rg_l1_loss_3: 0.02233  aux_bce_loss_4: 0.1165  aux_dice_loss_4: 0.06473  rg_l1_loss_4: 0.02062  foca
+l_loss_0: 0.02964  focal_loss_1: 0.0247  focal_loss_2: 0.02333  bbox_loss: 0.08316  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.695  proto_contrastive_los
+s: 1.701  time: 0.8486  data_time: 0.0063  lr: 0.002  max_mem: 3366M
+[12/22 22:31:36 d2.utils.events]:  eta: 0:00:50  iter: 139  roi_cover_ratio: 0.6972  cls_acc: 0.9668  fg_cls_acc: 0.977  false_neg_ratio: 0.02302  total_loss: 4.737  aux_bce_loss
+_0: 0.2027  aux_dice_loss_0: 0.1269  rg_l1_loss_0: 0.04254  aux_bce_loss_1: 0.1521  aux_dice_loss_1: 0.08913  rg_l1_loss_1: 0.02712  aux_bce_loss_2: 0.1222  aux_dice_loss_2: 0.06
+93  rg_l1_loss_2: 0.02056  aux_bce_loss_3: 0.1063  aux_dice_loss_3: 0.05986  rg_l1_loss_3: 0.01799  aux_bce_loss_4: 0.09946  aux_dice_loss_4: 0.05764  rg_l1_loss_4: 0.01634  foca
+l_loss_0: 0.0258  focal_loss_1: 0.02157  focal_loss_2: 0.02077  bbox_loss: 0.0686  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.68  proto_contrastive_loss:
+ 1.7  time: 0.8488  data_time: 0.0053  lr: 0.0002  max_mem: 3366M
+[12/22 22:31:53 d2.utils.events]:  eta: 0:00:33  iter: 159  roi_cover_ratio: 0.671  cls_acc: 0.958  fg_cls_acc: 0.9823  false_neg_ratio: 0.01771  total_loss: 4.63  aux_bce_loss_0
+: 0.2025  aux_dice_loss_0: 0.1286  rg_l1_loss_0: 0.03937  aux_bce_loss_1: 0.1442  aux_dice_loss_1: 0.08829  rg_l1_loss_1: 0.02478  aux_bce_loss_2: 0.1123  aux_dice_loss_2: 0.0660
+6  rg_l1_loss_2: 0.01836  aux_bce_loss_3: 0.09429  aux_dice_loss_3: 0.05613  rg_l1_loss_3: 0.01594  aux_bce_loss_4: 0.08724  aux_dice_loss_4: 0.05311  rg_l1_loss_4: 0.01423  foca
+l_loss_0: 0.02565  focal_loss_1: 0.02138  focal_loss_2: 0.01976  bbox_loss: 0.05923  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.679  proto_contrastive_lo
+ss: 1.701  time: 0.8480  data_time: 0.0060  lr: 0.0002  max_mem: 3366M
+[12/22 22:32:10 d2.utils.events]:  eta: 0:00:16  iter: 179  roi_cover_ratio: 0.6913  cls_acc: 0.9629  fg_cls_acc: 0.9683  false_neg_ratio: 0.03175  total_loss: 4.603  aux_bce_los
+s_0: 0.2009  aux_dice_loss_0: 0.1212  rg_l1_loss_0: 0.03847  aux_bce_loss_1: 0.1437  aux_dice_loss_1: 0.08329  rg_l1_loss_1: 0.02554  aux_bce_loss_2: 0.1103  aux_dice_loss_2: 0.0
+629  rg_l1_loss_2: 0.01834  aux_bce_loss_3: 0.09551  aux_dice_loss_3: 0.053  rg_l1_loss_3: 0.0156  aux_bce_loss_4: 0.08613  aux_dice_loss_4: 0.05091  rg_l1_loss_4: 0.0136  focal_
+loss_0: 0.02572  focal_loss_1: 0.02056  focal_loss_2: 0.01832  bbox_loss: 0.06002  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.676  proto_contrastive_loss
+: 1.7  time: 0.8476  data_time: 0.0062  lr: 0.0002  max_mem: 3366M
+[12/22 22:32:27 fvcore.common.checkpoint]: Saving checkpoint to output/vitb/neu-det_10shot/model_0000199.pth
+[12/22 22:32:28 fvcore.common.checkpoint]: Saving checkpoint to output/vitb/neu-det_10shot/model_final.pth
+[12/22 22:32:28 d2.utils.events]:  eta: 0:00:00  iter: 199  roi_cover_ratio: 0.6028  cls_acc: 0.9658  fg_cls_acc: 0.9813  false_neg_ratio: 0.01869  total_loss: 4.609  aux_bce_los
+s_0: 0.1992  aux_dice_loss_0: 0.1277  rg_l1_loss_0: 0.03928  aux_bce_loss_1: 0.1352  aux_dice_loss_1: 0.08441  rg_l1_loss_1: 0.02379  aux_bce_loss_2: 0.1073  aux_dice_loss_2: 0.0
+6276  rg_l1_loss_2: 0.0181  aux_bce_loss_3: 0.09137  aux_dice_loss_3: 0.05381  rg_l1_loss_3: 0.01563  aux_bce_loss_4: 0.08531  aux_dice_loss_4: 0.05026  rg_l1_loss_4: 0.01377  fo
+cal_loss_0: 0.02482  focal_loss_1: 0.02068  focal_loss_2: 0.0191  bbox_loss: 0.05859  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.672  proto_contrastive_l
+oss: 1.7  time: 0.8466  data_time: 0.0056  lr: 2e-05  max_mem: 3366M
+[12/22 22:32:28 d2.engine.hooks]: Overall training speed: 198 iterations in 0:02:47 (0.8466 s / it)
+[12/22 22:32:28 d2.engine.hooks]: Total training time: 0:02:49 (0:00:01 on hooks)
+[12/22 22:32:28 d2.data.datasets.coco]: Loaded 360 images in COCO format from datasets/NEUDET/annotations/test.json
+[12/22 22:32:28 d2.data.build]: Distribution of instances among all 6 categories:
+|   category    | #instances   |   category    | #instances   |  category  | #instances   |
+|:-------------:|:-------------|:-------------:|:-------------|:----------:|:-------------|
+|    crazing    | 103          |   inclusion   | 159          |  patches   | 222          |
+| pitted_surf.. | 106          | rolled-in_s.. | 141          | scratches  | 103          |
+|               |              |               |              |            |              |
+|     total     | 834          |               |              |            |              |
+[12/22 22:32:28 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 22:32:28 d2.data.common]: Serializing 360 elements to byte tensors and concatenating them all ...
+[12/22 22:32:28 d2.data.common]: Serialized dataset takes 0.12 MiB
+[12/22 22:32:28 d2.evaluation.evaluator]: Start inference on 90 batches
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+[12/22 22:32:51 d2.evaluation.evaluator]: Inference done 11/90. Dataloading: 0.0011 s / iter. Inference: 0.4395 s / iter. Eval: 0.0003 s / iter. Total: 0.4408 s / iter. ETA=0:00:
+34
+[12/22 22:32:57 d2.evaluation.evaluator]: Inference done 21/90. Dataloading: 0.0013 s / iter. Inference: 0.5000 s / iter. Eval: 0.0003 s / iter. Total: 0.5016 s / iter. ETA=0:00:
+34
+[12/22 22:33:02 d2.evaluation.evaluator]: Inference done 34/90. Dataloading: 0.0014 s / iter. Inference: 0.4666 s / iter. Eval: 0.0003 s / iter. Total: 0.4684 s / iter. ETA=0:00:
+26
+[12/22 22:33:07 d2.evaluation.evaluator]: Inference done 45/90. Dataloading: 0.0014 s / iter. Inference: 0.4636 s / iter. Eval: 0.0003 s / iter. Total: 0.4654 s / iter. ETA=0:00:
+20
+[12/22 22:33:12 d2.evaluation.evaluator]: Inference done 57/90. Dataloading: 0.0014 s / iter. Inference: 0.4543 s / iter. Eval: 0.0003 s / iter. Total: 0.4561 s / iter. ETA=0:00:
+15
+[12/22 22:33:18 d2.evaluation.evaluator]: Inference done 69/90. Dataloading: 0.0014 s / iter. Inference: 0.4495 s / iter. Eval: 0.0003 s / iter. Total: 0.4513 s / iter. ETA=0:00:
+09
+[12/22 22:33:23 d2.evaluation.evaluator]: Inference done 81/90. Dataloading: 0.0014 s / iter. Inference: 0.4480 s / iter. Eval: 0.0003 s / iter. Total: 0.4498 s / iter. ETA=0:00:
+04
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 67, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 1 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 125, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 202, in main
+    return trainer.train()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 500, in train
+    super().train(self.start_iter, self.max_iter)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/train_loop.py", line 159, in train
+    self.after_train()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/train_loop.py", line 168, in after_train
+    h.after_train()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/hooks.py", line 391, in after_train
+    self._do_eval()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/hooks.py", line 359, in _do_eval
+    results = self._func()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 469, in test_and_save_results
+    self._last_eval_results = self.test(self.cfg, self.model)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 622, in test
+    results_i = inference_on_dataset(model, data_loader, evaluator)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/evaluation/evaluator.py", line 181, in inference_on_dataset
+    outputs = model(inputs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1040, in forward
+    output = self._run_ddp_forward(*inputs, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1000, in _run_ddp_forward
+    return module_to_run(*inputs[0], **kwargs[0])
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/devit.py", line 1450, in forward
+    embedding = rp(embedding)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/batchnorm.py", line 171, in forward
+    return F.batch_norm(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/functional.py", line 2450, in batch_norm
+    return torch.batch_norm(
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.84 GiB (GPU 1; 23.52 GiB total capacity; 10.80 GiB already allocated; 496.38 MiB free; 13.06 GiB reserved in
+total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_
+CONF
+
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 120 leaked semaphore objects to
+clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+Command Line Args: Namespace(config_file='configs/uodd/vitb_shot1_uodd_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0
+, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'ou
+tput/vitb/uodd_1shot/'])
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+xFormers not available
+[12/22 22:33:49 detectron2]: Rank of current process: 0. World size: 4
+[12/22 22:33:50 detectron2]: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-genc
+ode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wn
+o-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBU
+G_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-arra
+y-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecate
+d-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but
+-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF
+_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_
+NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF,
+
+[12/22 22:33:50 detectron2]: Command line arguments: Namespace(config_file='configs/uodd/vitb_shot1_uodd_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=Fal
+se, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1
+x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/uodd_1shot/'])
+[12/22 22:33:50 detectron2]: Contents of args.config_file=configs/uodd/vitb_shot1_uodd_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/UODD_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 3
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("UODD_1shot",)
+  TEST: ("UODD_test",)
+TEST:
+  EVAL_PERIOD: 80
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (30, 60)
+  MAX_ITER: 80
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 80
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 22:33:50 detectron2]: Full config saved to output/vitb/uodd_1shot/config.yaml
+('UODD_test',)
+('UODD_test',)
+('UODD_test',)
+('UODD_test',)
+WARNING [12/22 22:33:55 d2.data.datasets.coco]:
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[12/22 22:33:55 d2.data.datasets.coco]: Loaded 3 images in COCO format from datasets/UODD/annotations/1_shot.json
+[12/22 22:33:55 d2.data.build]: Removed 0 images with no usable annotations. 3 images left.
+[12/22 22:33:55 d2.data.build]: Distribution of instances among all 3 categories:
+|  category   | #instances   |  category  | #instances   |  category  | #instances   |
+|:-----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+| seacucumber | 1            | seaurchin  | 1            |  scallop   | 1            |
+|             |              |            |              |            |              |
+|    total    | 3            |            |              |            |              |
+[12/22 22:33:55 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, samp
+le_style='choice'), RandomFlip()]
+[12/22 22:33:55 d2.data.build]: Using training sampler TrainingSampler
+[12/22 22:33:56 d2.data.common]: Serializing 3 elements to byte tensors and concatenating them all ...
+[12/22 22:33:56 d2.data.common]: Serialized dataset takes 0.00 MiB
+[12/22 22:33:56 fvcore.common.checkpoint]: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+WARNING [12/22 22:33:57 fvcore.common.checkpoint]: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (3, 768) in
+ the model! You might want to double check if this is expected.
+WARNING [12/22 22:33:57 fvcore.common.checkpoint]: Some model parameters or buffers are not found in the checkpoint:
+adapter.proto_center_attn.attention_weights.0.{bias, weight}
+adapter.proto_center_attn.fc.{bias, weight}
+bg_tokens.weight
+class_weights.weight
+domain_prompter.weight
+prototype_classifier.linear.{bias, weight}
+test_class_weight
+WARNING [12/22 22:33:57 fvcore.common.checkpoint]: The checkpoint state_dict contains keys that are not used by the model:
+  train_class_weight
+[12/22 22:33:57 d2.engine.train_loop]: Starting training from iteration 0
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[12/22 22:34:19 d2.utils.events]:  eta: 0:00:44  iter: 19  roi_cover_ratio: 0.8805  cls_acc: 0.9531  fg_cls_acc: 0.9187  false_neg_ratio: 0.04196  total_loss: 4.007  aux_bce_loss
+_0: 0.2536  aux_dice_loss_0: 0.1719  rg_l1_loss_0: 0.05361  aux_bce_loss_1: 0.2154  aux_dice_loss_1: 0.148  rg_l1_loss_1: 0.04061  aux_bce_loss_2: 0.1715  aux_dice_loss_2: 0.1188
+  rg_l1_loss_2: 0.03389  aux_bce_loss_3: 0.1495  aux_dice_loss_3: 0.1059  rg_l1_loss_3: 0.02947  aux_bce_loss_4: 0.1353  aux_dice_loss_4: 0.09717  rg_l1_loss_4: 0.02672  focal_lo
+ss_0: 0.07044  focal_loss_1: 0.04729  focal_loss_2: 0.03135  bbox_loss: 0.07024  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.086  proto_contrastive_loss: 0
+.9686  time: 0.7504  data_time: 0.3534  lr: 0.0019001  max_mem: 2425M
+[12/22 22:34:35 d2.utils.events]:  eta: 0:00:29  iter: 39  roi_cover_ratio: 0.8856  cls_acc: 0.9805  fg_cls_acc: 0.9744  false_neg_ratio: 0.02564  total_loss: 3.034  aux_bce_loss
+_0: 0.1736  aux_dice_loss_0: 0.1134  rg_l1_loss_0: 0.03463  aux_bce_loss_1: 0.1117  aux_dice_loss_1: 0.06759  rg_l1_loss_1: 0.02213  aux_bce_loss_2: 0.07833  aux_dice_loss_2: 0.0
+5108  rg_l1_loss_2: 0.01768  aux_bce_loss_3: 0.06893  aux_dice_loss_3: 0.04262  rg_l1_loss_3: 0.01509  aux_bce_loss_4: 0.06291  aux_dice_loss_4: 0.041  rg_l1_loss_4: 0.01493  foc
+al_loss_0: 0.03415  focal_loss_1: 0.01564  focal_loss_2: 0.009675  bbox_loss: 0.0396  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.026  proto_contrastive_lo
+ss: 0.9652  time: 0.7569  data_time: 0.0067  lr: 0.0002  max_mem: 2460M
+[12/22 22:34:50 d2.utils.events]:  eta: 0:00:14  iter: 59  roi_cover_ratio: 0.8769  cls_acc: 0.9873  fg_cls_acc: 1  false_neg_ratio: 0  total_loss: 2.846  aux_bce_loss_0: 0.1541
+ aux_dice_loss_0: 0.1068  rg_l1_loss_0: 0.02673  aux_bce_loss_1: 0.09404  aux_dice_loss_1: 0.06388  rg_l1_loss_1: 0.01642  aux_bce_loss_2: 0.0639  aux_dice_loss_2: 0.04493  rg_l1
+_loss_2: 0.0132  aux_bce_loss_3: 0.05367  aux_dice_loss_3: 0.03736  rg_l1_loss_3: 0.0121  aux_bce_loss_4: 0.05019  aux_dice_loss_4: 0.03647  rg_l1_loss_4: 0.01076  focal_loss_0:
+0.02252  focal_loss_1: 0.01195  focal_loss_2: 0.008348  bbox_loss: 0.02881  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.018  proto_contrastive_loss: 0.9625
+  time: 0.7573  data_time: 0.0069  lr: 0.0002  max_mem: 2460M
+[12/22 22:35:05 fvcore.common.checkpoint]: Saving checkpoint to output/vitb/uodd_1shot/model_0000079.pth
+[12/22 22:35:06 fvcore.common.checkpoint]: Saving checkpoint to output/vitb/uodd_1shot/model_final.pth
+[12/22 22:35:07 d2.utils.events]:  eta: 0:00:00  iter: 79  roi_cover_ratio: 0.8417  cls_acc: 0.9912  fg_cls_acc: 1  false_neg_ratio: 0  total_loss: 2.8  aux_bce_loss_0: 0.1471  a
+ux_dice_loss_0: 0.1059  rg_l1_loss_0: 0.02963  aux_bce_loss_1: 0.0914  aux_dice_loss_1: 0.06194  rg_l1_loss_1: 0.01669  aux_bce_loss_2: 0.06066  aux_dice_loss_2: 0.04263  rg_l1_l
+oss_2: 0.01299  aux_bce_loss_3: 0.05247  aux_dice_loss_3: 0.03575  rg_l1_loss_3: 0.01204  aux_bce_loss_4: 0.0491  aux_dice_loss_4: 0.03446  rg_l1_loss_4: 0.01089  focal_loss_0: 0
+.019  focal_loss_1: 0.01163  focal_loss_2: 0.006689  bbox_loss: 0.02927  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.015  proto_contrastive_loss: 0.9624  t
+ime: 0.7594  data_time: 0.0065  lr: 2e-05  max_mem: 2474M
+[12/22 22:35:07 d2.engine.hooks]: Overall training speed: 78 iterations in 0:00:59 (0.7594 s / it)
+[12/22 22:35:07 d2.engine.hooks]: Total training time: 0:01:00 (0:00:01 on hooks)
+WARNING [12/22 22:35:07 d2.data.datasets.coco]:
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[12/22 22:35:07 d2.data.datasets.coco]: Loaded 506 images in COCO format from datasets/UODD/annotations/test.json
+[12/22 22:35:07 d2.data.build]: Distribution of instances among all 3 categories:
+|  category   | #instances   |  category  | #instances   |  category  | #instances   |
+|:-----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+| seacucumber | 739          | seaurchin  | 2216         |  scallop   | 263          |
+|             |              |            |              |            |              |
+|    total    | 3218         |            |              |            |              |
+[12/22 22:35:07 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 22:35:07 d2.data.common]: Serializing 506 elements to byte tensors and concatenating them all ...
+[12/22 22:35:07 d2.data.common]: Serialized dataset takes 0.19 MiB
+[12/22 22:35:07 d2.evaluation.evaluator]: Start inference on 127 batches
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+[12/22 22:35:27 d2.evaluation.evaluator]: Inference done 11/127. Dataloading: 0.0012 s / iter. Inference: 0.2353 s / iter. Eval: 0.0002 s / iter. Total: 0.2367 s / iter. ETA=0:00
+:27
+[12/22 22:35:33 d2.evaluation.evaluator]: Inference done 33/127. Dataloading: 0.0016 s / iter. Inference: 0.2339 s / iter. Eval: 0.0002 s / iter. Total: 0.2358 s / iter. ETA=0:00
+:22
+[12/22 22:35:38 d2.evaluation.evaluator]: Inference done 43/127. Dataloading: 0.0017 s / iter. Inference: 0.3041 s / iter. Eval: 0.0002 s / iter. Total: 0.3061 s / iter. ETA=0:00
+:25
+[12/22 22:35:43 d2.evaluation.evaluator]: Inference done 56/127. Dataloading: 0.0017 s / iter. Inference: 0.3262 s / iter. Eval: 0.0002 s / iter. Total: 0.3281 s / iter. ETA=0:00
+:23
+[12/22 22:35:48 d2.evaluation.evaluator]: Inference done 75/127. Dataloading: 0.0016 s / iter. Inference: 0.3108 s / iter. Eval: 0.0002 s / iter. Total: 0.3127 s / iter. ETA=0:00
+:16
+[12/22 22:35:53 d2.evaluation.evaluator]: Inference done 94/127. Dataloading: 0.0017 s / iter. Inference: 0.3002 s / iter. Eval: 0.0002 s / iter. Total: 0.3022 s / iter. ETA=0:00
+:09
+[12/22 22:35:58 d2.evaluation.evaluator]: Inference done 111/127. Dataloading: 0.0017 s / iter. Inference: 0.3003 s / iter. Eval: 0.0002 s / iter. Total: 0.3023 s / iter. ETA=0:0
+0:04
+[12/22 22:36:22 d2.evaluation.evaluator]: Total inference time: 0:00:56.472653 (0.462891 s / iter per device, on 4 devices)
+[12/22 22:36:22 d2.evaluation.evaluator]: Total inference pure compute time: 0:00:36 (0.296765 s / iter per device, on 4 devices)
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: Preparing results for COCO format ...
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: Saving results to output/vitb/uodd_1shot/inference/coco_instances_results.json
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: Evaluating predictions with unofficial COCO API...
+Loading and preparing results...
+DONE (t=0.02s)
+creating index...
+index created!
+[12/22 22:36:23 d2.evaluation.fast_eval_api]: Evaluate annotation type *bbox*
+[12/22 22:36:23 d2.evaluation.fast_eval_api]: COCOeval_opt.evaluate() finished in 0.11 seconds.
+[12/22 22:36:23 d2.evaluation.fast_eval_api]: Accumulating evaluation results...
+[12/22 22:36:23 d2.evaluation.fast_eval_api]: COCOeval_opt.accumulate() finished in 0.03 seconds.
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.024
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.057
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.011
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.025
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.034
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.074
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.044
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.087
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.090
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.119
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.083
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.149
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: Evaluation results for bbox:
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 2.384 | 5.694  | 1.083  | 2.539 | 3.435 | 7.359 |
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: target AP50: -1
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: base AP50: 0.05693994617100789
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: all AP50: 0.05693994617100789
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: target AP75: -1
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: base AP75: 0.010831632831146026
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: all AP75: 0.010831632831146026
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: target mAP: -1.0
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: base mAP: 0.02383868905362796
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: all mAP: 0.02383868905362796
+[12/22 22:36:23 d2.evaluation.coco_evaluation]: Per-category bbox AP:
+| category    | AP    | category   | AP    | category   | AP    |
+|:------------|:------|:-----------|:------|:-----------|:------|
+| seacucumber | 0.035 | seaurchin  | 6.012 | scallop    | 1.105 |
+[12/22 22:36:23 d2.engine.defaults]: Evaluation results for UODD_test in csv format:
+[12/22 22:36:23 d2.evaluation.testing]: copypaste: Task: bbox
+[12/22 22:36:23 d2.evaluation.testing]: copypaste: AP,AP50,AP75,APs,APm,APl
+[12/22 22:36:23 d2.evaluation.testing]: copypaste: 2.3839,5.6940,1.0832,2.5389,3.4347,7.3585
+[12/22 22:36:23 d2.evaluation.testing]: ###################### ('AP', 2.3838689053627955) ######################
+^[[A^[[B^[[B^[[B^[[A^[[B^[[B^[[B^[[B^[[A^[[A^[[A^[[AA matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+Command Line Args: Namespace(config_file='configs/uodd/vitb_shot5_uodd_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0
+, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'ou
+tput/vitb/uodd_5shot/'])
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+[12/22 22:36:57 detectron2]: Rank of current process: 0. World size: 4
+[12/22 22:36:58 detectron2]: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-genc
+ode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wn
+o-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBU
+G_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-arra
+y-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecate
+d-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but
+-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF
+_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_
+NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF,
+
+[12/22 22:36:58 detectron2]: Command line arguments: Namespace(config_file='configs/uodd/vitb_shot5_uodd_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=Fal
+se, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1
+x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/uodd_5shot/'])
+[12/22 22:36:58 detectron2]: Contents of args.config_file=configs/uodd/vitb_shot5_uodd_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/UODD_5shot.vitb14.bbox.p5.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 3
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("UODD_5shot",)
+  TEST: ("UODD_test",)
+TEST:
+  EVAL_PERIOD: 80
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (30, 60)
+  MAX_ITER: 80
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 80
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 22:36:58 detectron2]: Full config saved to output/vitb/uodd_5shot/config.yaml
+('UODD_test',)
+('UODD_test',)
+('UODD_test',)
+('UODD_test',)
+WARNING [12/22 22:37:04 d2.data.datasets.coco]:
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[12/22 22:37:04 d2.data.datasets.coco]: Loaded 13 images in COCO format from datasets/UODD/annotations/5_shot.json
+[12/22 22:37:04 d2.data.build]: Removed 0 images with no usable annotations. 13 images left.
+[12/22 22:37:04 d2.data.build]: Distribution of instances among all 3 categories:
+|  category   | #instances   |  category  | #instances   |  category  | #instances   |
+|:-----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+| seacucumber | 5            | seaurchin  | 5            |  scallop   | 5            |
+|             |              |            |              |            |              |
+|    total    | 15           |            |              |            |              |
+[12/22 22:37:04 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, samp
+le_style='choice'), RandomFlip()]
+[12/22 22:37:04 d2.data.build]: Using training sampler TrainingSampler
+[12/22 22:37:04 d2.data.common]: Serializing 13 elements to byte tensors and concatenating them all ...
+[12/22 22:37:04 d2.data.common]: Serialized dataset takes 0.00 MiB
+[12/22 22:37:04 fvcore.common.checkpoint]: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+WARNING [12/22 22:37:05 fvcore.common.checkpoint]: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (3, 768) in
+ the model! You might want to double check if this is expected.
+WARNING [12/22 22:37:05 fvcore.common.checkpoint]: Some model parameters or buffers are not found in the checkpoint:
+adapter.proto_center_attn.attention_weights.0.{bias, weight}
+adapter.proto_center_attn.fc.{bias, weight}
+bg_tokens.weight
+class_weights.weight
+domain_prompter.weight
+prototype_classifier.linear.{bias, weight}
+test_class_weight
+WARNING [12/22 22:37:05 fvcore.common.checkpoint]: The checkpoint state_dict contains keys that are not used by the model:
+  train_class_weight
+[12/22 22:37:05 d2.engine.train_loop]: Starting training from iteration 0
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[12/22 22:37:28 d2.utils.events]:  eta: 0:00:48  iter: 19  roi_cover_ratio: 0.9104  cls_acc: 0.9355  fg_cls_acc: 0.7399  false_neg_ratio: 0.2059  total_loss: 4.462  aux_bce_loss_
+0: 0.2766  aux_dice_loss_0: 0.1946  rg_l1_loss_0: 0.05056  aux_bce_loss_1: 0.2327  aux_dice_loss_1: 0.1629  rg_l1_loss_1: 0.04117  aux_bce_loss_2: 0.2056  aux_dice_loss_2: 0.1385
+  rg_l1_loss_2: 0.03731  aux_bce_loss_3: 0.1919  aux_dice_loss_3: 0.1289  rg_l1_loss_3: 0.03654  aux_bce_loss_4: 0.1877  aux_dice_loss_4: 0.1245  rg_l1_loss_4: 0.03567  focal_los
+s_0: 0.08509  focal_loss_1: 0.08683  focal_loss_2: 0.07152  bbox_loss: 0.1079  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.093  proto_contrastive_loss: 1.0
+05  time: 0.8079  data_time: 0.3531  lr: 0.0019001  max_mem: 2516M
+[12/22 22:37:45 d2.utils.events]:  eta: 0:00:32  iter: 39  roi_cover_ratio: 0.9199  cls_acc: 0.9678  fg_cls_acc: 0.9564  false_neg_ratio: 0.04356  total_loss: 3.444  aux_bce_loss
+_0: 0.2191  aux_dice_loss_0: 0.145  rg_l1_loss_0: 0.03564  aux_bce_loss_1: 0.1509  aux_dice_loss_1: 0.09868  rg_l1_loss_1: 0.02581  aux_bce_loss_2: 0.1135  aux_dice_loss_2: 0.077
+2  rg_l1_loss_2: 0.02131  aux_bce_loss_3: 0.1015  aux_dice_loss_3: 0.0693  rg_l1_loss_3: 0.02019  aux_bce_loss_4: 0.09618  aux_dice_loss_4: 0.06843  rg_l1_loss_4: 0.01888  focal_
+loss_0: 0.03373  focal_loss_1: 0.02508  focal_loss_2: 0.02211  bbox_loss: 0.05468  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.056  proto_contrastive_loss:
+ 1.002  time: 0.8114  data_time: 0.0068  lr: 0.0002  max_mem: 2516M
+[12/22 22:38:01 d2.utils.events]:  eta: 0:00:16  iter: 59  roi_cover_ratio: 0.9231  cls_acc: 0.9697  fg_cls_acc: 0.95  false_neg_ratio: 0.05003  total_loss: 3.258  aux_bce_loss_0
+: 0.2009  aux_dice_loss_0: 0.1373  rg_l1_loss_0: 0.03076  aux_bce_loss_1: 0.1281  aux_dice_loss_1: 0.08922  rg_l1_loss_1: 0.02114  aux_bce_loss_2: 0.09615  aux_dice_loss_2: 0.068
+9  rg_l1_loss_2: 0.01705  aux_bce_loss_3: 0.08384  aux_dice_loss_3: 0.06089  rg_l1_loss_3: 0.01525  aux_bce_loss_4: 0.0788  aux_dice_loss_4: 0.06014  rg_l1_loss_4: 0.01442  focal
+_loss_0: 0.02467  focal_loss_1: 0.0193  focal_loss_2: 0.01594  bbox_loss: 0.0415  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.047  proto_contrastive_loss:
+1.001  time: 0.8108  data_time: 0.0068  lr: 0.0002  max_mem: 2516M
+[12/22 22:38:18 fvcore.common.checkpoint]: Saving checkpoint to output/vitb/uodd_5shot/model_0000079.pth
+[12/22 22:38:19 fvcore.common.checkpoint]: Saving checkpoint to output/vitb/uodd_5shot/model_final.pth
+[12/22 22:38:20 d2.utils.events]:  eta: 0:00:00  iter: 79  roi_cover_ratio: 0.9071  cls_acc: 0.9766  fg_cls_acc: 0.9737  false_neg_ratio: 0.02632  total_loss: 3.207  aux_bce_loss
+_0: 0.1952  aux_dice_loss_0: 0.1363  rg_l1_loss_0: 0.03177  aux_bce_loss_1: 0.1214  aux_dice_loss_1: 0.0874  rg_l1_loss_1: 0.02069  aux_bce_loss_2: 0.09059  aux_dice_loss_2: 0.06
+639  rg_l1_loss_2: 0.01636  aux_bce_loss_3: 0.07779  aux_dice_loss_3: 0.05786  rg_l1_loss_3: 0.01518  aux_bce_loss_4: 0.07271  aux_dice_loss_4: 0.0575  rg_l1_loss_4: 0.01404  foc
+al_loss_0: 0.0218  focal_loss_1: 0.01732  focal_loss_2: 0.01453  bbox_loss: 0.04076  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.044  proto_contrastive_los
+s: 1  time: 0.8229  data_time: 0.0075  lr: 2e-05  max_mem: 2516M
+[12/22 22:38:20 d2.engine.hooks]: Overall training speed: 78 iterations in 0:01:04 (0.8229 s / it)
+[12/22 22:38:20 d2.engine.hooks]: Total training time: 0:01:05 (0:00:01 on hooks)
+WARNING [12/22 22:38:20 d2.data.datasets.coco]:
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[12/22 22:38:20 d2.data.datasets.coco]: Loaded 506 images in COCO format from datasets/UODD/annotations/test.json
+[12/22 22:38:20 d2.data.build]: Distribution of instances among all 3 categories:
+|  category   | #instances   |  category  | #instances   |  category  | #instances   |
+|:-----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+| seacucumber | 739          | seaurchin  | 2216         |  scallop   | 263          |
+|             |              |            |              |            |              |
+|    total    | 3218         |            |              |            |              |
+[12/22 22:38:20 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 22:38:20 d2.data.common]: Serializing 506 elements to byte tensors and concatenating them all ...
+[12/22 22:38:20 d2.data.common]: Serialized dataset takes 0.19 MiB
+[12/22 22:38:20 d2.evaluation.evaluator]: Start inference on 127 batches
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+[12/22 22:38:41 d2.evaluation.evaluator]: Inference done 11/127. Dataloading: 0.0013 s / iter. Inference: 0.2388 s / iter. Eval: 0.0003 s / iter. Total: 0.2404 s / iter. ETA=0:00
+:27
+[12/22 22:38:46 d2.evaluation.evaluator]: Inference done 33/127. Dataloading: 0.0016 s / iter. Inference: 0.2351 s / iter. Eval: 0.0003 s / iter. Total: 0.2370 s / iter. ETA=0:00
+:22
+[12/22 22:38:51 d2.evaluation.evaluator]: Inference done 43/127. Dataloading: 0.0016 s / iter. Inference: 0.3050 s / iter. Eval: 0.0003 s / iter. Total: 0.3070 s / iter. ETA=0:00
+:25
+[12/22 22:38:56 d2.evaluation.evaluator]: Inference done 56/127. Dataloading: 0.0016 s / iter. Inference: 0.3258 s / iter. Eval: 0.0003 s / iter. Total: 0.3277 s / iter. ETA=0:00
+:23
+[12/22 22:39:02 d2.evaluation.evaluator]: Inference done 75/127. Dataloading: 0.0016 s / iter. Inference: 0.3113 s / iter. Eval: 0.0003 s / iter. Total: 0.3132 s / iter. ETA=0:00
+:16
+[12/22 22:39:07 d2.evaluation.evaluator]: Inference done 95/127. Dataloading: 0.0016 s / iter. Inference: 0.2999 s / iter. Eval: 0.0002 s / iter. Total: 0.3018 s / iter. ETA=0:00
+:09
+[12/22 22:39:12 d2.evaluation.evaluator]: Inference done 112/127. Dataloading: 0.0016 s / iter. Inference: 0.3002 s / iter. Eval: 0.0002 s / iter. Total: 0.3021 s / iter. ETA=0:0
+0:04
+[12/22 22:39:36 d2.evaluation.evaluator]: Total inference time: 0:00:56.518849 (0.463269 s / iter per device, on 4 devices)
+[12/22 22:39:36 d2.evaluation.evaluator]: Total inference pure compute time: 0:00:36 (0.297161 s / iter per device, on 4 devices)
+[12/22 22:39:36 d2.evaluation.coco_evaluation]: Preparing results for COCO format ...
+[12/22 22:39:36 d2.evaluation.coco_evaluation]: Saving results to output/vitb/uodd_5shot/inference/coco_instances_results.json
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: Evaluating predictions with unofficial COCO API...
+Loading and preparing results...
+DONE (t=0.20s)
+creating index...
+index created!
+[12/22 22:39:37 d2.evaluation.fast_eval_api]: Evaluate annotation type *bbox*
+[12/22 22:39:37 d2.evaluation.fast_eval_api]: COCOeval_opt.evaluate() finished in 0.17 seconds.
+[12/22 22:39:37 d2.evaluation.fast_eval_api]: Accumulating evaluation results...
+[12/22 22:39:37 d2.evaluation.fast_eval_api]: COCOeval_opt.accumulate() finished in 0.04 seconds.
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.074
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.139
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.073
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.040
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.078
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.197
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.068
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.156
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.173
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.150
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.147
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.329
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: Evaluation results for bbox:
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl   |
+|:-----:|:------:|:------:|:-----:|:-----:|:------:|
+| 7.438 | 13.932 | 7.260  | 3.985 | 7.795 | 19.666 |
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: target AP50: -1
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: base AP50: 0.13931697223836148
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: all AP50: 0.13931697223836148
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: target AP75: -1
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: base AP75: 0.07260404081408554
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: all AP75: 0.07260404081408554
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: target mAP: -1.0
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: base mAP: 0.07438162630272252
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: all mAP: 0.07438162630272252
+[12/22 22:39:37 d2.evaluation.coco_evaluation]: Per-category bbox AP:
+| category    | AP    | category   | AP    | category   | AP     |
+|:------------|:------|:-----------|:------|:-----------|:-------|
+| seacucumber | 0.539 | seaurchin  | 9.734 | scallop    | 12.042 |
+[12/22 22:39:37 d2.engine.defaults]: Evaluation results for UODD_test in csv format:
+[12/22 22:39:37 d2.evaluation.testing]: copypaste: Task: bbox
+[12/22 22:39:37 d2.evaluation.testing]: copypaste: AP,AP50,AP75,APs,APm,APl
+[12/22 22:39:37 d2.evaluation.testing]: copypaste: 7.4382,13.9317,7.2604,3.9852,7.7954,19.6656
+[12/22 22:39:37 d2.evaluation.testing]: ###################### ('AP', 7.438162630272252) ######################
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+Command Line Args: Namespace(config_file='configs/uodd/vitb_shot10_uodd_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=
+0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'o
+utput/vitb/uodd_10shot/'])
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+[12/22 22:40:11 detectron2]: Rank of current process: 0. World size: 4
+[12/22 22:40:11 detectron2]: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-genc
+ode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wn
+o-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBU
+G_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-arra
+y-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecate
+d-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but
+-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF
+_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_
+NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF,
+
+[12/22 22:40:11 detectron2]: Command line arguments: Namespace(config_file='configs/uodd/vitb_shot10_uodd_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=Fa
+lse, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_
+1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/uodd_10shot/'])
+[12/22 22:40:11 detectron2]: Contents of args.config_file=configs/uodd/vitb_shot10_uodd_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/UODD_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 3
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("UODD_10shot",)
+  TEST: ("UODD_test",)
+TEST:
+  EVAL_PERIOD: 100
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (50, 80)
+  MAX_ITER: 100
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 100
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 22:40:11 detectron2]: Full config saved to output/vitb/uodd_10shot/config.yaml
+('UODD_test',)
+('UODD_test',)
+('UODD_test',)
+('UODD_test',)
+WARNING [12/22 22:40:17 d2.data.datasets.coco]:
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[12/22 22:40:17 d2.data.datasets.coco]: Loaded 20 images in COCO format from datasets/UODD/annotations/10_shot.json
+[12/22 22:40:17 d2.data.build]: Removed 0 images with no usable annotations. 20 images left.
+[12/22 22:40:17 d2.data.build]: Distribution of instances among all 3 categories:
+|  category   | #instances   |  category  | #instances   |  category  | #instances   |
+|:-----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+| seacucumber | 10           | seaurchin  | 10           |  scallop   | 10           |
+|             |              |            |              |            |              |
+|    total    | 30           |            |              |            |              |
+[12/22 22:40:17 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, samp
+le_style='choice'), RandomFlip()]
+[12/22 22:40:17 d2.data.build]: Using training sampler TrainingSampler
+[12/22 22:40:17 d2.data.common]: Serializing 20 elements to byte tensors and concatenating them all ...
+[12/22 22:40:17 d2.data.common]: Serialized dataset takes 0.00 MiB
+[12/22 22:40:17 fvcore.common.checkpoint]: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+WARNING [12/22 22:40:18 fvcore.common.checkpoint]: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (3, 768) in
+ the model! You might want to double check if this is expected.
+WARNING [12/22 22:40:18 fvcore.common.checkpoint]: Some model parameters or buffers are not found in the checkpoint:
+adapter.proto_center_attn.attention_weights.0.{bias, weight}
+adapter.proto_center_attn.fc.{bias, weight}
+bg_tokens.weight
+class_weights.weight
+domain_prompter.weight
+prototype_classifier.linear.{bias, weight}
+test_class_weight
+WARNING [12/22 22:40:18 fvcore.common.checkpoint]: The checkpoint state_dict contains keys that are not used by the model:
+  train_class_weight
+[12/22 22:40:18 d2.engine.train_loop]: Starting training from iteration 0
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the
+ indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[12/22 22:40:42 d2.utils.events]:  eta: 0:01:03  iter: 19  roi_cover_ratio: 0.9111  cls_acc: 0.8779  fg_cls_acc: 0.4667  false_neg_ratio: 0.4139  total_loss: 4.835  aux_bce_loss_
+0: 0.3054  aux_dice_loss_0: 0.2107  rg_l1_loss_0: 0.05432  aux_bce_loss_1: 0.2524  aux_dice_loss_1: 0.1789  rg_l1_loss_1: 0.04601  aux_bce_loss_2: 0.2284  aux_dice_loss_2: 0.157
+ rg_l1_loss_2: 0.04065  aux_bce_loss_3: 0.2169  aux_dice_loss_3: 0.1483  rg_l1_loss_3: 0.0396  aux_bce_loss_4: 0.2133  aux_dice_loss_4: 0.1438  rg_l1_loss_4: 0.03952  focal_loss_
+0: 0.1086  focal_loss_1: 0.1217  focal_loss_2: 0.114  bbox_loss: 0.1314  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.099  proto_contrastive_loss: 1.032  ti
+me: 0.8000  data_time: 0.3522  lr: 0.0019001  max_mem: 2573M
+[12/22 22:40:58 d2.utils.events]:  eta: 0:00:48  iter: 39  roi_cover_ratio: 0.8991  cls_acc: 0.9326  fg_cls_acc: 0.8929  false_neg_ratio: 0.09124  total_loss: 4.046  aux_bce_loss
+_0: 0.2509  aux_dice_loss_0: 0.1712  rg_l1_loss_0: 0.04249  aux_bce_loss_1: 0.1902  aux_dice_loss_1: 0.1343  rg_l1_loss_1: 0.03268  aux_bce_loss_2: 0.1574  aux_dice_loss_2: 0.110
+2  rg_l1_loss_2: 0.02835  aux_bce_loss_3: 0.1426  aux_dice_loss_3: 0.1016  rg_l1_loss_3: 0.0274  aux_bce_loss_4: 0.1389  aux_dice_loss_4: 0.1002  rg_l1_loss_4: 0.02644  focal_los
+s_0: 0.05989  focal_loss_1: 0.0408  focal_loss_2: 0.04029  bbox_loss: 0.08918  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.072  proto_contrastive_loss: 1.0
+28  time: 0.8041  data_time: 0.0067  lr: 0.002  max_mem: 2706M
+[12/22 22:41:14 d2.utils.events]:  eta: 0:00:32  iter: 59  roi_cover_ratio: 0.8944  cls_acc: 0.9707  fg_cls_acc: 0.942  false_neg_ratio: 0.04058  total_loss: 3.559  aux_bce_loss_
+0: 0.2267  aux_dice_loss_0: 0.1579  rg_l1_loss_0: 0.03791  aux_bce_loss_1: 0.1595  aux_dice_loss_1: 0.11  rg_l1_loss_1: 0.02616  aux_bce_loss_2: 0.1255  aux_dice_loss_2: 0.08489
+ rg_l1_loss_2: 0.02194  aux_bce_loss_3: 0.1097  aux_dice_loss_3: 0.07516  rg_l1_loss_3: 0.01999  aux_bce_loss_4: 0.1028  aux_dice_loss_4: 0.07239  rg_l1_loss_4: 0.01865  focal_lo
+ss_0: 0.02564  focal_loss_1: 0.02367  focal_loss_2: 0.02174  bbox_loss: 0.06277  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.033  proto_contrastive_loss: 1
+.026  time: 0.8075  data_time: 0.0067  lr: 0.0002  max_mem: 2724M
+[12/22 22:41:30 d2.utils.events]:  eta: 0:00:16  iter: 79  roi_cover_ratio: 0.909  cls_acc: 0.9805  fg_cls_acc: 0.9551  false_neg_ratio: 0.04495  total_loss: 3.402  aux_bce_loss_
+0: 0.2147  aux_dice_loss_0: 0.1525  rg_l1_loss_0: 0.03627  aux_bce_loss_1: 0.1441  aux_dice_loss_1: 0.1036  rg_l1_loss_1: 0.02385  aux_bce_loss_2: 0.1089  aux_dice_loss_2: 0.0766
+7  rg_l1_loss_2: 0.01955  aux_bce_loss_3: 0.09416  aux_dice_loss_3: 0.06641  rg_l1_loss_3: 0.01788  aux_bce_loss_4: 0.08835  aux_dice_loss_4: 0.06404  rg_l1_loss_4: 0.01696  foca
+l_loss_0: 0.02273  focal_loss_1: 0.01924  focal_loss_2: 0.01802  bbox_loss: 0.05581  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.029  proto_contrastive_los
+s: 1.026  time: 0.8090  data_time: 0.0068  lr: 0.0002  max_mem: 2724M
+[12/22 22:41:47 fvcore.common.checkpoint]: Saving checkpoint to output/vitb/uodd_10shot/model_0000099.pth
+[12/22 22:41:47 fvcore.common.checkpoint]: Saving checkpoint to output/vitb/uodd_10shot/model_final.pth
+[12/22 22:41:48 d2.utils.events]:  eta: 0:00:00  iter: 99  roi_cover_ratio: 0.9118  cls_acc: 0.9727  fg_cls_acc: 0.9657  false_neg_ratio: 0.03083  total_loss: 3.368  aux_bce_loss
+_0: 0.2081  aux_dice_loss_0: 0.1519  rg_l1_loss_0: 0.03409  aux_bce_loss_1: 0.1383  aux_dice_loss_1: 0.1009  rg_l1_loss_1: 0.02322  aux_bce_loss_2: 0.1049  aux_dice_loss_2: 0.075
+29  rg_l1_loss_2: 0.01868  aux_bce_loss_3: 0.08955  aux_dice_loss_3: 0.06493  rg_l1_loss_3: 0.01675  aux_bce_loss_4: 0.08563  aux_dice_loss_4: 0.06277  rg_l1_loss_4: 0.01608  foc
+al_loss_0: 0.02208  focal_loss_1: 0.01751  focal_loss_2: 0.01756  bbox_loss: 0.05473  domain_prompter_contrasitive_loss: 0.000316  prototype_cls_loss: 1.026  proto_contrastive_lo
+ss: 1.026  time: 0.8106  data_time: 0.0066  lr: 2e-05  max_mem: 2724M
+[12/22 22:41:48 d2.engine.hooks]: Overall training speed: 98 iterations in 0:01:19 (0.8106 s / it)
+[12/22 22:41:48 d2.engine.hooks]: Total training time: 0:01:21 (0:00:01 on hooks)
+WARNING [12/22 22:41:48 d2.data.datasets.coco]:
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[12/22 22:41:48 d2.data.datasets.coco]: Loaded 506 images in COCO format from datasets/UODD/annotations/test.json
+[12/22 22:41:48 d2.data.build]: Distribution of instances among all 3 categories:
+|  category   | #instances   |  category  | #instances   |  category  | #instances   |
+|:-----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+| seacucumber | 739          | seaurchin  | 2216         |  scallop   | 263          |
+|             |              |            |              |            |              |
+|    total    | 3218         |            |              |            |              |
+[12/22 22:41:48 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 22:41:48 d2.data.common]: Serializing 506 elements to byte tensors and concatenating them all ...
+[12/22 22:41:48 d2.data.common]: Serialized dataset takes 0.19 MiB
+[12/22 22:41:48 d2.evaluation.evaluator]: Start inference on 127 batches
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Ple
+ase consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+[12/22 22:42:09 d2.evaluation.evaluator]: Inference done 11/127. Dataloading: 0.0012 s / iter. Inference: 0.2361 s / iter. Eval: 0.0003 s / iter. Total: 0.2376 s / iter. ETA=0:00
+:27
+[12/22 22:42:14 d2.evaluation.evaluator]: Inference done 33/127. Dataloading: 0.0016 s / iter. Inference: 0.2344 s / iter. Eval: 0.0002 s / iter. Total: 0.2362 s / iter. ETA=0:00
+:22
+[12/22 22:42:19 d2.evaluation.evaluator]: Inference done 43/127. Dataloading: 0.0016 s / iter. Inference: 0.3049 s / iter. Eval: 0.0003 s / iter. Total: 0.3068 s / iter. ETA=0:00
+:25
+[12/22 22:42:24 d2.evaluation.evaluator]: Inference done 56/127. Dataloading: 0.0015 s / iter. Inference: 0.3249 s / iter. Eval: 0.0003 s / iter. Total: 0.3268 s / iter. ETA=0:00
+:23
+[12/22 22:42:30 d2.evaluation.evaluator]: Inference done 75/127. Dataloading: 0.0015 s / iter. Inference: 0.3103 s / iter. Eval: 0.0003 s / iter. Total: 0.3121 s / iter. ETA=0:00
+:16
+[12/22 22:42:35 d2.evaluation.evaluator]: Inference done 95/127. Dataloading: 0.0015 s / iter. Inference: 0.2989 s / iter. Eval: 0.0003 s / iter. Total: 0.3008 s / iter. ETA=0:00
+:09
+[12/22 22:42:40 d2.evaluation.evaluator]: Inference done 112/127. Dataloading: 0.0015 s / iter. Inference: 0.2993 s / iter. Eval: 0.0003 s / iter. Total: 0.3012 s / iter. ETA=0:0
+0:04
+[12/22 22:43:04 d2.evaluation.evaluator]: Total inference time: 0:00:56.408766 (0.462367 s / iter per device, on 4 devices)
+[12/22 22:43:04 d2.evaluation.evaluator]: Total inference pure compute time: 0:00:36 (0.296328 s / iter per device, on 4 devices)
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: Preparing results for COCO format ...
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: Saving results to output/vitb/uodd_10shot/inference/coco_instances_results.json
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: Evaluating predictions with unofficial COCO API...
+Loading and preparing results...
+DONE (t=0.04s)
+creating index...
+index created!
+[12/22 22:43:05 d2.evaluation.fast_eval_api]: Evaluate annotation type *bbox*
+[12/22 22:43:05 d2.evaluation.fast_eval_api]: COCOeval_opt.evaluate() finished in 0.20 seconds.
+[12/22 22:43:05 d2.evaluation.fast_eval_api]: Accumulating evaluation results...
+[12/22 22:43:05 d2.evaluation.fast_eval_api]: COCOeval_opt.accumulate() finished in 0.05 seconds.
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.065
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.130
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.058
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.046
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.084
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.158
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.063
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.157
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.174
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.139
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.155
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.275
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: Evaluation results for bbox:
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl   |
+|:-----:|:------:|:------:|:-----:|:-----:|:------:|
+| 6.545 | 12.968 | 5.790  | 4.615 | 8.398 | 15.794 |
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: target AP50: -1
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: base AP50: 0.12968246047151827
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: all AP50: 0.12968246047151827
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: target AP75: -1
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: base AP75: 0.057898009734496284
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: all AP75: 0.057898009734496284
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: target mAP: -1.0
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: base mAP: 0.06545269931600202
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: all mAP: 0.06545269931600202
+[12/22 22:43:05 d2.evaluation.coco_evaluation]: Per-category bbox AP:
+| category    | AP    | category   | AP    | category   | AP     |
+|:------------|:------|:-----------|:------|:-----------|:-------|
+| seacucumber | 0.544 | seaurchin  | 7.651 | scallop    | 11.441 |
+[12/22 22:43:05 d2.engine.defaults]: Evaluation results for UODD_test in csv format:
+[12/22 22:43:05 d2.evaluation.testing]: copypaste: Task: bbox
+[12/22 22:43:05 d2.evaluation.testing]: copypaste: AP,AP50,AP75,APs,APm,APl
+[12/22 22:43:05 d2.evaluation.testing]: copypaste: 6.5453,12.9682,5.7898,4.6155,8.3982,15.7940
+[12/22 22:43:05 d2.evaluation.testing]: ###################### ('AP', 6.545269931600202) ######################
+(cdfsod) fee@ubuntu-R8428-A12:~/sdb_flf/project_zyh/CDFSOD-benchmark$ capture-pane -S -10000 ; save-buffer my_train_log.txt
+-bash: capture-pane: command not found
+-bash: save-buffer: command not found
+(cdfsod) fee@ubuntu-R8428-A12:~/sdb_flf/project_zyh/CDFSOD-benchmark$

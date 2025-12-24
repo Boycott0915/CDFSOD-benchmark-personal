@@ -1,0 +1,420 @@
+[12/22 19:59:46] detectron2 INFO: Rank of current process: 3. World size: 4
+[12/22 19:59:47] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 19:59:47] detectron2 INFO: Command line arguments: Namespace(config_file='configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/clipart1k_10shot/'])
+[12/22 19:59:47] detectron2 INFO: Contents of args.config_file=configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/clipart1k_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("clipart1k_10shot",)
+  TEST: ("clipart1k_test",)
+TEST:
+  EVAL_PERIOD: 500
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (250, 400)
+  MAX_ITER: 500
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 500
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 19:59:53] detectron2.data.datasets.coco INFO: Loaded 171 images in COCO format from datasets/clipart1k/annotations/10_shot.json
+[12/22 19:59:53] detectron2.data.build INFO: Removed 0 images with no usable annotations. 171 images left.
+[12/22 19:59:53] detectron2.data.build INFO: Distribution of instances among all 20 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 10           |    chair    | 10           |    boat     | 10           |
+|   bottle   | 10           | diningtable | 10           |    sofa     | 10           |
+|    cow     | 10           |  motorbike  | 7            |     car     | 10           |
+| aeroplane  | 10           |     cat     | 10           |    train    | 10           |
+|   person   | 10           |   bicycle   | 10           | pottedplant | 10           |
+|    bird    | 10           |     dog     | 10           |     bus     | 10           |
+| tvmonitor  | 10           |    horse    | 10           |             |              |
+|   total    | 197          |             |              |             |              |[0m
+[12/22 19:59:53] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 19:59:53] detectron2.data.build INFO: Using training sampler TrainingSampler
+[12/22 19:59:53] detectron2.data.common INFO: Serializing 171 elements to byte tensors and concatenating them all ...
+[12/22 19:59:53] detectron2.data.common INFO: Serialized dataset takes 0.04 MiB
+[12/22 19:59:53] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 19:59:55] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (20, 768) in the model! You might want to double check if this is expected.
+[12/22 19:59:55] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mdomain_prompter.weight[0m
+[34mprototype_classifier.linear.{bias, weight}[0m
+[34mtest_class_weight[0m
+[12/22 19:59:55] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+[12/22 19:59:55] detectron2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 20:09:13] detectron2.engine.hooks INFO: Overall training speed: 498 iterations in 0:09:10 (1.1059 s / it)
+[12/22 20:09:13] detectron2.engine.hooks INFO: Total training time: 0:09:10 (0:00:00 on hooks)
+[12/22 20:09:13] detectron2.data.datasets.coco INFO: Loaded 500 images in COCO format from datasets/clipart1k/annotations/test.json
+[12/22 20:09:13] detectron2.data.build INFO: Distribution of instances among all 20 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 33           |    chair    | 163          |    boat     | 74           |
+|   bottle   | 74           | diningtable | 50           |    sofa     | 21           |
+|    cow     | 21           |  motorbike  | 10           |     car     | 84           |
+| aeroplane  | 41           |     cat     | 23           |    train    | 26           |
+|   person   | 566          |   bicycle   | 16           | pottedplant | 94           |
+|    bird    | 124          |     dog     | 24           |     bus     | 8            |
+| tvmonitor  | 40           |    horse    | 34           |             |              |
+|   total    | 1526         |             |              |             |              |[0m
+[12/22 20:09:13] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 20:09:13] detectron2.data.common INFO: Serializing 500 elements to byte tensors and concatenating them all ...
+[12/22 20:09:13] detectron2.data.common INFO: Serialized dataset takes 0.18 MiB
+[12/22 20:09:13] detectron2.evaluation.evaluator INFO: Start inference on 125 batches
+[12/22 22:14:00] detectron2 INFO: Rank of current process: 3. World size: 4
+[12/22 22:14:01] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 22:14:01] detectron2 INFO: Command line arguments: Namespace(config_file='configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/clipart1k_10shot/'])
+[12/22 22:14:01] detectron2 INFO: Contents of args.config_file=configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/clipart1k_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("clipart1k_10shot",)
+  TEST: ("clipart1k_test",)
+TEST:
+  EVAL_PERIOD: 500
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (250, 400)
+  MAX_ITER: 500
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 500
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 22:14:05] detectron2.data.datasets.coco INFO: Loaded 171 images in COCO format from datasets/clipart1k/annotations/10_shot.json
+[12/22 22:14:05] detectron2.data.build INFO: Removed 0 images with no usable annotations. 171 images left.
+[12/22 22:14:05] detectron2.data.build INFO: Distribution of instances among all 20 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 10           |    chair    | 10           |    boat     | 10           |
+|   bottle   | 10           | diningtable | 10           |    sofa     | 10           |
+|    cow     | 10           |  motorbike  | 7            |     car     | 10           |
+| aeroplane  | 10           |     cat     | 10           |    train    | 10           |
+|   person   | 10           |   bicycle   | 10           | pottedplant | 10           |
+|    bird    | 10           |     dog     | 10           |     bus     | 10           |
+| tvmonitor  | 10           |    horse    | 10           |             |              |
+|   total    | 197          |             |              |             |              |[0m
+[12/22 22:14:05] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 22:14:05] detectron2.data.build INFO: Using training sampler TrainingSampler
+[12/22 22:14:06] detectron2.data.common INFO: Serializing 171 elements to byte tensors and concatenating them all ...
+[12/22 22:14:06] detectron2.data.common INFO: Serialized dataset takes 0.04 MiB
+[12/22 22:14:06] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 22:14:07] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (20, 768) in the model! You might want to double check if this is expected.
+[12/22 22:14:07] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mdomain_prompter.weight[0m
+[34mprototype_classifier.linear.{bias, weight}[0m
+[34mtest_class_weight[0m
+[12/22 22:14:07] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+[12/22 22:14:07] detectron2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 22:23:27] detectron2.engine.hooks INFO: Overall training speed: 498 iterations in 0:09:10 (1.1049 s / it)
+[12/22 22:23:27] detectron2.engine.hooks INFO: Total training time: 0:09:10 (0:00:00 on hooks)
+[12/22 22:23:27] detectron2.data.datasets.coco INFO: Loaded 500 images in COCO format from datasets/clipart1k/annotations/test.json
+[12/22 22:23:27] detectron2.data.build INFO: Distribution of instances among all 20 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 33           |    chair    | 163          |    boat     | 74           |
+|   bottle   | 74           | diningtable | 50           |    sofa     | 21           |
+|    cow     | 21           |  motorbike  | 10           |     car     | 84           |
+| aeroplane  | 41           |     cat     | 23           |    train    | 26           |
+|   person   | 566          |   bicycle   | 16           | pottedplant | 94           |
+|    bird    | 124          |     dog     | 24           |     bus     | 8            |
+| tvmonitor  | 40           |    horse    | 34           |             |              |
+|   total    | 1526         |             |              |             |              |[0m
+[12/22 22:23:27] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 22:23:27] detectron2.data.common INFO: Serializing 500 elements to byte tensors and concatenating them all ...
+[12/22 22:23:27] detectron2.data.common INFO: Serialized dataset takes 0.18 MiB
+[12/22 22:23:27] detectron2.evaluation.evaluator INFO: Start inference on 125 batches
+[12/23 19:31:45] detectron2 INFO: Rank of current process: 3. World size: 4
+[12/23 19:31:45] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 19:31:45] detectron2 INFO: Command line arguments: Namespace(config_file='configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml', resume=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/clipart1k_10shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/clipart1k_10shot/', 'SOLVER.IMS_PER_BATCH', '4'])
+[12/23 19:31:45] detectron2 INFO: Contents of args.config_file=configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/clipart1k_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("clipart1k_10shot",)
+  TEST: ("clipart1k_test",)
+TEST:
+  EVAL_PERIOD: 500
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (250, 400)
+  MAX_ITER: 500
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 500
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 19:31:52] fvcore.common.checkpoint INFO: [Checkpointer] Loading from output/vitb/clipart1k_10shot/model_final.pth ...
+[12/23 19:31:57] detectron2.data.datasets.coco INFO: Loaded 500 images in COCO format from datasets/clipart1k/annotations/test.json
+[12/23 19:31:57] detectron2.data.build INFO: Distribution of instances among all 20 categories:
+|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 33           |    chair    | 163          |    boat     | 74           |
+|   bottle   | 74           | diningtable | 50           |    sofa     | 21           |
+|    cow     | 21           |  motorbike  | 10           |     car     | 84           |
+| aeroplane  | 41           |     cat     | 23           |    train    | 26           |
+|   person   | 566          |   bicycle   | 16           | pottedplant | 94           |
+|    bird    | 124          |     dog     | 24           |     bus     | 8            |
+| tvmonitor  | 40           |    horse    | 34           |             |              |
+|   total    | 1526         |             |              |             |              |
+[12/23 19:31:57] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 19:31:57] detectron2.data.common INFO: Serializing 500 elements to byte tensors and concatenating them all ...
+[12/23 19:31:57] detectron2.data.common INFO: Serialized dataset takes 0.18 MiB
+[12/23 19:31:57] detectron2.evaluation.evaluator INFO: Start inference on 125 batches
+[12/23 19:32:37] detectron2.evaluation.evaluator INFO: Inference done 11/125. Dataloading: 0.0013 s / iter. Inference: 1.8903 s / iter. Eval: 0.0003 s / iter. Total: 1.8918 s / iter. ETA=0:03:35
+[12/23 19:32:44] detectron2.evaluation.evaluator INFO: Inference done 15/125. Dataloading: 0.0014 s / iter. Inference: 1.8077 s / iter. Eval: 0.0003 s / iter. Total: 1.8094 s / iter. ETA=0:03:19
+[12/23 19:32:50] detectron2.evaluation.evaluator INFO: Inference done 18/125. Dataloading: 0.0015 s / iter. Inference: 1.8680 s / iter. Eval: 0.0003 s / iter. Total: 1.8700 s / iter. ETA=0:03:20
+[12/23 19:32:55] detectron2.evaluation.evaluator INFO: Inference done 20/125. Dataloading: 0.0016 s / iter. Inference: 1.9568 s / iter. Eval: 0.0003 s / iter. Total: 1.9589 s / iter. ETA=0:03:25
+[12/23 19:33:00] detectron2.evaluation.evaluator INFO: Inference done 22/125. Dataloading: 0.0016 s / iter. Inference: 2.0435 s / iter. Eval: 0.0003 s / iter. Total: 2.0455 s / iter. ETA=0:03:30
+[12/23 19:33:06] detectron2.evaluation.evaluator INFO: Inference done 25/125. Dataloading: 0.0016 s / iter. Inference: 2.0169 s / iter. Eval: 0.0003 s / iter. Total: 2.0189 s / iter. ETA=0:03:21
+[12/23 19:33:12] detectron2.evaluation.evaluator INFO: Inference done 29/125. Dataloading: 0.0016 s / iter. Inference: 1.9201 s / iter. Eval: 0.0003 s / iter. Total: 1.9221 s / iter. ETA=0:03:04
+[12/23 19:33:17] detectron2.evaluation.evaluator INFO: Inference done 32/125. Dataloading: 0.0016 s / iter. Inference: 1.9225 s / iter. Eval: 0.0003 s / iter. Total: 1.9246 s / iter. ETA=0:02:58
+[12/23 19:33:22] detectron2.evaluation.evaluator INFO: Inference done 34/125. Dataloading: 0.0016 s / iter. Inference: 1.9641 s / iter. Eval: 0.0003 s / iter. Total: 1.9662 s / iter. ETA=0:02:58
+[12/23 19:33:30] detectron2.evaluation.evaluator INFO: Inference done 37/125. Dataloading: 0.0016 s / iter. Inference: 2.0060 s / iter. Eval: 0.0003 s / iter. Total: 2.0081 s / iter. ETA=0:02:56
+[12/23 19:33:37] detectron2.evaluation.evaluator INFO: Inference done 40/125. Dataloading: 0.0016 s / iter. Inference: 2.0303 s / iter. Eval: 0.0003 s / iter. Total: 2.0323 s / iter. ETA=0:02:52
+[12/23 19:33:42] detectron2.evaluation.evaluator INFO: Inference done 43/125. Dataloading: 0.0016 s / iter. Inference: 2.0134 s / iter. Eval: 0.0003 s / iter. Total: 2.0155 s / iter. ETA=0:02:45
+[12/23 19:33:48] detectron2.evaluation.evaluator INFO: Inference done 46/125. Dataloading: 0.0016 s / iter. Inference: 2.0158 s / iter. Eval: 0.0003 s / iter. Total: 2.0178 s / iter. ETA=0:02:39
+[12/23 19:33:54] detectron2.evaluation.evaluator INFO: Inference done 49/125. Dataloading: 0.0016 s / iter. Inference: 2.0195 s / iter. Eval: 0.0003 s / iter. Total: 2.0216 s / iter. ETA=0:02:33
+[12/23 19:34:00] detectron2.evaluation.evaluator INFO: Inference done 51/125. Dataloading: 0.0016 s / iter. Inference: 2.0445 s / iter. Eval: 0.0003 s / iter. Total: 2.0466 s / iter. ETA=0:02:31
+[12/23 19:34:06] detectron2.evaluation.evaluator INFO: Inference done 55/125. Dataloading: 0.0016 s / iter. Inference: 2.0143 s / iter. Eval: 0.0003 s / iter. Total: 2.0163 s / iter. ETA=0:02:21
+[12/23 19:34:12] detectron2.evaluation.evaluator INFO: Inference done 58/125. Dataloading: 0.0016 s / iter. Inference: 2.0059 s / iter. Eval: 0.0003 s / iter. Total: 2.0080 s / iter. ETA=0:02:14
+[12/23 19:34:17] detectron2.evaluation.evaluator INFO: Inference done 60/125. Dataloading: 0.0016 s / iter. Inference: 2.0240 s / iter. Eval: 0.0003 s / iter. Total: 2.0261 s / iter. ETA=0:02:11
+[12/23 19:34:22] detectron2.evaluation.evaluator INFO: Inference done 63/125. Dataloading: 0.0016 s / iter. Inference: 2.0107 s / iter. Eval: 0.0003 s / iter. Total: 2.0128 s / iter. ETA=0:02:04
+[12/23 19:34:27] detectron2.evaluation.evaluator INFO: Inference done 65/125. Dataloading: 0.0016 s / iter. Inference: 2.0305 s / iter. Eval: 0.0003 s / iter. Total: 2.0326 s / iter. ETA=0:02:01
+[12/23 19:34:33] detectron2.evaluation.evaluator INFO: Inference done 68/125. Dataloading: 0.0016 s / iter. Inference: 2.0243 s / iter. Eval: 0.0003 s / iter. Total: 2.0264 s / iter. ETA=0:01:55
+[12/23 19:34:38] detectron2.evaluation.evaluator INFO: Inference done 72/125. Dataloading: 0.0016 s / iter. Inference: 1.9812 s / iter. Eval: 0.0003 s / iter. Total: 1.9833 s / iter. ETA=0:01:45
+[12/23 19:34:44] detectron2.evaluation.evaluator INFO: Inference done 75/125. Dataloading: 0.0016 s / iter. Inference: 1.9833 s / iter. Eval: 0.0003 s / iter. Total: 1.9855 s / iter. ETA=0:01:39
+[12/23 19:34:51] detectron2.evaluation.evaluator INFO: Inference done 78/125. Dataloading: 0.0017 s / iter. Inference: 1.9884 s / iter. Eval: 0.0003 s / iter. Total: 1.9906 s / iter. ETA=0:01:33
+[12/23 19:34:57] detectron2.evaluation.evaluator INFO: Inference done 82/125. Dataloading: 0.0017 s / iter. Inference: 1.9616 s / iter. Eval: 0.0003 s / iter. Total: 1.9638 s / iter. ETA=0:01:24
+[12/23 19:35:02] detectron2.evaluation.evaluator INFO: Inference done 84/125. Dataloading: 0.0017 s / iter. Inference: 1.9837 s / iter. Eval: 0.0003 s / iter. Total: 1.9859 s / iter. ETA=0:01:21
+[12/23 19:35:09] detectron2.evaluation.evaluator INFO: Inference done 88/125. Dataloading: 0.0017 s / iter. Inference: 1.9650 s / iter. Eval: 0.0003 s / iter. Total: 1.9673 s / iter. ETA=0:01:12
+[12/23 19:35:14] detectron2.evaluation.evaluator INFO: Inference done 91/125. Dataloading: 0.0017 s / iter. Inference: 1.9567 s / iter. Eval: 0.0003 s / iter. Total: 1.9590 s / iter. ETA=0:01:06
+[12/23 19:35:21] detectron2.evaluation.evaluator INFO: Inference done 95/125. Dataloading: 0.0017 s / iter. Inference: 1.9451 s / iter. Eval: 0.0003 s / iter. Total: 1.9473 s / iter. ETA=0:00:58
+[12/23 19:35:27] detectron2.evaluation.evaluator INFO: Inference done 98/125. Dataloading: 0.0017 s / iter. Inference: 1.9519 s / iter. Eval: 0.0003 s / iter. Total: 1.9541 s / iter. ETA=0:00:52
+[12/23 19:35:33] detectron2.evaluation.evaluator INFO: Inference done 101/125. Dataloading: 0.0017 s / iter. Inference: 1.9471 s / iter. Eval: 0.0003 s / iter. Total: 1.9493 s / iter. ETA=0:00:46
+[12/23 19:35:39] detectron2.evaluation.evaluator INFO: Inference done 104/125. Dataloading: 0.0017 s / iter. Inference: 1.9497 s / iter. Eval: 0.0003 s / iter. Total: 1.9519 s / iter. ETA=0:00:40
+[12/23 19:35:44] detectron2.evaluation.evaluator INFO: Inference done 106/125. Dataloading: 0.0017 s / iter. Inference: 1.9622 s / iter. Eval: 0.0003 s / iter. Total: 1.9644 s / iter. ETA=0:00:37
+[12/23 19:35:51] detectron2.evaluation.evaluator INFO: Inference done 110/125. Dataloading: 0.0017 s / iter. Inference: 1.9532 s / iter. Eval: 0.0003 s / iter. Total: 1.9554 s / iter. ETA=0:00:29
+[12/23 19:35:56] detectron2.evaluation.evaluator INFO: Inference done 113/125. Dataloading: 0.0017 s / iter. Inference: 1.9511 s / iter. Eval: 0.0003 s / iter. Total: 1.9533 s / iter. ETA=0:00:23
+[12/23 19:36:03] detectron2.evaluation.evaluator INFO: Inference done 117/125. Dataloading: 0.0017 s / iter. Inference: 1.9381 s / iter. Eval: 0.0003 s / iter. Total: 1.9403 s / iter. ETA=0:00:15
+[12/23 19:36:10] detectron2.evaluation.evaluator INFO: Inference done 120/125. Dataloading: 0.0017 s / iter. Inference: 1.9506 s / iter. Eval: 0.0003 s / iter. Total: 1.9527 s / iter. ETA=0:00:09
+[12/23 19:36:16] detectron2.evaluation.evaluator INFO: Inference done 123/125. Dataloading: 0.0017 s / iter. Inference: 1.9480 s / iter. Eval: 0.0003 s / iter. Total: 1.9502 s / iter. ETA=0:00:03
+[12/23 19:36:40] detectron2.evaluation.evaluator INFO: Total inference time: 0:04:14.295123 (2.119126 s / iter per device, on 4 devices)
+[12/23 19:36:40] detectron2.evaluation.evaluator INFO: Total inference pure compute time: 0:03:54 (1.950079 s / iter per device, on 4 devices)

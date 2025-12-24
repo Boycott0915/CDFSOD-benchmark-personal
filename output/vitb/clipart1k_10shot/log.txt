@@ -1,0 +1,710 @@
+[12/22 19:59:46] detectron2 INFO: Rank of current process: 0. World size: 4
+[12/22 19:59:47] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 19:59:47] detectron2 INFO: Command line arguments: Namespace(config_file='configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/clipart1k_10shot/'])
+[12/22 19:59:47] detectron2 INFO: Contents of args.config_file=configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/clipart1k_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("clipart1k_10shot",)
+  TEST: ("clipart1k_test",)
+TEST:
+  EVAL_PERIOD: 500
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (250, 400)
+  MAX_ITER: 500
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 500
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 19:59:47] detectron2 INFO: Full config saved to output/vitb/clipart1k_10shot/config.yaml
+[12/22 19:59:53] d2.data.datasets.coco INFO: Loaded 171 images in COCO format from datasets/clipart1k/annotations/10_shot.json
+[12/22 19:59:53] d2.data.build INFO: Removed 0 images with no usable annotations. 171 images left.
+[12/22 19:59:53] d2.data.build INFO: Distribution of instances among all 20 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 10           |    chair    | 10           |    boat     | 10           |
+|   bottle   | 10           | diningtable | 10           |    sofa     | 10           |
+|    cow     | 10           |  motorbike  | 7            |     car     | 10           |
+| aeroplane  | 10           |     cat     | 10           |    train    | 10           |
+|   person   | 10           |   bicycle   | 10           | pottedplant | 10           |
+|    bird    | 10           |     dog     | 10           |     bus     | 10           |
+| tvmonitor  | 10           |    horse    | 10           |             |              |
+|   total    | 197          |             |              |             |              |[0m
+[12/22 19:59:53] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 19:59:53] d2.data.build INFO: Using training sampler TrainingSampler
+[12/22 19:59:53] d2.data.common INFO: Serializing 171 elements to byte tensors and concatenating them all ...
+[12/22 19:59:53] d2.data.common INFO: Serialized dataset takes 0.04 MiB
+[12/22 19:59:53] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 19:59:55] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (20, 768) in the model! You might want to double check if this is expected.
+[12/22 19:59:55] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mdomain_prompter.weight[0m
+[34mprototype_classifier.linear.{bias, weight}[0m
+[34mtest_class_weight[0m
+[12/22 19:59:55] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+[12/22 19:59:55] d2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 20:00:22] d2.utils.events INFO:  eta: 0:08:51  iter: 19  roi_cover_ratio: 0.7829  cls_acc: 0.7803  fg_cls_acc: 0.6048  false_neg_ratio: 0.167  total_loss: 8.858  aux_bce_loss_0: 0.3296  aux_dice_loss_0: 0.2042  rg_l1_loss_0: 0.05778  aux_bce_loss_1: 0.2645  aux_dice_loss_1: 0.1573  rg_l1_loss_1: 0.04404  aux_bce_loss_2: 0.2234  aux_dice_loss_2: 0.1273  rg_l1_loss_2: 0.03645  aux_bce_loss_3: 0.1987  aux_dice_loss_3: 0.1116  rg_l1_loss_3: 0.03409  aux_bce_loss_4: 0.192  aux_dice_loss_4: 0.1041  rg_l1_loss_4: 0.03349  focal_loss_0: 0.2998  focal_loss_1: 0.2519  focal_loss_2: 0.2374  bbox_loss: 0.2199  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.996  proto_contrastive_loss: 2.84  time: 1.0965  data_time: 0.2784  lr: 0.00038162  max_mem: 3756M
+[12/22 20:00:45] d2.utils.events INFO:  eta: 0:08:27  iter: 39  roi_cover_ratio: 0.7849  cls_acc: 0.8926  fg_cls_acc: 0.8343  false_neg_ratio: 0.06472  total_loss: 8.119  aux_bce_loss_0: 0.2912  aux_dice_loss_0: 0.1742  rg_l1_loss_0: 0.05211  aux_bce_loss_1: 0.231  aux_dice_loss_1: 0.1336  rg_l1_loss_1: 0.03783  aux_bce_loss_2: 0.1891  aux_dice_loss_2: 0.1073  rg_l1_loss_2: 0.03046  aux_bce_loss_3: 0.1642  aux_dice_loss_3: 0.09229  rg_l1_loss_3: 0.02687  aux_bce_loss_4: 0.1499  aux_dice_loss_4: 0.08495  rg_l1_loss_4: 0.02537  focal_loss_0: 0.1503  focal_loss_1: 0.1038  focal_loss_2: 0.09283  bbox_loss: 0.1768  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.993  proto_contrastive_loss: 2.84  time: 1.1017  data_time: 0.0060  lr: 0.00078122  max_mem: 3768M
+[12/22 20:01:07] d2.utils.events INFO:  eta: 0:08:05  iter: 59  roi_cover_ratio: 0.7805  cls_acc: 0.9023  fg_cls_acc: 0.9536  false_neg_ratio: 0.04606  total_loss: 7.791  aux_bce_loss_0: 0.2638  aux_dice_loss_0: 0.1667  rg_l1_loss_0: 0.04717  aux_bce_loss_1: 0.2019  aux_dice_loss_1: 0.1212  rg_l1_loss_1: 0.03219  aux_bce_loss_2: 0.1581  aux_dice_loss_2: 0.0946  rg_l1_loss_2: 0.02677  aux_bce_loss_3: 0.1379  aux_dice_loss_3: 0.08165  rg_l1_loss_3: 0.02359  aux_bce_loss_4: 0.13  aux_dice_loss_4: 0.07614  rg_l1_loss_4: 0.02191  focal_loss_0: 0.08396  focal_loss_1: 0.07233  focal_loss_2: 0.0623  bbox_loss: 0.142  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.989  proto_contrastive_loss: 2.84  time: 1.1025  data_time: 0.0065  lr: 0.0011808  max_mem: 3768M
+[12/22 20:01:29] d2.utils.events INFO:  eta: 0:07:43  iter: 79  roi_cover_ratio: 0.7978  cls_acc: 0.9375  fg_cls_acc: 0.9527  false_neg_ratio: 0.03054  total_loss: 7.633  aux_bce_loss_0: 0.2527  aux_dice_loss_0: 0.1534  rg_l1_loss_0: 0.04527  aux_bce_loss_1: 0.1899  aux_dice_loss_1: 0.1096  rg_l1_loss_1: 0.0304  aux_bce_loss_2: 0.1504  aux_dice_loss_2: 0.08444  rg_l1_loss_2: 0.0246  aux_bce_loss_3: 0.1304  aux_dice_loss_3: 0.07255  rg_l1_loss_3: 0.02159  aux_bce_loss_4: 0.1162  aux_dice_loss_4: 0.06739  rg_l1_loss_4: 0.02025  focal_loss_0: 0.06033  focal_loss_1: 0.0496  focal_loss_2: 0.04433  bbox_loss: 0.1304  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.981  proto_contrastive_loss: 2.84  time: 1.1039  data_time: 0.0060  lr: 0.0015804  max_mem: 3823M
+[12/22 20:01:51] d2.utils.events INFO:  eta: 0:07:23  iter: 99  roi_cover_ratio: 0.7648  cls_acc: 0.9385  fg_cls_acc: 0.9692  false_neg_ratio: 0.02927  total_loss: 7.415  aux_bce_loss_0: 0.2363  aux_dice_loss_0: 0.148  rg_l1_loss_0: 0.04457  aux_bce_loss_1: 0.1695  aux_dice_loss_1: 0.1025  rg_l1_loss_1: 0.02894  aux_bce_loss_2: 0.1334  aux_dice_loss_2: 0.07771  rg_l1_loss_2: 0.02198  aux_bce_loss_3: 0.1109  aux_dice_loss_3: 0.06377  rg_l1_loss_3: 0.01896  aux_bce_loss_4: 0.1021  aux_dice_loss_4: 0.05918  rg_l1_loss_4: 0.01823  focal_loss_0: 0.05309  focal_loss_1: 0.04284  focal_loss_2: 0.03896  bbox_loss: 0.1274  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.97  proto_contrastive_loss: 2.84  time: 1.1060  data_time: 0.0066  lr: 0.00198  max_mem: 3823M
+[12/22 20:02:13] d2.utils.events INFO:  eta: 0:07:01  iter: 119  roi_cover_ratio: 0.7654  cls_acc: 0.9482  fg_cls_acc: 0.9764  false_neg_ratio: 0.01722  total_loss: 7.234  aux_bce_loss_0: 0.222  aux_dice_loss_0: 0.1404  rg_l1_loss_0: 0.04187  aux_bce_loss_1: 0.1566  aux_dice_loss_1: 0.08982  rg_l1_loss_1: 0.02619  aux_bce_loss_2: 0.1195  aux_dice_loss_2: 0.06664  rg_l1_loss_2: 0.01993  aux_bce_loss_3: 0.09762  aux_dice_loss_3: 0.05703  rg_l1_loss_3: 0.01824  aux_bce_loss_4: 0.0896  aux_dice_loss_4: 0.054  rg_l1_loss_4: 0.01694  focal_loss_0: 0.04274  focal_loss_1: 0.0336  focal_loss_2: 0.03023  bbox_loss: 0.111  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.958  proto_contrastive_loss: 2.839  time: 1.1056  data_time: 0.0065  lr: 0.002  max_mem: 3823M
+[12/22 20:02:35] d2.utils.events INFO:  eta: 0:06:38  iter: 139  roi_cover_ratio: 0.7629  cls_acc: 0.9609  fg_cls_acc: 0.9876  false_neg_ratio: 0.01242  total_loss: 7.1  aux_bce_loss_0: 0.2059  aux_dice_loss_0: 0.1314  rg_l1_loss_0: 0.03986  aux_bce_loss_1: 0.1394  aux_dice_loss_1: 0.0838  rg_l1_loss_1: 0.02523  aux_bce_loss_2: 0.107  aux_dice_loss_2: 0.06296  rg_l1_loss_2: 0.01937  aux_bce_loss_3: 0.09099  aux_dice_loss_3: 0.05282  rg_l1_loss_3: 0.01727  aux_bce_loss_4: 0.08114  aux_dice_loss_4: 0.04945  rg_l1_loss_4: 0.01652  focal_loss_0: 0.03855  focal_loss_1: 0.02922  focal_loss_2: 0.02701  bbox_loss: 0.1076  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.945  proto_contrastive_loss: 2.839  time: 1.1056  data_time: 0.0062  lr: 0.002  max_mem: 3823M
+[12/22 20:02:58] d2.utils.events INFO:  eta: 0:06:16  iter: 159  roi_cover_ratio: 0.7567  cls_acc: 0.9521  fg_cls_acc: 0.9735  false_neg_ratio: 0.02647  total_loss: 7.092  aux_bce_loss_0: 0.2117  aux_dice_loss_0: 0.128  rg_l1_loss_0: 0.04146  aux_bce_loss_1: 0.1437  aux_dice_loss_1: 0.08255  rg_l1_loss_1: 0.02541  aux_bce_loss_2: 0.1104  aux_dice_loss_2: 0.06224  rg_l1_loss_2: 0.01839  aux_bce_loss_3: 0.09235  aux_dice_loss_3: 0.05362  rg_l1_loss_3: 0.01617  aux_bce_loss_4: 0.08567  aux_dice_loss_4: 0.05052  rg_l1_loss_4: 0.01502  focal_loss_0: 0.03768  focal_loss_1: 0.0276  focal_loss_2: 0.02538  bbox_loss: 0.1035  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.933  proto_contrastive_loss: 2.838  time: 1.1056  data_time: 0.0067  lr: 0.002  max_mem: 3823M
+[12/22 20:03:20] d2.utils.events INFO:  eta: 0:05:54  iter: 179  roi_cover_ratio: 0.8129  cls_acc: 0.958  fg_cls_acc: 0.9871  false_neg_ratio: 0.0129  total_loss: 7.069  aux_bce_loss_0: 0.2108  aux_dice_loss_0: 0.1263  rg_l1_loss_0: 0.0391  aux_bce_loss_1: 0.1395  aux_dice_loss_1: 0.08193  rg_l1_loss_1: 0.02532  aux_bce_loss_2: 0.1083  aux_dice_loss_2: 0.06184  rg_l1_loss_2: 0.01961  aux_bce_loss_3: 0.08887  aux_dice_loss_3: 0.05138  rg_l1_loss_3: 0.01742  aux_bce_loss_4: 0.0797  aux_dice_loss_4: 0.04763  rg_l1_loss_4: 0.01649  focal_loss_0: 0.03159  focal_loss_1: 0.02559  focal_loss_2: 0.02356  bbox_loss: 0.1058  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.918  proto_contrastive_loss: 2.837  time: 1.1054  data_time: 0.0062  lr: 0.002  max_mem: 3823M
+[12/22 20:03:42] d2.utils.events INFO:  eta: 0:05:31  iter: 199  roi_cover_ratio: 0.759  cls_acc: 0.9648  fg_cls_acc: 0.9865  false_neg_ratio: 0.0135  total_loss: 6.969  aux_bce_loss_0: 0.2043  aux_dice_loss_0: 0.1239  rg_l1_loss_0: 0.03823  aux_bce_loss_1: 0.1342  aux_dice_loss_1: 0.08024  rg_l1_loss_1: 0.0236  aux_bce_loss_2: 0.0981  aux_dice_loss_2: 0.05883  rg_l1_loss_2: 0.01767  aux_bce_loss_3: 0.08133  aux_dice_loss_3: 0.04961  rg_l1_loss_3: 0.01544  aux_bce_loss_4: 0.073  aux_dice_loss_4: 0.04616  rg_l1_loss_4: 0.01387  focal_loss_0: 0.03077  focal_loss_1: 0.0231  focal_loss_2: 0.02227  bbox_loss: 0.09664  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.906  proto_contrastive_loss: 2.837  time: 1.1045  data_time: 0.0065  lr: 0.002  max_mem: 3848M
+[12/22 20:04:04] d2.utils.events INFO:  eta: 0:05:09  iter: 219  roi_cover_ratio: 0.7628  cls_acc: 0.9707  fg_cls_acc: 0.9881  false_neg_ratio: 0.01193  total_loss: 6.89  aux_bce_loss_0: 0.1982  aux_dice_loss_0: 0.1188  rg_l1_loss_0: 0.03624  aux_bce_loss_1: 0.1277  aux_dice_loss_1: 0.07512  rg_l1_loss_1: 0.0216  aux_bce_loss_2: 0.09499  aux_dice_loss_2: 0.05645  rg_l1_loss_2: 0.0158  aux_bce_loss_3: 0.07799  aux_dice_loss_3: 0.0461  rg_l1_loss_3: 0.01401  aux_bce_loss_4: 0.0718  aux_dice_loss_4: 0.04373  rg_l1_loss_4: 0.01284  focal_loss_0: 0.02729  focal_loss_1: 0.02041  focal_loss_2: 0.01884  bbox_loss: 0.08444  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.892  proto_contrastive_loss: 2.836  time: 1.1045  data_time: 0.0063  lr: 0.002  max_mem: 3848M
+[12/22 20:04:26] d2.utils.events INFO:  eta: 0:04:47  iter: 239  roi_cover_ratio: 0.7358  cls_acc: 0.9717  fg_cls_acc: 0.9883  false_neg_ratio: 0.0117  total_loss: 6.843  aux_bce_loss_0: 0.1902  aux_dice_loss_0: 0.1147  rg_l1_loss_0: 0.03641  aux_bce_loss_1: 0.1266  aux_dice_loss_1: 0.07113  rg_l1_loss_1: 0.02248  aux_bce_loss_2: 0.08875  aux_dice_loss_2: 0.05212  rg_l1_loss_2: 0.01644  aux_bce_loss_3: 0.0737  aux_dice_loss_3: 0.0429  rg_l1_loss_3: 0.01446  aux_bce_loss_4: 0.06677  aux_dice_loss_4: 0.0402  rg_l1_loss_4: 0.01365  focal_loss_0: 0.02679  focal_loss_1: 0.02129  focal_loss_2: 0.01932  bbox_loss: 0.08523  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.879  proto_contrastive_loss: 2.836  time: 1.1041  data_time: 0.0063  lr: 0.002  max_mem: 3848M
+[12/22 20:04:48] d2.utils.events INFO:  eta: 0:04:25  iter: 259  roi_cover_ratio: 0.7758  cls_acc: 0.9707  fg_cls_acc: 0.9875  false_neg_ratio: 0.01247  total_loss: 6.774  aux_bce_loss_0: 0.1793  aux_dice_loss_0: 0.1138  rg_l1_loss_0: 0.0342  aux_bce_loss_1: 0.1152  aux_dice_loss_1: 0.06966  rg_l1_loss_1: 0.02051  aux_bce_loss_2: 0.08567  aux_dice_loss_2: 0.05123  rg_l1_loss_2: 0.01526  aux_bce_loss_3: 0.07091  aux_dice_loss_3: 0.04319  rg_l1_loss_3: 0.01363  aux_bce_loss_4: 0.06368  aux_dice_loss_4: 0.04006  rg_l1_loss_4: 0.01261  focal_loss_0: 0.02579  focal_loss_1: 0.02011  focal_loss_2: 0.01917  bbox_loss: 0.08375  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.867  proto_contrastive_loss: 2.836  time: 1.1049  data_time: 0.0063  lr: 0.0002  max_mem: 3848M
+[12/22 20:05:10] d2.utils.events INFO:  eta: 0:04:03  iter: 279  roi_cover_ratio: 0.7446  cls_acc: 0.9658  fg_cls_acc: 0.9896  false_neg_ratio: 0.01011  total_loss: 6.722  aux_bce_loss_0: 0.1745  aux_dice_loss_0: 0.1087  rg_l1_loss_0: 0.03325  aux_bce_loss_1: 0.1123  aux_dice_loss_1: 0.06596  rg_l1_loss_1: 0.01982  aux_bce_loss_2: 0.08175  aux_dice_loss_2: 0.04821  rg_l1_loss_2: 0.01418  aux_bce_loss_3: 0.06699  aux_dice_loss_3: 0.03977  rg_l1_loss_3: 0.01212  aux_bce_loss_4: 0.05977  aux_dice_loss_4: 0.03757  rg_l1_loss_4: 0.01076  focal_loss_0: 0.02464  focal_loss_1: 0.01903  focal_loss_2: 0.01801  bbox_loss: 0.07321  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.864  proto_contrastive_loss: 2.835  time: 1.1039  data_time: 0.0063  lr: 0.0002  max_mem: 3848M
+[12/22 20:05:32] d2.utils.events INFO:  eta: 0:03:41  iter: 299  roi_cover_ratio: 0.7797  cls_acc: 0.9688  fg_cls_acc: 0.9896  false_neg_ratio: 0.01026  total_loss: 6.668  aux_bce_loss_0: 0.1702  aux_dice_loss_0: 0.1113  rg_l1_loss_0: 0.03236  aux_bce_loss_1: 0.1017  aux_dice_loss_1: 0.0665  rg_l1_loss_1: 0.01912  aux_bce_loss_2: 0.07376  aux_dice_loss_2: 0.04708  rg_l1_loss_2: 0.01343  aux_bce_loss_3: 0.06026  aux_dice_loss_3: 0.03893  rg_l1_loss_3: 0.01177  aux_bce_loss_4: 0.05481  aux_dice_loss_4: 0.0368  rg_l1_loss_4: 0.01042  focal_loss_0: 0.02395  focal_loss_1: 0.0192  focal_loss_2: 0.0174  bbox_loss: 0.06841  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.862  proto_contrastive_loss: 2.835  time: 1.1041  data_time: 0.0064  lr: 0.0002  max_mem: 3848M
+[12/22 20:05:54] d2.utils.events INFO:  eta: 0:03:18  iter: 319  roi_cover_ratio: 0.7541  cls_acc: 0.9668  fg_cls_acc: 0.9865  false_neg_ratio: 0.01275  total_loss: 6.689  aux_bce_loss_0: 0.1724  aux_dice_loss_0: 0.11  rg_l1_loss_0: 0.03289  aux_bce_loss_1: 0.1087  aux_dice_loss_1: 0.06409  rg_l1_loss_1: 0.01871  aux_bce_loss_2: 0.07713  aux_dice_loss_2: 0.04555  rg_l1_loss_2: 0.01296  aux_bce_loss_3: 0.06332  aux_dice_loss_3: 0.03745  rg_l1_loss_3: 0.01146  aux_bce_loss_4: 0.05713  aux_dice_loss_4: 0.03512  rg_l1_loss_4: 0.01007  focal_loss_0: 0.0253  focal_loss_1: 0.01911  focal_loss_2: 0.01829  bbox_loss: 0.06645  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.862  proto_contrastive_loss: 2.836  time: 1.1039  data_time: 0.0064  lr: 0.0002  max_mem: 3848M
+[12/22 20:06:16] d2.utils.events INFO:  eta: 0:02:56  iter: 339  roi_cover_ratio: 0.7553  cls_acc: 0.9648  fg_cls_acc: 0.9835  false_neg_ratio: 0.01648  total_loss: 6.718  aux_bce_loss_0: 0.1722  aux_dice_loss_0: 0.1082  rg_l1_loss_0: 0.03222  aux_bce_loss_1: 0.1092  aux_dice_loss_1: 0.0646  rg_l1_loss_1: 0.01888  aux_bce_loss_2: 0.08073  aux_dice_loss_2: 0.04757  rg_l1_loss_2: 0.01389  aux_bce_loss_3: 0.06723  aux_dice_loss_3: 0.03926  rg_l1_loss_3: 0.01189  aux_bce_loss_4: 0.06025  aux_dice_loss_4: 0.03722  rg_l1_loss_4: 0.01033  focal_loss_0: 0.02488  focal_loss_1: 0.01991  focal_loss_2: 0.01829  bbox_loss: 0.07191  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.861  proto_contrastive_loss: 2.835  time: 1.1038  data_time: 0.0061  lr: 0.0002  max_mem: 3848M
+[12/22 20:06:38] d2.utils.events INFO:  eta: 0:02:34  iter: 359  roi_cover_ratio: 0.728  cls_acc: 0.9707  fg_cls_acc: 0.9887  false_neg_ratio: 0.01049  total_loss: 6.657  aux_bce_loss_0: 0.1686  aux_dice_loss_0: 0.1069  rg_l1_loss_0: 0.03309  aux_bce_loss_1: 0.1012  aux_dice_loss_1: 0.06331  rg_l1_loss_1: 0.01842  aux_bce_loss_2: 0.07191  aux_dice_loss_2: 0.04589  rg_l1_loss_2: 0.01343  aux_bce_loss_3: 0.05841  aux_dice_loss_3: 0.03725  rg_l1_loss_3: 0.01174  aux_bce_loss_4: 0.05337  aux_dice_loss_4: 0.03565  rg_l1_loss_4: 0.01046  focal_loss_0: 0.02377  focal_loss_1: 0.01857  focal_loss_2: 0.01696  bbox_loss: 0.06542  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.859  proto_contrastive_loss: 2.835  time: 1.1035  data_time: 0.0061  lr: 0.0002  max_mem: 3848M
+[12/22 20:07:01] d2.utils.events INFO:  eta: 0:02:12  iter: 379  roi_cover_ratio: 0.7618  cls_acc: 0.9678  fg_cls_acc: 1  false_neg_ratio: 0  total_loss: 6.662  aux_bce_loss_0: 0.1696  aux_dice_loss_0: 0.1076  rg_l1_loss_0: 0.03128  aux_bce_loss_1: 0.1049  aux_dice_loss_1: 0.06301  rg_l1_loss_1: 0.0182  aux_bce_loss_2: 0.075  aux_dice_loss_2: 0.04508  rg_l1_loss_2: 0.01305  aux_bce_loss_3: 0.06269  aux_dice_loss_3: 0.03752  rg_l1_loss_3: 0.01141  aux_bce_loss_4: 0.0567  aux_dice_loss_4: 0.03528  rg_l1_loss_4: 0.01024  focal_loss_0: 0.02494  focal_loss_1: 0.01942  focal_loss_2: 0.01777  bbox_loss: 0.06722  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.858  proto_contrastive_loss: 2.835  time: 1.1034  data_time: 0.0062  lr: 0.0002  max_mem: 3848M
+[12/22 20:07:23] d2.utils.events INFO:  eta: 0:01:50  iter: 399  roi_cover_ratio: 0.7558  cls_acc: 0.9648  fg_cls_acc: 0.9873  false_neg_ratio: 0.01268  total_loss: 6.634  aux_bce_loss_0: 0.1729  aux_dice_loss_0: 0.1065  rg_l1_loss_0: 0.03336  aux_bce_loss_1: 0.1049  aux_dice_loss_1: 0.06291  rg_l1_loss_1: 0.01755  aux_bce_loss_2: 0.07461  aux_dice_loss_2: 0.04459  rg_l1_loss_2: 0.01313  aux_bce_loss_3: 0.05957  aux_dice_loss_3: 0.03621  rg_l1_loss_3: 0.0114  aux_bce_loss_4: 0.053  aux_dice_loss_4: 0.03414  rg_l1_loss_4: 0.009964  focal_loss_0: 0.02316  focal_loss_1: 0.01891  focal_loss_2: 0.01705  bbox_loss: 0.06488  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.856  proto_contrastive_loss: 2.835  time: 1.1038  data_time: 0.0065  lr: 0.0002  max_mem: 3848M
+[12/22 20:07:45] d2.utils.events INFO:  eta: 0:01:28  iter: 419  roi_cover_ratio: 0.7286  cls_acc: 0.9658  fg_cls_acc: 0.9899  false_neg_ratio: 0.01008  total_loss: 6.653  aux_bce_loss_0: 0.1727  aux_dice_loss_0: 0.1083  rg_l1_loss_0: 0.03103  aux_bce_loss_1: 0.1052  aux_dice_loss_1: 0.06398  rg_l1_loss_1: 0.01809  aux_bce_loss_2: 0.07566  aux_dice_loss_2: 0.04511  rg_l1_loss_2: 0.01348  aux_bce_loss_3: 0.06126  aux_dice_loss_3: 0.03761  rg_l1_loss_3: 0.0118  aux_bce_loss_4: 0.05544  aux_dice_loss_4: 0.03574  rg_l1_loss_4: 0.01052  focal_loss_0: 0.02398  focal_loss_1: 0.01813  focal_loss_2: 0.01768  bbox_loss: 0.06978  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.855  proto_contrastive_loss: 2.835  time: 1.1040  data_time: 0.0065  lr: 2e-05  max_mem: 3848M
+[12/22 20:08:07] d2.utils.events INFO:  eta: 0:01:06  iter: 439  roi_cover_ratio: 0.7648  cls_acc: 0.9658  fg_cls_acc: 0.9898  false_neg_ratio: 0.01022  total_loss: 6.646  aux_bce_loss_0: 0.1703  aux_dice_loss_0: 0.1078  rg_l1_loss_0: 0.0306  aux_bce_loss_1: 0.1064  aux_dice_loss_1: 0.06354  rg_l1_loss_1: 0.01754  aux_bce_loss_2: 0.07465  aux_dice_loss_2: 0.04545  rg_l1_loss_2: 0.01298  aux_bce_loss_3: 0.05923  aux_dice_loss_3: 0.03699  rg_l1_loss_3: 0.01146  aux_bce_loss_4: 0.05331  aux_dice_loss_4: 0.03515  rg_l1_loss_4: 0.01008  focal_loss_0: 0.02405  focal_loss_1: 0.01825  focal_loss_2: 0.01652  bbox_loss: 0.06824  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.855  proto_contrastive_loss: 2.835  time: 1.1041  data_time: 0.0063  lr: 2e-05  max_mem: 3848M
+[12/22 20:08:29] d2.utils.events INFO:  eta: 0:00:44  iter: 459  roi_cover_ratio: 0.759  cls_acc: 0.9688  fg_cls_acc: 0.9949  false_neg_ratio: 0  total_loss: 6.642  aux_bce_loss_0: 0.1697  aux_dice_loss_0: 0.1057  rg_l1_loss_0: 0.03084  aux_bce_loss_1: 0.104  aux_dice_loss_1: 0.06249  rg_l1_loss_1: 0.01774  aux_bce_loss_2: 0.07484  aux_dice_loss_2: 0.0453  rg_l1_loss_2: 0.01313  aux_bce_loss_3: 0.06093  aux_dice_loss_3: 0.03703  rg_l1_loss_3: 0.01122  aux_bce_loss_4: 0.05466  aux_dice_loss_4: 0.03504  rg_l1_loss_4: 0.009701  focal_loss_0: 0.02305  focal_loss_1: 0.01852  focal_loss_2: 0.01669  bbox_loss: 0.06615  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.855  proto_contrastive_loss: 2.835  time: 1.1042  data_time: 0.0062  lr: 2e-05  max_mem: 3848M
+[12/22 20:08:52] d2.utils.events INFO:  eta: 0:00:22  iter: 479  roi_cover_ratio: 0.786  cls_acc: 0.9707  fg_cls_acc: 0.9804  false_neg_ratio: 0.0162  total_loss: 6.649  aux_bce_loss_0: 0.1698  aux_dice_loss_0: 0.1079  rg_l1_loss_0: 0.03064  aux_bce_loss_1: 0.1029  aux_dice_loss_1: 0.06453  rg_l1_loss_1: 0.01771  aux_bce_loss_2: 0.07398  aux_dice_loss_2: 0.04635  rg_l1_loss_2: 0.01274  aux_bce_loss_3: 0.06026  aux_dice_loss_3: 0.03772  rg_l1_loss_3: 0.01102  aux_bce_loss_4: 0.0547  aux_dice_loss_4: 0.03599  rg_l1_loss_4: 0.009721  focal_loss_0: 0.02412  focal_loss_1: 0.01935  focal_loss_2: 0.01792  bbox_loss: 0.06703  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.855  proto_contrastive_loss: 2.835  time: 1.1043  data_time: 0.0062  lr: 2e-05  max_mem: 3848M
+[12/22 20:09:13] fvcore.common.checkpoint INFO: Saving checkpoint to output/vitb/clipart1k_10shot/model_0000499.pth
+[12/22 20:09:14] fvcore.common.checkpoint INFO: Saving checkpoint to output/vitb/clipart1k_10shot/model_final.pth
+[12/22 20:09:15] d2.utils.events INFO:  eta: 0:00:00  iter: 499  roi_cover_ratio: 0.7375  cls_acc: 0.9727  fg_cls_acc: 0.9871  false_neg_ratio: 0.01115  total_loss: 6.67  aux_bce_loss_0: 0.1709  aux_dice_loss_0: 0.1084  rg_l1_loss_0: 0.03187  aux_bce_loss_1: 0.1054  aux_dice_loss_1: 0.0622  rg_l1_loss_1: 0.01753  aux_bce_loss_2: 0.07646  aux_dice_loss_2: 0.04485  rg_l1_loss_2: 0.01288  aux_bce_loss_3: 0.06148  aux_dice_loss_3: 0.03674  rg_l1_loss_3: 0.01155  aux_bce_loss_4: 0.05567  aux_dice_loss_4: 0.03492  rg_l1_loss_4: 0.009869  focal_loss_0: 0.02313  focal_loss_1: 0.01825  focal_loss_2: 0.0166  bbox_loss: 0.06688  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.854  proto_contrastive_loss: 2.835  time: 1.1039  data_time: 0.0065  lr: 2e-05  max_mem: 3848M
+[12/22 20:09:15] d2.engine.hooks INFO: Overall training speed: 498 iterations in 0:09:09 (1.1039 s / it)
+[12/22 20:09:15] d2.engine.hooks INFO: Total training time: 0:09:12 (0:00:02 on hooks)
+[12/22 20:09:15] d2.data.datasets.coco INFO: Loaded 500 images in COCO format from datasets/clipart1k/annotations/test.json
+[12/22 20:09:15] d2.data.build INFO: Distribution of instances among all 20 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 33           |    chair    | 163          |    boat     | 74           |
+|   bottle   | 74           | diningtable | 50           |    sofa     | 21           |
+|    cow     | 21           |  motorbike  | 10           |     car     | 84           |
+| aeroplane  | 41           |     cat     | 23           |    train    | 26           |
+|   person   | 566          |   bicycle   | 16           | pottedplant | 94           |
+|    bird    | 124          |     dog     | 24           |     bus     | 8            |
+| tvmonitor  | 40           |    horse    | 34           |             |              |
+|   total    | 1526         |             |              |             |              |[0m
+[12/22 20:09:15] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 20:09:15] d2.data.common INFO: Serializing 500 elements to byte tensors and concatenating them all ...
+[12/22 20:09:15] d2.data.common INFO: Serialized dataset takes 0.18 MiB
+[12/22 20:09:15] d2.evaluation.evaluator INFO: Start inference on 125 batches
+[12/22 22:14:00] detectron2 INFO: Rank of current process: 0. World size: 4
+[12/22 22:14:01] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 22:14:01] detectron2 INFO: Command line arguments: Namespace(config_file='configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/clipart1k_10shot/'])
+[12/22 22:14:01] detectron2 INFO: Contents of args.config_file=configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/clipart1k_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("clipart1k_10shot",)
+  TEST: ("clipart1k_test",)
+TEST:
+  EVAL_PERIOD: 500
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (250, 400)
+  MAX_ITER: 500
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 500
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 22:14:01] detectron2 INFO: Full config saved to output/vitb/clipart1k_10shot/config.yaml
+[12/22 22:14:05] d2.data.datasets.coco INFO: Loaded 171 images in COCO format from datasets/clipart1k/annotations/10_shot.json
+[12/22 22:14:05] d2.data.build INFO: Removed 0 images with no usable annotations. 171 images left.
+[12/22 22:14:05] d2.data.build INFO: Distribution of instances among all 20 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 10           |    chair    | 10           |    boat     | 10           |
+|   bottle   | 10           | diningtable | 10           |    sofa     | 10           |
+|    cow     | 10           |  motorbike  | 7            |     car     | 10           |
+| aeroplane  | 10           |     cat     | 10           |    train    | 10           |
+|   person   | 10           |   bicycle   | 10           | pottedplant | 10           |
+|    bird    | 10           |     dog     | 10           |     bus     | 10           |
+| tvmonitor  | 10           |    horse    | 10           |             |              |
+|   total    | 197          |             |              |             |              |[0m
+[12/22 22:14:05] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 22:14:05] d2.data.build INFO: Using training sampler TrainingSampler
+[12/22 22:14:06] d2.data.common INFO: Serializing 171 elements to byte tensors and concatenating them all ...
+[12/22 22:14:06] d2.data.common INFO: Serialized dataset takes 0.04 MiB
+[12/22 22:14:06] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 22:14:07] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (20, 768) in the model! You might want to double check if this is expected.
+[12/22 22:14:07] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mdomain_prompter.weight[0m
+[34mprototype_classifier.linear.{bias, weight}[0m
+[34mtest_class_weight[0m
+[12/22 22:14:07] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+[12/22 22:14:07] d2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 22:14:36] d2.utils.events INFO:  eta: 0:08:49  iter: 19  roi_cover_ratio: 0.7829  cls_acc: 0.7803  fg_cls_acc: 0.6048  false_neg_ratio: 0.167  total_loss: 8.858  aux_bce_loss_0: 0.3296  aux_dice_loss_0: 0.2042  rg_l1_loss_0: 0.05778  aux_bce_loss_1: 0.2645  aux_dice_loss_1: 0.1573  rg_l1_loss_1: 0.04403  aux_bce_loss_2: 0.2234  aux_dice_loss_2: 0.1273  rg_l1_loss_2: 0.03646  aux_bce_loss_3: 0.1987  aux_dice_loss_3: 0.1116  rg_l1_loss_3: 0.0341  aux_bce_loss_4: 0.192  aux_dice_loss_4: 0.1041  rg_l1_loss_4: 0.03349  focal_loss_0: 0.3  focal_loss_1: 0.252  focal_loss_2: 0.2374  bbox_loss: 0.2199  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.996  proto_contrastive_loss: 2.84  time: 1.0938  data_time: 0.3383  lr: 0.00038162  max_mem: 3756M
+[12/22 22:14:58] d2.utils.events INFO:  eta: 0:08:23  iter: 39  roi_cover_ratio: 0.7849  cls_acc: 0.8887  fg_cls_acc: 0.8343  false_neg_ratio: 0.06013  total_loss: 8.119  aux_bce_loss_0: 0.2914  aux_dice_loss_0: 0.1743  rg_l1_loss_0: 0.05219  aux_bce_loss_1: 0.231  aux_dice_loss_1: 0.1337  rg_l1_loss_1: 0.03789  aux_bce_loss_2: 0.1891  aux_dice_loss_2: 0.1074  rg_l1_loss_2: 0.03049  aux_bce_loss_3: 0.1642  aux_dice_loss_3: 0.0923  rg_l1_loss_3: 0.02687  aux_bce_loss_4: 0.15  aux_dice_loss_4: 0.08492  rg_l1_loss_4: 0.02536  focal_loss_0: 0.1512  focal_loss_1: 0.1045  focal_loss_2: 0.09282  bbox_loss: 0.1767  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.993  proto_contrastive_loss: 2.84  time: 1.0959  data_time: 0.0060  lr: 0.00078122  max_mem: 3768M
+[12/22 22:15:20] d2.utils.events INFO:  eta: 0:08:04  iter: 59  roi_cover_ratio: 0.7805  cls_acc: 0.9004  fg_cls_acc: 0.9536  false_neg_ratio: 0.04545  total_loss: 7.793  aux_bce_loss_0: 0.2635  aux_dice_loss_0: 0.1667  rg_l1_loss_0: 0.04724  aux_bce_loss_1: 0.2019  aux_dice_loss_1: 0.1213  rg_l1_loss_1: 0.03227  aux_bce_loss_2: 0.1581  aux_dice_loss_2: 0.09474  rg_l1_loss_2: 0.02682  aux_bce_loss_3: 0.138  aux_dice_loss_3: 0.08184  rg_l1_loss_3: 0.02363  aux_bce_loss_4: 0.1301  aux_dice_loss_4: 0.0763  rg_l1_loss_4: 0.02191  focal_loss_0: 0.08426  focal_loss_1: 0.07268  focal_loss_2: 0.06295  bbox_loss: 0.1417  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.989  proto_contrastive_loss: 2.84  time: 1.0973  data_time: 0.0058  lr: 0.0011808  max_mem: 3768M
+[12/22 22:15:42] d2.utils.events INFO:  eta: 0:07:42  iter: 79  roi_cover_ratio: 0.7978  cls_acc: 0.9355  fg_cls_acc: 0.9597  false_neg_ratio: 0.02532  total_loss: 7.634  aux_bce_loss_0: 0.253  aux_dice_loss_0: 0.1529  rg_l1_loss_0: 0.04511  aux_bce_loss_1: 0.1896  aux_dice_loss_1: 0.1095  rg_l1_loss_1: 0.03028  aux_bce_loss_2: 0.1499  aux_dice_loss_2: 0.08438  rg_l1_loss_2: 0.02446  aux_bce_loss_3: 0.1298  aux_dice_loss_3: 0.07246  rg_l1_loss_3: 0.02148  aux_bce_loss_4: 0.1158  aux_dice_loss_4: 0.06731  rg_l1_loss_4: 0.02014  focal_loss_0: 0.06018  focal_loss_1: 0.04964  focal_loss_2: 0.04371  bbox_loss: 0.1302  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.981  proto_contrastive_loss: 2.84  time: 1.0974  data_time: 0.0060  lr: 0.0015804  max_mem: 3823M
+[12/22 22:16:04] d2.utils.events INFO:  eta: 0:07:20  iter: 99  roi_cover_ratio: 0.7648  cls_acc: 0.9365  fg_cls_acc: 0.9714  false_neg_ratio: 0.02613  total_loss: 7.414  aux_bce_loss_0: 0.2372  aux_dice_loss_0: 0.1481  rg_l1_loss_0: 0.0447  aux_bce_loss_1: 0.1703  aux_dice_loss_1: 0.1025  rg_l1_loss_1: 0.02887  aux_bce_loss_2: 0.134  aux_dice_loss_2: 0.07798  rg_l1_loss_2: 0.02206  aux_bce_loss_3: 0.1105  aux_dice_loss_3: 0.06392  rg_l1_loss_3: 0.01904  aux_bce_loss_4: 0.1015  aux_dice_loss_4: 0.05894  rg_l1_loss_4: 0.01831  focal_loss_0: 0.05367  focal_loss_1: 0.04133  focal_loss_2: 0.03937  bbox_loss: 0.1279  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.97  proto_contrastive_loss: 2.84  time: 1.0993  data_time: 0.0061  lr: 0.00198  max_mem: 3823M
+[12/22 22:16:26] d2.utils.events INFO:  eta: 0:06:59  iter: 119  roi_cover_ratio: 0.7654  cls_acc: 0.9482  fg_cls_acc: 0.9722  false_neg_ratio: 0.02784  total_loss: 7.232  aux_bce_loss_0: 0.2196  aux_dice_loss_0: 0.14  rg_l1_loss_0: 0.04186  aux_bce_loss_1: 0.1575  aux_dice_loss_1: 0.0896  rg_l1_loss_1: 0.02624  aux_bce_loss_2: 0.1189  aux_dice_loss_2: 0.0663  rg_l1_loss_2: 0.01992  aux_bce_loss_3: 0.09748  aux_dice_loss_3: 0.05688  rg_l1_loss_3: 0.0181  aux_bce_loss_4: 0.08937  aux_dice_loss_4: 0.05372  rg_l1_loss_4: 0.01682  focal_loss_0: 0.04361  focal_loss_1: 0.03314  focal_loss_2: 0.03008  bbox_loss: 0.1105  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.958  proto_contrastive_loss: 2.839  time: 1.0998  data_time: 0.0061  lr: 0.002  max_mem: 3823M
+[12/22 22:16:48] d2.utils.events INFO:  eta: 0:06:36  iter: 139  roi_cover_ratio: 0.7629  cls_acc: 0.9609  fg_cls_acc: 0.988  false_neg_ratio: 0.01182  total_loss: 7.098  aux_bce_loss_0: 0.2061  aux_dice_loss_0: 0.1319  rg_l1_loss_0: 0.03995  aux_bce_loss_1: 0.1386  aux_dice_loss_1: 0.08415  rg_l1_loss_1: 0.02518  aux_bce_loss_2: 0.1076  aux_dice_loss_2: 0.06277  rg_l1_loss_2: 0.01919  aux_bce_loss_3: 0.09047  aux_dice_loss_3: 0.05282  rg_l1_loss_3: 0.01699  aux_bce_loss_4: 0.08062  aux_dice_loss_4: 0.04931  rg_l1_loss_4: 0.01624  focal_loss_0: 0.03784  focal_loss_1: 0.02886  focal_loss_2: 0.02701  bbox_loss: 0.1078  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.945  proto_contrastive_loss: 2.839  time: 1.0998  data_time: 0.0056  lr: 0.002  max_mem: 3823M
+[12/22 22:17:11] d2.utils.events INFO:  eta: 0:06:15  iter: 159  roi_cover_ratio: 0.7567  cls_acc: 0.957  fg_cls_acc: 0.9787  false_neg_ratio: 0.02128  total_loss: 7.079  aux_bce_loss_0: 0.2111  aux_dice_loss_0: 0.1278  rg_l1_loss_0: 0.04077  aux_bce_loss_1: 0.1421  aux_dice_loss_1: 0.0826  rg_l1_loss_1: 0.02536  aux_bce_loss_2: 0.1081  aux_dice_loss_2: 0.06178  rg_l1_loss_2: 0.01836  aux_bce_loss_3: 0.09136  aux_dice_loss_3: 0.05284  rg_l1_loss_3: 0.01647  aux_bce_loss_4: 0.08459  aux_dice_loss_4: 0.05002  rg_l1_loss_4: 0.01541  focal_loss_0: 0.03688  focal_loss_1: 0.02838  focal_loss_2: 0.02559  bbox_loss: 0.1033  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.933  proto_contrastive_loss: 2.838  time: 1.1008  data_time: 0.0063  lr: 0.002  max_mem: 3823M
+[12/22 22:17:33] d2.utils.events INFO:  eta: 0:05:53  iter: 179  roi_cover_ratio: 0.8129  cls_acc: 0.9609  fg_cls_acc: 0.9882  false_neg_ratio: 0.01183  total_loss: 7.067  aux_bce_loss_0: 0.2102  aux_dice_loss_0: 0.1258  rg_l1_loss_0: 0.03966  aux_bce_loss_1: 0.1405  aux_dice_loss_1: 0.08166  rg_l1_loss_1: 0.0257  aux_bce_loss_2: 0.1072  aux_dice_loss_2: 0.06097  rg_l1_loss_2: 0.0198  aux_bce_loss_3: 0.08804  aux_dice_loss_3: 0.05079  rg_l1_loss_3: 0.01772  aux_bce_loss_4: 0.07932  aux_dice_loss_4: 0.04707  rg_l1_loss_4: 0.01613  focal_loss_0: 0.03171  focal_loss_1: 0.02517  focal_loss_2: 0.02386  bbox_loss: 0.1062  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.918  proto_contrastive_loss: 2.837  time: 1.1014  data_time: 0.0060  lr: 0.002  max_mem: 3823M
+[12/22 22:17:55] d2.utils.events INFO:  eta: 0:05:31  iter: 199  roi_cover_ratio: 0.759  cls_acc: 0.9619  fg_cls_acc: 0.9886  false_neg_ratio: 0.01144  total_loss: 6.958  aux_bce_loss_0: 0.2031  aux_dice_loss_0: 0.1236  rg_l1_loss_0: 0.03871  aux_bce_loss_1: 0.1337  aux_dice_loss_1: 0.07975  rg_l1_loss_1: 0.02328  aux_bce_loss_2: 0.09744  aux_dice_loss_2: 0.05893  rg_l1_loss_2: 0.01711  aux_bce_loss_3: 0.08129  aux_dice_loss_3: 0.04944  rg_l1_loss_3: 0.01516  aux_bce_loss_4: 0.07361  aux_dice_loss_4: 0.04596  rg_l1_loss_4: 0.01389  focal_loss_0: 0.03021  focal_loss_1: 0.02363  focal_loss_2: 0.02213  bbox_loss: 0.09471  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.906  proto_contrastive_loss: 2.837  time: 1.1010  data_time: 0.0061  lr: 0.002  max_mem: 3848M
+[12/22 22:18:17] d2.utils.events INFO:  eta: 0:05:09  iter: 219  roi_cover_ratio: 0.7628  cls_acc: 0.9707  fg_cls_acc: 0.9878  false_neg_ratio: 0.0122  total_loss: 6.892  aux_bce_loss_0: 0.1978  aux_dice_loss_0: 0.1188  rg_l1_loss_0: 0.03625  aux_bce_loss_1: 0.1294  aux_dice_loss_1: 0.07522  rg_l1_loss_1: 0.02181  aux_bce_loss_2: 0.09466  aux_dice_loss_2: 0.0564  rg_l1_loss_2: 0.01604  aux_bce_loss_3: 0.0778  aux_dice_loss_3: 0.04623  rg_l1_loss_3: 0.0141  aux_bce_loss_4: 0.07123  aux_dice_loss_4: 0.04361  rg_l1_loss_4: 0.01283  focal_loss_0: 0.02807  focal_loss_1: 0.0201  focal_loss_2: 0.01858  bbox_loss: 0.0827  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.892  proto_contrastive_loss: 2.836  time: 1.1018  data_time: 0.0060  lr: 0.002  max_mem: 3848M
+[12/22 22:18:39] d2.utils.events INFO:  eta: 0:04:47  iter: 239  roi_cover_ratio: 0.7358  cls_acc: 0.9717  fg_cls_acc: 0.9882  false_neg_ratio: 0.01177  total_loss: 6.844  aux_bce_loss_0: 0.1897  aux_dice_loss_0: 0.1148  rg_l1_loss_0: 0.03714  aux_bce_loss_1: 0.1266  aux_dice_loss_1: 0.07085  rg_l1_loss_1: 0.0229  aux_bce_loss_2: 0.08899  aux_dice_loss_2: 0.05218  rg_l1_loss_2: 0.01699  aux_bce_loss_3: 0.0742  aux_dice_loss_3: 0.04247  rg_l1_loss_3: 0.01502  aux_bce_loss_4: 0.06705  aux_dice_loss_4: 0.03992  rg_l1_loss_4: 0.01364  focal_loss_0: 0.0268  focal_loss_1: 0.02127  focal_loss_2: 0.02016  bbox_loss: 0.08479  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.879  proto_contrastive_loss: 2.836  time: 1.1017  data_time: 0.0061  lr: 0.002  max_mem: 3848M
+[12/22 22:19:01] d2.utils.events INFO:  eta: 0:04:25  iter: 259  roi_cover_ratio: 0.7758  cls_acc: 0.9697  fg_cls_acc: 0.9895  false_neg_ratio: 0.01053  total_loss: 6.774  aux_bce_loss_0: 0.1786  aux_dice_loss_0: 0.1135  rg_l1_loss_0: 0.03435  aux_bce_loss_1: 0.1148  aux_dice_loss_1: 0.06947  rg_l1_loss_1: 0.02032  aux_bce_loss_2: 0.0857  aux_dice_loss_2: 0.05098  rg_l1_loss_2: 0.01517  aux_bce_loss_3: 0.07125  aux_dice_loss_3: 0.04286  rg_l1_loss_3: 0.01345  aux_bce_loss_4: 0.06424  aux_dice_loss_4: 0.04017  rg_l1_loss_4: 0.01249  focal_loss_0: 0.02571  focal_loss_1: 0.02011  focal_loss_2: 0.01886  bbox_loss: 0.08418  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.867  proto_contrastive_loss: 2.836  time: 1.1019  data_time: 0.0063  lr: 0.0002  max_mem: 3848M
+[12/22 22:19:23] d2.utils.events INFO:  eta: 0:04:02  iter: 279  roi_cover_ratio: 0.7446  cls_acc: 0.9658  fg_cls_acc: 0.9891  false_neg_ratio: 0.01042  total_loss: 6.72  aux_bce_loss_0: 0.1735  aux_dice_loss_0: 0.1091  rg_l1_loss_0: 0.03346  aux_bce_loss_1: 0.111  aux_dice_loss_1: 0.06565  rg_l1_loss_1: 0.01952  aux_bce_loss_2: 0.081  aux_dice_loss_2: 0.04793  rg_l1_loss_2: 0.01417  aux_bce_loss_3: 0.06663  aux_dice_loss_3: 0.03955  rg_l1_loss_3: 0.01223  aux_bce_loss_4: 0.05888  aux_dice_loss_4: 0.03736  rg_l1_loss_4: 0.01083  focal_loss_0: 0.02498  focal_loss_1: 0.01893  focal_loss_2: 0.01815  bbox_loss: 0.07286  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.864  proto_contrastive_loss: 2.835  time: 1.1010  data_time: 0.0057  lr: 0.0002  max_mem: 3848M
+[12/22 22:19:45] d2.utils.events INFO:  eta: 0:03:40  iter: 299  roi_cover_ratio: 0.7797  cls_acc: 0.9697  fg_cls_acc: 0.9896  false_neg_ratio: 0.01011  total_loss: 6.667  aux_bce_loss_0: 0.1702  aux_dice_loss_0: 0.1112  rg_l1_loss_0: 0.03218  aux_bce_loss_1: 0.1013  aux_dice_loss_1: 0.06639  rg_l1_loss_1: 0.019  aux_bce_loss_2: 0.07387  aux_dice_loss_2: 0.04717  rg_l1_loss_2: 0.01333  aux_bce_loss_3: 0.06029  aux_dice_loss_3: 0.03894  rg_l1_loss_3: 0.01187  aux_bce_loss_4: 0.05447  aux_dice_loss_4: 0.03689  rg_l1_loss_4: 0.01041  focal_loss_0: 0.0238  focal_loss_1: 0.01963  focal_loss_2: 0.01755  bbox_loss: 0.06831  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.862  proto_contrastive_loss: 2.835  time: 1.1015  data_time: 0.0061  lr: 0.0002  max_mem: 3848M
+[12/22 22:20:07] d2.utils.events INFO:  eta: 0:03:18  iter: 319  roi_cover_ratio: 0.7541  cls_acc: 0.9668  fg_cls_acc: 0.9865  false_neg_ratio: 0.01275  total_loss: 6.684  aux_bce_loss_0: 0.1723  aux_dice_loss_0: 0.1099  rg_l1_loss_0: 0.03271  aux_bce_loss_1: 0.1081  aux_dice_loss_1: 0.06399  rg_l1_loss_1: 0.01846  aux_bce_loss_2: 0.07739  aux_dice_loss_2: 0.04556  rg_l1_loss_2: 0.01294  aux_bce_loss_3: 0.06356  aux_dice_loss_3: 0.03736  rg_l1_loss_3: 0.01149  aux_bce_loss_4: 0.05733  aux_dice_loss_4: 0.03496  rg_l1_loss_4: 0.01009  focal_loss_0: 0.02517  focal_loss_1: 0.01939  focal_loss_2: 0.01828  bbox_loss: 0.0663  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.862  proto_contrastive_loss: 2.836  time: 1.1017  data_time: 0.0061  lr: 0.0002  max_mem: 3848M
+[12/22 22:20:29] d2.utils.events INFO:  eta: 0:02:56  iter: 339  roi_cover_ratio: 0.7553  cls_acc: 0.9658  fg_cls_acc: 0.986  false_neg_ratio: 0.01307  total_loss: 6.719  aux_bce_loss_0: 0.1719  aux_dice_loss_0: 0.1081  rg_l1_loss_0: 0.03227  aux_bce_loss_1: 0.1089  aux_dice_loss_1: 0.06474  rg_l1_loss_1: 0.01883  aux_bce_loss_2: 0.08058  aux_dice_loss_2: 0.04736  rg_l1_loss_2: 0.01385  aux_bce_loss_3: 0.0672  aux_dice_loss_3: 0.03896  rg_l1_loss_3: 0.01183  aux_bce_loss_4: 0.06027  aux_dice_loss_4: 0.03724  rg_l1_loss_4: 0.01031  focal_loss_0: 0.02514  focal_loss_1: 0.02016  focal_loss_2: 0.01858  bbox_loss: 0.07151  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.861  proto_contrastive_loss: 2.835  time: 1.1016  data_time: 0.0060  lr: 0.0002  max_mem: 3848M
+[12/22 22:20:52] d2.utils.events INFO:  eta: 0:02:34  iter: 359  roi_cover_ratio: 0.728  cls_acc: 0.9688  fg_cls_acc: 0.9894  false_neg_ratio: 0.01015  total_loss: 6.655  aux_bce_loss_0: 0.1679  aux_dice_loss_0: 0.1065  rg_l1_loss_0: 0.03314  aux_bce_loss_1: 0.1007  aux_dice_loss_1: 0.06332  rg_l1_loss_1: 0.01846  aux_bce_loss_2: 0.07161  aux_dice_loss_2: 0.04578  rg_l1_loss_2: 0.01344  aux_bce_loss_3: 0.05817  aux_dice_loss_3: 0.03706  rg_l1_loss_3: 0.01174  aux_bce_loss_4: 0.05295  aux_dice_loss_4: 0.03546  rg_l1_loss_4: 0.01041  focal_loss_0: 0.02391  focal_loss_1: 0.01832  focal_loss_2: 0.01689  bbox_loss: 0.06539  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.859  proto_contrastive_loss: 2.835  time: 1.1019  data_time: 0.0062  lr: 0.0002  max_mem: 3848M
+[12/22 22:21:14] d2.utils.events INFO:  eta: 0:02:12  iter: 379  roi_cover_ratio: 0.7618  cls_acc: 0.9697  fg_cls_acc: 1  false_neg_ratio: 0  total_loss: 6.664  aux_bce_loss_0: 0.1693  aux_dice_loss_0: 0.1077  rg_l1_loss_0: 0.03123  aux_bce_loss_1: 0.1046  aux_dice_loss_1: 0.06312  rg_l1_loss_1: 0.01809  aux_bce_loss_2: 0.07526  aux_dice_loss_2: 0.04514  rg_l1_loss_2: 0.01305  aux_bce_loss_3: 0.0626  aux_dice_loss_3: 0.03735  rg_l1_loss_3: 0.01138  aux_bce_loss_4: 0.05666  aux_dice_loss_4: 0.03513  rg_l1_loss_4: 0.01025  focal_loss_0: 0.02506  focal_loss_1: 0.01932  focal_loss_2: 0.01764  bbox_loss: 0.0671  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.858  proto_contrastive_loss: 2.835  time: 1.1020  data_time: 0.0063  lr: 0.0002  max_mem: 3848M
+[12/22 22:21:36] d2.utils.events INFO:  eta: 0:01:50  iter: 399  roi_cover_ratio: 0.7558  cls_acc: 0.9668  fg_cls_acc: 0.9868  false_neg_ratio: 0.01316  total_loss: 6.631  aux_bce_loss_0: 0.1729  aux_dice_loss_0: 0.1063  rg_l1_loss_0: 0.03352  aux_bce_loss_1: 0.1051  aux_dice_loss_1: 0.0627  rg_l1_loss_1: 0.01749  aux_bce_loss_2: 0.07521  aux_dice_loss_2: 0.04445  rg_l1_loss_2: 0.0131  aux_bce_loss_3: 0.06042  aux_dice_loss_3: 0.03586  rg_l1_loss_3: 0.01131  aux_bce_loss_4: 0.05308  aux_dice_loss_4: 0.03398  rg_l1_loss_4: 0.009974  focal_loss_0: 0.02302  focal_loss_1: 0.01849  focal_loss_2: 0.0168  bbox_loss: 0.06498  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.856  proto_contrastive_loss: 2.835  time: 1.1025  data_time: 0.0064  lr: 0.0002  max_mem: 3848M
+[12/22 22:21:58] d2.utils.events INFO:  eta: 0:01:28  iter: 419  roi_cover_ratio: 0.7286  cls_acc: 0.9658  fg_cls_acc: 0.9946  false_neg_ratio: 0.005376  total_loss: 6.651  aux_bce_loss_0: 0.1722  aux_dice_loss_0: 0.1078  rg_l1_loss_0: 0.03104  aux_bce_loss_1: 0.1046  aux_dice_loss_1: 0.06391  rg_l1_loss_1: 0.01809  aux_bce_loss_2: 0.07519  aux_dice_loss_2: 0.04504  rg_l1_loss_2: 0.01346  aux_bce_loss_3: 0.06103  aux_dice_loss_3: 0.03763  rg_l1_loss_3: 0.01172  aux_bce_loss_4: 0.05527  aux_dice_loss_4: 0.03574  rg_l1_loss_4: 0.01043  focal_loss_0: 0.02375  focal_loss_1: 0.0181  focal_loss_2: 0.01754  bbox_loss: 0.06938  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.855  proto_contrastive_loss: 2.835  time: 1.1026  data_time: 0.0061  lr: 2e-05  max_mem: 3848M
+[12/22 22:22:20] d2.utils.events INFO:  eta: 0:01:06  iter: 439  roi_cover_ratio: 0.7648  cls_acc: 0.9668  fg_cls_acc: 0.9898  false_neg_ratio: 0.01022  total_loss: 6.646  aux_bce_loss_0: 0.1702  aux_dice_loss_0: 0.1074  rg_l1_loss_0: 0.03051  aux_bce_loss_1: 0.1064  aux_dice_loss_1: 0.06356  rg_l1_loss_1: 0.01746  aux_bce_loss_2: 0.07494  aux_dice_loss_2: 0.04544  rg_l1_loss_2: 0.01301  aux_bce_loss_3: 0.05911  aux_dice_loss_3: 0.03688  rg_l1_loss_3: 0.01148  aux_bce_loss_4: 0.05346  aux_dice_loss_4: 0.03508  rg_l1_loss_4: 0.01013  focal_loss_0: 0.02337  focal_loss_1: 0.01792  focal_loss_2: 0.01665  bbox_loss: 0.06828  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.855  proto_contrastive_loss: 2.835  time: 1.1032  data_time: 0.0062  lr: 2e-05  max_mem: 3848M
+[12/22 22:22:43] d2.utils.events INFO:  eta: 0:00:44  iter: 459  roi_cover_ratio: 0.759  cls_acc: 0.9688  fg_cls_acc: 0.9954  false_neg_ratio: 0  total_loss: 6.64  aux_bce_loss_0: 0.1694  aux_dice_loss_0: 0.1051  rg_l1_loss_0: 0.03079  aux_bce_loss_1: 0.1035  aux_dice_loss_1: 0.06225  rg_l1_loss_1: 0.01767  aux_bce_loss_2: 0.07451  aux_dice_loss_2: 0.04522  rg_l1_loss_2: 0.01309  aux_bce_loss_3: 0.06054  aux_dice_loss_3: 0.03685  rg_l1_loss_3: 0.01123  aux_bce_loss_4: 0.05463  aux_dice_loss_4: 0.03494  rg_l1_loss_4: 0.009668  focal_loss_0: 0.02289  focal_loss_1: 0.01814  focal_loss_2: 0.01647  bbox_loss: 0.0664  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.855  proto_contrastive_loss: 2.835  time: 1.1033  data_time: 0.0064  lr: 2e-05  max_mem: 3848M
+[12/22 22:23:05] d2.utils.events INFO:  eta: 0:00:22  iter: 479  roi_cover_ratio: 0.786  cls_acc: 0.9736  fg_cls_acc: 0.9862  false_neg_ratio: 0.01268  total_loss: 6.649  aux_bce_loss_0: 0.1692  aux_dice_loss_0: 0.1077  rg_l1_loss_0: 0.03095  aux_bce_loss_1: 0.1028  aux_dice_loss_1: 0.06461  rg_l1_loss_1: 0.01778  aux_bce_loss_2: 0.07361  aux_dice_loss_2: 0.04633  rg_l1_loss_2: 0.01269  aux_bce_loss_3: 0.06015  aux_dice_loss_3: 0.03762  rg_l1_loss_3: 0.011  aux_bce_loss_4: 0.05458  aux_dice_loss_4: 0.03589  rg_l1_loss_4: 0.009723  focal_loss_0: 0.02405  focal_loss_1: 0.0196  focal_loss_2: 0.01834  bbox_loss: 0.06695  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.855  proto_contrastive_loss: 2.835  time: 1.1034  data_time: 0.0059  lr: 2e-05  max_mem: 3848M
+[12/22 22:23:27] fvcore.common.checkpoint INFO: Saving checkpoint to output/vitb/clipart1k_10shot/model_0000499.pth
+[12/22 22:23:31] fvcore.common.checkpoint INFO: Saving checkpoint to output/vitb/clipart1k_10shot/model_final.pth
+[12/22 22:23:35] d2.utils.events INFO:  eta: 0:00:00  iter: 499  roi_cover_ratio: 0.7375  cls_acc: 0.9727  fg_cls_acc: 0.9875  false_neg_ratio: 0.01125  total_loss: 6.666  aux_bce_loss_0: 0.1702  aux_dice_loss_0: 0.1082  rg_l1_loss_0: 0.03192  aux_bce_loss_1: 0.1051  aux_dice_loss_1: 0.06225  rg_l1_loss_1: 0.01752  aux_bce_loss_2: 0.07626  aux_dice_loss_2: 0.04467  rg_l1_loss_2: 0.01287  aux_bce_loss_3: 0.06129  aux_dice_loss_3: 0.03657  rg_l1_loss_3: 0.01155  aux_bce_loss_4: 0.05546  aux_dice_loss_4: 0.03473  rg_l1_loss_4: 0.009901  focal_loss_0: 0.02335  focal_loss_1: 0.0178  focal_loss_2: 0.01623  bbox_loss: 0.06671  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.854  proto_contrastive_loss: 2.835  time: 1.1030  data_time: 0.0059  lr: 2e-05  max_mem: 3848M
+[12/22 22:23:35] d2.engine.hooks INFO: Overall training speed: 498 iterations in 0:09:09 (1.1030 s / it)
+[12/22 22:23:35] d2.engine.hooks INFO: Total training time: 0:09:18 (0:00:09 on hooks)
+[12/22 22:23:35] d2.data.datasets.coco INFO: Loaded 500 images in COCO format from datasets/clipart1k/annotations/test.json
+[12/22 22:23:35] d2.data.build INFO: Distribution of instances among all 20 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 33           |    chair    | 163          |    boat     | 74           |
+|   bottle   | 74           | diningtable | 50           |    sofa     | 21           |
+|    cow     | 21           |  motorbike  | 10           |     car     | 84           |
+| aeroplane  | 41           |     cat     | 23           |    train    | 26           |
+|   person   | 566          |   bicycle   | 16           | pottedplant | 94           |
+|    bird    | 124          |     dog     | 24           |     bus     | 8            |
+| tvmonitor  | 40           |    horse    | 34           |             |              |
+|   total    | 1526         |             |              |             |              |[0m
+[12/22 22:23:35] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 22:23:35] d2.data.common INFO: Serializing 500 elements to byte tensors and concatenating them all ...
+[12/22 22:23:35] d2.data.common INFO: Serialized dataset takes 0.18 MiB
+[12/22 22:23:35] d2.evaluation.evaluator INFO: Start inference on 125 batches
+[12/23 16:20:18] detectron2 INFO: Rank of current process: 0. World size: 1
+[12/23 16:20:18] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0                   NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 16:20:18] detectron2 INFO: Command line arguments: Namespace(config_file='configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml', resume=False, eval_only=True, num_gpus=1, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/clipart1k_10shot/model_final.pth', 'OUTPUT_DIR', 'output/vitb/clipart1k_10shot/'])
+[12/23 16:20:18] detectron2 INFO: Contents of args.config_file=configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/clipart1k_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("clipart1k_10shot",)
+  TEST: ("clipart1k_test",)
+TEST:
+  EVAL_PERIOD: 500
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (250, 400)
+  MAX_ITER: 500
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 500
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 16:20:18] detectron2 INFO: Full config saved to output/vitb/clipart1k_10shot/config.yaml
+[12/23 16:31:49] detectron2 INFO: Rank of current process: 0. World size: 1
+[12/23 16:31:50] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0                   NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 16:31:50] detectron2 INFO: Command line arguments: Namespace(config_file='configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml', resume=False, eval_only=True, num_gpus=1, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/clipart1k_10shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/clipart1k_10shot/'])
+[12/23 16:31:50] detectron2 INFO: Contents of args.config_file=configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/clipart1k_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("clipart1k_10shot",)
+  TEST: ("clipart1k_test",)
+TEST:
+  EVAL_PERIOD: 500
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (250, 400)
+  MAX_ITER: 500
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 500
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 16:31:50] detectron2 INFO: Full config saved to output/vitb/clipart1k_10shot/config.yaml
+[12/23 16:31:55] fvcore.common.checkpoint INFO: [Checkpointer] Loading from output/vitb/clipart1k_10shot/model_final.pth ...
+[12/23 16:31:56] d2.data.datasets.coco INFO: Loaded 500 images in COCO format from datasets/clipart1k/annotations/test.json
+[12/23 16:31:56] d2.data.build INFO: Distribution of instances among all 20 categories:
+|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 33           |    chair    | 163          |    boat     | 74           |
+|   bottle   | 74           | diningtable | 50           |    sofa     | 21           |
+|    cow     | 21           |  motorbike  | 10           |     car     | 84           |
+| aeroplane  | 41           |     cat     | 23           |    train    | 26           |
+|   person   | 566          |   bicycle   | 16           | pottedplant | 94           |
+|    bird    | 124          |     dog     | 24           |     bus     | 8            |
+| tvmonitor  | 40           |    horse    | 34           |             |              |
+|   total    | 1526         |             |              |             |              |
+[12/23 16:31:56] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 16:31:56] d2.data.common INFO: Serializing 500 elements to byte tensors and concatenating them all ...
+[12/23 16:31:56] d2.data.common INFO: Serialized dataset takes 0.18 MiB
+[12/23 16:31:56] d2.evaluation.evaluator INFO: Start inference on 500 batches
+[12/23 19:31:45] detectron2 INFO: Rank of current process: 0. World size: 4
+[12/23 19:31:45] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 19:31:45] detectron2 INFO: Command line arguments: Namespace(config_file='configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml', resume=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/clipart1k_10shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/clipart1k_10shot/', 'SOLVER.IMS_PER_BATCH', '4'])
+[12/23 19:31:45] detectron2 INFO: Contents of args.config_file=configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/clipart1k_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("clipart1k_10shot",)
+  TEST: ("clipart1k_test",)
+TEST:
+  EVAL_PERIOD: 500
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (250, 400)
+  MAX_ITER: 500
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 500
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 19:31:45] detectron2 INFO: Full config saved to output/vitb/clipart1k_10shot/config.yaml
+[12/23 19:31:52] fvcore.common.checkpoint INFO: [Checkpointer] Loading from output/vitb/clipart1k_10shot/model_final.pth ...
+[12/23 19:31:57] d2.data.datasets.coco INFO: Loaded 500 images in COCO format from datasets/clipart1k/annotations/test.json
+[12/23 19:31:57] d2.data.build INFO: Distribution of instances among all 20 categories:
+|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|   sheep    | 33           |    chair    | 163          |    boat     | 74           |
+|   bottle   | 74           | diningtable | 50           |    sofa     | 21           |
+|    cow     | 21           |  motorbike  | 10           |     car     | 84           |
+| aeroplane  | 41           |     cat     | 23           |    train    | 26           |
+|   person   | 566          |   bicycle   | 16           | pottedplant | 94           |
+|    bird    | 124          |     dog     | 24           |     bus     | 8            |
+| tvmonitor  | 40           |    horse    | 34           |             |              |
+|   total    | 1526         |             |              |             |              |
+[12/23 19:31:57] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 19:31:57] d2.data.common INFO: Serializing 500 elements to byte tensors and concatenating them all ...
+[12/23 19:31:57] d2.data.common INFO: Serialized dataset takes 0.18 MiB
+[12/23 19:31:57] d2.evaluation.evaluator INFO: Start inference on 125 batches
+[12/23 19:32:36] d2.evaluation.evaluator INFO: Inference done 11/125. Dataloading: 0.0010 s / iter. Inference: 1.7389 s / iter. Eval: 0.0003 s / iter. Total: 1.7402 s / iter. ETA=0:03:18
+[12/23 19:32:41] d2.evaluation.evaluator INFO: Inference done 13/125. Dataloading: 0.0011 s / iter. Inference: 1.9638 s / iter. Eval: 0.0003 s / iter. Total: 1.9652 s / iter. ETA=0:03:40
+[12/23 19:32:48] d2.evaluation.evaluator INFO: Inference done 17/125. Dataloading: 0.0012 s / iter. Inference: 1.8563 s / iter. Eval: 0.0003 s / iter. Total: 1.8579 s / iter. ETA=0:03:20
+[12/23 19:32:53] d2.evaluation.evaluator INFO: Inference done 19/125. Dataloading: 0.0013 s / iter. Inference: 1.9594 s / iter. Eval: 0.0003 s / iter. Total: 1.9611 s / iter. ETA=0:03:27
+[12/23 19:33:00] d2.evaluation.evaluator INFO: Inference done 22/125. Dataloading: 0.0014 s / iter. Inference: 2.0152 s / iter. Eval: 0.0003 s / iter. Total: 2.0170 s / iter. ETA=0:03:27
+[12/23 19:33:06] d2.evaluation.evaluator INFO: Inference done 25/125. Dataloading: 0.0015 s / iter. Inference: 2.0151 s / iter. Eval: 0.0003 s / iter. Total: 2.0170 s / iter. ETA=0:03:21
+[12/23 19:33:11] d2.evaluation.evaluator INFO: Inference done 28/125. Dataloading: 0.0015 s / iter. Inference: 1.9836 s / iter. Eval: 0.0003 s / iter. Total: 1.9855 s / iter. ETA=0:03:12
+[12/23 19:33:17] d2.evaluation.evaluator INFO: Inference done 31/125. Dataloading: 0.0015 s / iter. Inference: 1.9754 s / iter. Eval: 0.0003 s / iter. Total: 1.9773 s / iter. ETA=0:03:05
+[12/23 19:33:23] d2.evaluation.evaluator INFO: Inference done 34/125. Dataloading: 0.0015 s / iter. Inference: 1.9794 s / iter. Eval: 0.0003 s / iter. Total: 1.9812 s / iter. ETA=0:03:00
+[12/23 19:33:29] d2.evaluation.evaluator INFO: Inference done 37/125. Dataloading: 0.0015 s / iter. Inference: 1.9642 s / iter. Eval: 0.0003 s / iter. Total: 1.9661 s / iter. ETA=0:02:53
+[12/23 19:33:34] d2.evaluation.evaluator INFO: Inference done 40/125. Dataloading: 0.0015 s / iter. Inference: 1.9578 s / iter. Eval: 0.0003 s / iter. Total: 1.9597 s / iter. ETA=0:02:46
+[12/23 19:33:40] d2.evaluation.evaluator INFO: Inference done 44/125. Dataloading: 0.0015 s / iter. Inference: 1.9002 s / iter. Eval: 0.0003 s / iter. Total: 1.9022 s / iter. ETA=0:02:34
+[12/23 19:33:46] d2.evaluation.evaluator INFO: Inference done 47/125. Dataloading: 0.0015 s / iter. Inference: 1.9213 s / iter. Eval: 0.0003 s / iter. Total: 1.9233 s / iter. ETA=0:02:30
+[12/23 19:33:52] d2.evaluation.evaluator INFO: Inference done 50/125. Dataloading: 0.0016 s / iter. Inference: 1.9220 s / iter. Eval: 0.0003 s / iter. Total: 1.9240 s / iter. ETA=0:02:24
+[12/23 19:33:58] d2.evaluation.evaluator INFO: Inference done 53/125. Dataloading: 0.0016 s / iter. Inference: 1.9197 s / iter. Eval: 0.0003 s / iter. Total: 1.9217 s / iter. ETA=0:02:18
+[12/23 19:34:04] d2.evaluation.evaluator INFO: Inference done 56/125. Dataloading: 0.0016 s / iter. Inference: 1.9195 s / iter. Eval: 0.0003 s / iter. Total: 1.9216 s / iter. ETA=0:02:12
+[12/23 19:34:10] d2.evaluation.evaluator INFO: Inference done 60/125. Dataloading: 0.0016 s / iter. Inference: 1.8945 s / iter. Eval: 0.0003 s / iter. Total: 1.8966 s / iter. ETA=0:02:03
+[12/23 19:34:16] d2.evaluation.evaluator INFO: Inference done 63/125. Dataloading: 0.0016 s / iter. Inference: 1.9055 s / iter. Eval: 0.0003 s / iter. Total: 1.9075 s / iter. ETA=0:01:58
+[12/23 19:34:22] d2.evaluation.evaluator INFO: Inference done 66/125. Dataloading: 0.0016 s / iter. Inference: 1.9101 s / iter. Eval: 0.0003 s / iter. Total: 1.9122 s / iter. ETA=0:01:52
+[12/23 19:34:28] d2.evaluation.evaluator INFO: Inference done 70/125. Dataloading: 0.0016 s / iter. Inference: 1.8754 s / iter. Eval: 0.0003 s / iter. Total: 1.8775 s / iter. ETA=0:01:43
+[12/23 19:34:34] d2.evaluation.evaluator INFO: Inference done 73/125. Dataloading: 0.0016 s / iter. Inference: 1.8801 s / iter. Eval: 0.0003 s / iter. Total: 1.8821 s / iter. ETA=0:01:37
+[12/23 19:34:39] d2.evaluation.evaluator INFO: Inference done 77/125. Dataloading: 0.0016 s / iter. Inference: 1.8548 s / iter. Eval: 0.0003 s / iter. Total: 1.8569 s / iter. ETA=0:01:29
+[12/23 19:34:45] d2.evaluation.evaluator INFO: Inference done 80/125. Dataloading: 0.0016 s / iter. Inference: 1.8591 s / iter. Eval: 0.0003 s / iter. Total: 1.8611 s / iter. ETA=0:01:23
+[12/23 19:34:51] d2.evaluation.evaluator INFO: Inference done 82/125. Dataloading: 0.0016 s / iter. Inference: 1.8798 s / iter. Eval: 0.0003 s / iter. Total: 1.8819 s / iter. ETA=0:01:20
+[12/23 19:34:58] d2.evaluation.evaluator INFO: Inference done 85/125. Dataloading: 0.0016 s / iter. Inference: 1.8996 s / iter. Eval: 0.0003 s / iter. Total: 1.9017 s / iter. ETA=0:01:16
+[12/23 19:35:03] d2.evaluation.evaluator INFO: Inference done 88/125. Dataloading: 0.0016 s / iter. Inference: 1.8967 s / iter. Eval: 0.0003 s / iter. Total: 1.8988 s / iter. ETA=0:01:10
+[12/23 19:35:08] d2.evaluation.evaluator INFO: Inference done 91/125. Dataloading: 0.0016 s / iter. Inference: 1.8903 s / iter. Eval: 0.0003 s / iter. Total: 1.8924 s / iter. ETA=0:01:04
+[12/23 19:35:14] d2.evaluation.evaluator INFO: Inference done 93/125. Dataloading: 0.0016 s / iter. Inference: 1.9100 s / iter. Eval: 0.0003 s / iter. Total: 1.9121 s / iter. ETA=0:01:01
+[12/23 19:35:20] d2.evaluation.evaluator INFO: Inference done 96/125. Dataloading: 0.0016 s / iter. Inference: 1.9143 s / iter. Eval: 0.0003 s / iter. Total: 1.9164 s / iter. ETA=0:00:55
+[12/23 19:35:25] d2.evaluation.evaluator INFO: Inference done 98/125. Dataloading: 0.0016 s / iter. Inference: 1.9272 s / iter. Eval: 0.0003 s / iter. Total: 1.9293 s / iter. ETA=0:00:52
+[12/23 19:35:31] d2.evaluation.evaluator INFO: Inference done 100/125. Dataloading: 0.0016 s / iter. Inference: 1.9495 s / iter. Eval: 0.0003 s / iter. Total: 1.9516 s / iter. ETA=0:00:48
+[12/23 19:35:37] d2.evaluation.evaluator INFO: Inference done 102/125. Dataloading: 0.0016 s / iter. Inference: 1.9683 s / iter. Eval: 0.0003 s / iter. Total: 1.9704 s / iter. ETA=0:00:45
+[12/23 19:35:42] d2.evaluation.evaluator INFO: Inference done 105/125. Dataloading: 0.0016 s / iter. Inference: 1.9663 s / iter. Eval: 0.0003 s / iter. Total: 1.9684 s / iter. ETA=0:00:39
+[12/23 19:35:50] d2.evaluation.evaluator INFO: Inference done 108/125. Dataloading: 0.0016 s / iter. Inference: 1.9864 s / iter. Eval: 0.0003 s / iter. Total: 1.9884 s / iter. ETA=0:00:33
+[12/23 19:35:56] d2.evaluation.evaluator INFO: Inference done 111/125. Dataloading: 0.0016 s / iter. Inference: 1.9828 s / iter. Eval: 0.0003 s / iter. Total: 1.9849 s / iter. ETA=0:00:27
+[12/23 19:36:02] d2.evaluation.evaluator INFO: Inference done 113/125. Dataloading: 0.0016 s / iter. Inference: 1.9976 s / iter. Eval: 0.0003 s / iter. Total: 1.9997 s / iter. ETA=0:00:23
+[12/23 19:36:08] d2.evaluation.evaluator INFO: Inference done 117/125. Dataloading: 0.0016 s / iter. Inference: 1.9860 s / iter. Eval: 0.0003 s / iter. Total: 1.9881 s / iter. ETA=0:00:15
+[12/23 19:36:15] d2.evaluation.evaluator INFO: Inference done 120/125. Dataloading: 0.0016 s / iter. Inference: 1.9900 s / iter. Eval: 0.0003 s / iter. Total: 1.9921 s / iter. ETA=0:00:09
+[12/23 19:36:21] d2.evaluation.evaluator INFO: Inference done 123/125. Dataloading: 0.0016 s / iter. Inference: 1.9949 s / iter. Eval: 0.0003 s / iter. Total: 1.9969 s / iter. ETA=0:00:03
+[12/23 19:36:45] d2.evaluation.evaluator INFO: Total inference time: 0:04:18.924242 (2.157702 s / iter per device, on 4 devices)
+[12/23 19:36:45] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:03:58 (1.988739 s / iter per device, on 4 devices)
+[12/23 19:36:46] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[12/23 19:36:46] d2.evaluation.coco_evaluation INFO: Saving results to output/vitb/clipart1k_10shot/inference/coco_instances_results.json
+[12/23 19:36:46] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[12/23 19:36:47] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[12/23 19:36:47] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.25 seconds.
+[12/23 19:36:47] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[12/23 19:36:47] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.09 seconds.
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|   AP   |  AP50  |  AP75  |  APs   |  APm   |  APl   |
+|:------:|:------:|:------:|:------:|:------:|:------:|
+| 40.061 | 64.549 | 43.271 | 26.333 | 34.488 | 47.201 |
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: target AP50: -1
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: base AP50: 0.645492428221149
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: all AP50: 0.645492428221149
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: target AP75: -1
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: base AP75: 0.432705899782789
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: all AP75: 0.432705899782789
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: target mAP: -1.0
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: base mAP: 0.40060937678835906
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: all mAP: 0.40060937678835906
+[12/23 19:36:47] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP     | category    | AP     | category    | AP     |
+|:-----------|:-------|:------------|:-------|:------------|:-------|
+| sheep      | 36.743 | chair       | 15.160 | boat        | 35.499 |
+| bottle     | 27.360 | diningtable | 34.832 | sofa        | 40.552 |
+| cow        | 52.945 | motorbike   | 69.264 | car         | 47.361 |
+| aeroplane  | 52.442 | cat         | 22.063 | train       | 52.151 |
+| person     | 17.256 | bicycle     | 59.238 | pottedplant | 25.292 |
+| bird       | 31.027 | dog         | 22.823 | bus         | 70.330 |
+| tvmonitor  | 39.038 | horse       | 49.844 |             |        |
+[12/23 19:36:47] d2.engine.defaults INFO: Evaluation results for clipart1k_test in csv format:
+[12/23 19:36:47] d2.evaluation.testing INFO: copypaste: Task: bbox
+[12/23 19:36:47] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[12/23 19:36:47] d2.evaluation.testing INFO: copypaste: 40.0609,64.5492,43.2706,26.3326,34.4879,47.2005
+[12/23 19:36:47] d2.evaluation.testing INFO: ###################### ('AP', 40.06093767883589) ######################

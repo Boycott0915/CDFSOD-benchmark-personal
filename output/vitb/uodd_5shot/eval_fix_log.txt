@@ -1,0 +1,241 @@
+xFormers not available
+Command Line Args: Namespace(config_file='configs/uodd/vitb_shot5_uodd_finetune.yaml', resume=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/uodd_5shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/uodd_5shot/', 'SOLVER.IMS_PER_BATCH', '4', 'INPUT.MIN_SIZE_TEST', '600', 'INPUT.MAX_SIZE_TEST', '1000'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+[12/23 20:05:59 detectron2]: Rank of current process: 0. World size: 4
+[12/23 20:05:59 detectron2]: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 20:05:59 detectron2]: Command line arguments: Namespace(config_file='configs/uodd/vitb_shot5_uodd_finetune.yaml', resume=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/uodd_5shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/uodd_5shot/', 'SOLVER.IMS_PER_BATCH', '4', 'INPUT.MIN_SIZE_TEST', '600', 'INPUT.MAX_SIZE_TEST', '1000'])
+[12/23 20:05:59 detectron2]: Contents of args.config_file=configs/uodd/vitb_shot5_uodd_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/UODD_5shot.vitb14.bbox.p5.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 3
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("UODD_5shot",)
+  TEST: ("UODD_test",)
+TEST:
+  EVAL_PERIOD: 80
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (30, 60)
+  MAX_ITER: 80
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 80
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 20:06:00 detectron2]: Full config saved to output/vitb/uodd_5shot/config.yaml
+('UODD_test',)
+[12/23 20:06:06 fvcore.common.checkpoint]: [Checkpointer] Loading from output/vitb/uodd_5shot/model_final.pth ...
+WARNING [12/23 20:06:10 d2.data.datasets.coco]: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[12/23 20:06:10 d2.data.datasets.coco]: Loaded 506 images in COCO format from datasets/UODD/annotations/test.json
+[12/23 20:06:10 d2.data.build]: Distribution of instances among all 3 categories:
+|  category   | #instances   |  category  | #instances   |  category  | #instances   |
+|:-----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+| seacucumber | 739          | seaurchin  | 2216         |  scallop   | 263          |
+|             |              |            |              |            |              |
+|    total    | 3218         |            |              |            |              |
+[12/23 20:06:10 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(600, 600), max_size=1000, sample_style='choice')]
+[12/23 20:06:10 d2.data.common]: Serializing 506 elements to byte tensors and concatenating them all ...
+[12/23 20:06:10 d2.data.common]: Serialized dataset takes 0.19 MiB
+[12/23 20:06:10 d2.evaluation.evaluator]: Start inference on 127 batches
+('UODD_test',)
+('UODD_test',)
+('UODD_test',)
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+xFormers not available
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[12/23 20:06:35 d2.evaluation.evaluator]: Inference done 11/127. Dataloading: 0.0011 s / iter. Inference: 0.5038 s / iter. Eval: 0.0004 s / iter. Total: 0.5052 s / iter. ETA=0:00:58
+[12/23 20:06:40 d2.evaluation.evaluator]: Inference done 19/127. Dataloading: 0.0014 s / iter. Inference: 0.6134 s / iter. Eval: 0.0004 s / iter. Total: 0.6153 s / iter. ETA=0:01:06
+[12/23 20:06:46 d2.evaluation.evaluator]: Inference done 29/127. Dataloading: 0.0015 s / iter. Inference: 0.5691 s / iter. Eval: 0.0003 s / iter. Total: 0.5710 s / iter. ETA=0:00:55
+[12/23 20:06:51 d2.evaluation.evaluator]: Inference done 35/127. Dataloading: 0.0015 s / iter. Inference: 0.6460 s / iter. Eval: 0.0003 s / iter. Total: 0.6480 s / iter. ETA=0:00:59
+[12/23 20:06:57 d2.evaluation.evaluator]: Inference done 40/127. Dataloading: 0.0015 s / iter. Inference: 0.7109 s / iter. Eval: 0.0003 s / iter. Total: 0.7128 s / iter. ETA=0:01:02
+[12/23 20:07:02 d2.evaluation.evaluator]: Inference done 44/127. Dataloading: 0.0014 s / iter. Inference: 0.7661 s / iter. Eval: 0.0003 s / iter. Total: 0.7680 s / iter. ETA=0:01:03
+[12/23 20:07:08 d2.evaluation.evaluator]: Inference done 49/127. Dataloading: 0.0014 s / iter. Inference: 0.8251 s / iter. Eval: 0.0003 s / iter. Total: 0.8270 s / iter. ETA=0:01:04
+[12/23 20:07:14 d2.evaluation.evaluator]: Inference done 53/127. Dataloading: 0.0014 s / iter. Inference: 0.8712 s / iter. Eval: 0.0003 s / iter. Total: 0.8731 s / iter. ETA=0:01:04
+[12/23 20:07:19 d2.evaluation.evaluator]: Inference done 57/127. Dataloading: 0.0014 s / iter. Inference: 0.9148 s / iter. Eval: 0.0003 s / iter. Total: 0.9167 s / iter. ETA=0:01:04
+[12/23 20:07:25 d2.evaluation.evaluator]: Inference done 62/127. Dataloading: 0.0014 s / iter. Inference: 0.9344 s / iter. Eval: 0.0003 s / iter. Total: 0.9363 s / iter. ETA=0:01:00
+[12/23 20:07:31 d2.evaluation.evaluator]: Inference done 68/127. Dataloading: 0.0014 s / iter. Inference: 0.9389 s / iter. Eval: 0.0003 s / iter. Total: 0.9407 s / iter. ETA=0:00:55
+[12/23 20:07:37 d2.evaluation.evaluator]: Inference done 73/127. Dataloading: 0.0014 s / iter. Inference: 0.9515 s / iter. Eval: 0.0003 s / iter. Total: 0.9534 s / iter. ETA=0:00:51
+[12/23 20:07:43 d2.evaluation.evaluator]: Inference done 78/127. Dataloading: 0.0014 s / iter. Inference: 0.9665 s / iter. Eval: 0.0003 s / iter. Total: 0.9683 s / iter. ETA=0:00:47
+[12/23 20:07:48 d2.evaluation.evaluator]: Inference done 83/127. Dataloading: 0.0014 s / iter. Inference: 0.9781 s / iter. Eval: 0.0003 s / iter. Total: 0.9799 s / iter. ETA=0:00:43
+[12/23 20:07:54 d2.evaluation.evaluator]: Inference done 88/127. Dataloading: 0.0014 s / iter. Inference: 0.9911 s / iter. Eval: 0.0003 s / iter. Total: 0.9929 s / iter. ETA=0:00:38
+[12/23 20:08:00 d2.evaluation.evaluator]: Inference done 94/127. Dataloading: 0.0013 s / iter. Inference: 0.9848 s / iter. Eval: 0.0003 s / iter. Total: 0.9866 s / iter. ETA=0:00:32
+[12/23 20:08:05 d2.evaluation.evaluator]: Inference done 100/127. Dataloading: 0.0013 s / iter. Inference: 0.9824 s / iter. Eval: 0.0003 s / iter. Total: 0.9842 s / iter. ETA=0:00:26
+[12/23 20:08:12 d2.evaluation.evaluator]: Inference done 104/127. Dataloading: 0.0013 s / iter. Inference: 1.0073 s / iter. Eval: 0.0003 s / iter. Total: 1.0091 s / iter. ETA=0:00:23
+[12/23 20:08:17 d2.evaluation.evaluator]: Inference done 108/127. Dataloading: 0.0013 s / iter. Inference: 1.0168 s / iter. Eval: 0.0003 s / iter. Total: 1.0185 s / iter. ETA=0:00:19
+[12/23 20:08:22 d2.evaluation.evaluator]: Inference done 112/127. Dataloading: 0.0013 s / iter. Inference: 1.0316 s / iter. Eval: 0.0003 s / iter. Total: 1.0333 s / iter. ETA=0:00:15
+[12/23 20:08:28 d2.evaluation.evaluator]: Inference done 116/127. Dataloading: 0.0013 s / iter. Inference: 1.0473 s / iter. Eval: 0.0003 s / iter. Total: 1.0491 s / iter. ETA=0:00:11
+[12/23 20:08:33 d2.evaluation.evaluator]: Inference done 120/127. Dataloading: 0.0013 s / iter. Inference: 1.0550 s / iter. Eval: 0.0003 s / iter. Total: 1.0568 s / iter. ETA=0:00:07
+[12/23 20:08:38 d2.evaluation.evaluator]: Inference done 124/127. Dataloading: 0.0013 s / iter. Inference: 1.0623 s / iter. Eval: 0.0003 s / iter. Total: 1.0641 s / iter. ETA=0:00:03
+[12/23 20:09:03 d2.evaluation.evaluator]: Total inference time: 0:02:31.492554 (1.241742 s / iter per device, on 4 devices)
+[12/23 20:09:03 d2.evaluation.evaluator]: Total inference pure compute time: 0:02:11 (1.075843 s / iter per device, on 4 devices)
+[12/23 20:09:29 d2.evaluation.coco_evaluation]: Preparing results for COCO format ...
+[12/23 20:09:29 d2.evaluation.coco_evaluation]: Saving results to output/vitb/uodd_5shot/inference/coco_instances_results.json
+[12/23 20:09:29 d2.evaluation.coco_evaluation]: Evaluating predictions with unofficial COCO API...
+Loading and preparing results...
+DONE (t=0.26s)
+creating index...
+index created!
+[12/23 20:09:30 d2.evaluation.fast_eval_api]: Evaluate annotation type *bbox*
+[12/23 20:09:30 d2.evaluation.fast_eval_api]: COCOeval_opt.evaluate() finished in 0.28 seconds.
+[12/23 20:09:30 d2.evaluation.fast_eval_api]: Accumulating evaluation results...
+[12/23 20:09:30 d2.evaluation.fast_eval_api]: COCOeval_opt.accumulate() finished in 0.06 seconds.
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.116
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.232
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.100
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.066
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.125
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.213
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.070
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.198
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.231
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.202
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.221
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.334
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: Evaluation results for bbox: 
+|   AP   |  AP50  |  AP75  |  APs  |  APm   |  APl   |
+|:------:|:------:|:------:|:-----:|:------:|:------:|
+| 11.642 | 23.208 | 9.996  | 6.577 | 12.503 | 21.309 |
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: target AP50: -1
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: base AP50: 0.23208030366664473
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: all AP50: 0.23208030366664473
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: target AP75: -1
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: base AP75: 0.09995822060039229
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: all AP75: 0.09995822060039229
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: target mAP: -1.0
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: base mAP: 0.11642424067209174
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: all mAP: 0.11642424067209174
+[12/23 20:09:30 d2.evaluation.coco_evaluation]: Per-category bbox AP: 
+| category    | AP    | category   | AP     | category   | AP     |
+|:------------|:------|:-----------|:-------|:-----------|:-------|
+| seacucumber | 0.498 | seaurchin  | 13.707 | scallop    | 20.722 |
+[12/23 20:09:30 d2.engine.defaults]: Evaluation results for UODD_test in csv format:
+[12/23 20:09:30 d2.evaluation.testing]: copypaste: Task: bbox
+[12/23 20:09:30 d2.evaluation.testing]: copypaste: AP,AP50,AP75,APs,APm,APl
+[12/23 20:09:30 d2.evaluation.testing]: copypaste: 11.6424,23.2080,9.9958,6.5766,12.5030,21.3090
+[12/23 20:09:30 d2.evaluation.testing]: ###################### ('AP', 11.642424067209173) ######################

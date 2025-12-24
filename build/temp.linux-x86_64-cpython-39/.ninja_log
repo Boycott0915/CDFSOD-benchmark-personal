@@ -1,0 +1,12 @@
+# ninja log v7
+3	1054	1766387990963144557	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/cuda_version.o	280911cb32e2148e
+3	4585	1766387990963144557	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/cocoeval/cocoeval.o	7b0fdc20f6c4330a
+2	6564	1766387990962144580	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/box_iou_rotated/box_iou_rotated_cpu.o	ab8ef075209e6ae4
+5	6606	1766387990965144511	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/nms_rotated/nms_rotated_cpu.o	123348278d61e9c9
+1	7162	1766387990961144603	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/ROIAlignRotated/ROIAlignRotated_cpu.o	57701472d627f0ad
+1	19316	1766387990961144603	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/ROIAlignRotated/ROIAlignRotated_cuda.o	cfd5c8e257c1037c
+2	19731	1766387990963144557	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/box_iou_rotated/box_iou_rotated_cuda.o	caf626c973b50a5d
+4	20461	1766387990964144534	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/deformable/deform_conv_cuda_kernel.o	f1f1ff2919e4338b
+6	21354	1766387990966144488	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/vision.o	ae757e894ff4798b
+4	22981	1766387990964144534	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/deformable/deform_conv_cuda.o	85a70dc55f9f136d
+5	23753	1766387990965144511	/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/build/temp.linux-x86_64-cpython-39/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/detectron2/layers/csrc/nms_rotated/nms_rotated_cuda.o	e6d805ea1732df62

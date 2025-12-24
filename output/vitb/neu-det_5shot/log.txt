@@ -1,0 +1,588 @@
+[12/22 20:10:15] detectron2 INFO: Rank of current process: 0. World size: 4
+[12/22 20:10:16] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 20:10:16] detectron2 INFO: Command line arguments: Namespace(config_file='configs/neu-det/vitb_shot5_neu-det_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-det_5shot/'])
+[12/22 20:10:16] detectron2 INFO: Contents of args.config_file=configs/neu-det/vitb_shot5_neu-det_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/NEUDET_5shot.vitb14.bbox.p5.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("NEUDET_5shot",)
+  TEST: ("NEUDET_test",)
+TEST:
+  EVAL_PERIOD: 100
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (50, 80)
+  MAX_ITER: 100
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 100
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 20:10:16] detectron2 INFO: Full config saved to output/vitb/neu-det_5shot/config.yaml
+[12/22 22:26:21] detectron2 INFO: Rank of current process: 0. World size: 4
+[12/22 22:26:22] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 22:26:22] detectron2 INFO: Command line arguments: Namespace(config_file='configs/neu-det/vitb_shot5_neu-det_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-det_5shot/'])
+[12/22 22:26:22] detectron2 INFO: Contents of args.config_file=configs/neu-det/vitb_shot5_neu-det_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/NEUDET_5shot.vitb14.bbox.p5.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("NEUDET_5shot",)
+  TEST: ("NEUDET_test",)
+TEST:
+  EVAL_PERIOD: 100
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (50, 80)
+  MAX_ITER: 100
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 100
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 22:26:22] detectron2 INFO: Full config saved to output/vitb/neu-det_5shot/config.yaml
+[12/22 22:26:27] d2.data.datasets.coco INFO: Loaded 30 images in COCO format from datasets/NEUDET/annotations/5_shot.json
+[12/22 22:26:27] d2.data.build INFO: Removed 0 images with no usable annotations. 30 images left.
+[12/22 22:26:27] d2.data.build INFO: Distribution of instances among all 6 categories:
+[36m|   category    | #instances   |   category    | #instances   |  category  | #instances   |
+|:-------------:|:-------------|:-------------:|:-------------|:----------:|:-------------|
+|    crazing    | 5            |   inclusion   | 5            |  patches   | 5            |
+| pitted_surf.. | 5            | rolled-in_s.. | 5            | scratches  | 5            |
+|               |              |               |              |            |              |
+|     total     | 30           |               |              |            |              |[0m
+[12/22 22:26:27] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 22:26:27] d2.data.build INFO: Using training sampler TrainingSampler
+[12/22 22:26:27] d2.data.common INFO: Serializing 30 elements to byte tensors and concatenating them all ...
+[12/22 22:26:27] d2.data.common INFO: Serialized dataset takes 0.01 MiB
+[12/22 22:26:28] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 22:26:29] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (6, 768) in the model! You might want to double check if this is expected.
+[12/22 22:26:29] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mdomain_prompter.weight[0m
+[34mprototype_classifier.linear.{bias, weight}[0m
+[34mtest_class_weight[0m
+[12/22 22:26:29] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+[12/22 22:26:29] d2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 22:26:53] d2.utils.events INFO:  eta: 0:01:06  iter: 19  roi_cover_ratio: 0.6247  cls_acc: 0.8535  fg_cls_acc: 0.6905  false_neg_ratio: 0.1848  total_loss: 6.85  aux_bce_loss_0: 0.3838  aux_dice_loss_0: 0.2175  rg_l1_loss_0: 0.06848  aux_bce_loss_1: 0.3433  aux_dice_loss_1: 0.1895  rg_l1_loss_1: 0.06201  aux_bce_loss_2: 0.3141  aux_dice_loss_2: 0.1708  rg_l1_loss_2: 0.05581  aux_bce_loss_3: 0.3041  aux_dice_loss_3: 0.1635  rg_l1_loss_3: 0.0545  aux_bce_loss_4: 0.3095  aux_dice_loss_4: 0.1591  rg_l1_loss_4: 0.05446  focal_loss_0: 0.143  focal_loss_1: 0.1238  focal_loss_2: 0.1151  bbox_loss: 0.2221  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.796  proto_contrastive_loss: 1.679  time: 0.8346  data_time: 0.3464  lr: 0.0019001  max_mem: 3143M
+[12/22 22:27:10] d2.utils.events INFO:  eta: 0:00:50  iter: 39  roi_cover_ratio: 0.6476  cls_acc: 0.9248  fg_cls_acc: 0.8966  false_neg_ratio: 0.1034  total_loss: 5.587  aux_bce_loss_0: 0.2846  aux_dice_loss_0: 0.1646  rg_l1_loss_0: 0.05528  aux_bce_loss_1: 0.2341  aux_dice_loss_1: 0.1332  rg_l1_loss_1: 0.04173  aux_bce_loss_2: 0.2021  aux_dice_loss_2: 0.1136  rg_l1_loss_2: 0.03526  aux_bce_loss_3: 0.1798  aux_dice_loss_3: 0.1043  rg_l1_loss_3: 0.03394  aux_bce_loss_4: 0.1731  aux_dice_loss_4: 0.1013  rg_l1_loss_4: 0.0322  focal_loss_0: 0.06531  focal_loss_1: 0.0464  focal_loss_2: 0.04486  bbox_loss: 0.1309  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.772  proto_contrastive_loss: 1.678  time: 0.8454  data_time: 0.0057  lr: 0.002  max_mem: 3251M
+[12/22 22:27:27] d2.utils.events INFO:  eta: 0:00:33  iter: 59  roi_cover_ratio: 0.6288  cls_acc: 0.9502  fg_cls_acc: 0.938  false_neg_ratio: 0.06202  total_loss: 5.035  aux_bce_loss_0: 0.2374  aux_dice_loss_0: 0.1428  rg_l1_loss_0: 0.04709  aux_bce_loss_1: 0.1765  aux_dice_loss_1: 0.101  rg_l1_loss_1: 0.03196  aux_bce_loss_2: 0.144  aux_dice_loss_2: 0.0802  rg_l1_loss_2: 0.02531  aux_bce_loss_3: 0.1304  aux_dice_loss_3: 0.0717  rg_l1_loss_3: 0.02347  aux_bce_loss_4: 0.1225  aux_dice_loss_4: 0.06872  rg_l1_loss_4: 0.02152  focal_loss_0: 0.03789  focal_loss_1: 0.02963  focal_loss_2: 0.02745  bbox_loss: 0.08945  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.741  proto_contrastive_loss: 1.676  time: 0.8426  data_time: 0.0053  lr: 0.0002  max_mem: 3251M
+[12/22 22:27:44] d2.utils.events INFO:  eta: 0:00:16  iter: 79  roi_cover_ratio: 0.6333  cls_acc: 0.9609  fg_cls_acc: 0.9611  false_neg_ratio: 0.0389  total_loss: 4.922  aux_bce_loss_0: 0.2258  aux_dice_loss_0: 0.1386  rg_l1_loss_0: 0.0427  aux_bce_loss_1: 0.1665  aux_dice_loss_1: 0.1002  rg_l1_loss_1: 0.02897  aux_bce_loss_2: 0.135  aux_dice_loss_2: 0.0797  rg_l1_loss_2: 0.0226  aux_bce_loss_3: 0.1171  aux_dice_loss_3: 0.06928  rg_l1_loss_3: 0.0197  aux_bce_loss_4: 0.111  aux_dice_loss_4: 0.06589  rg_l1_loss_4: 0.01788  focal_loss_0: 0.03351  focal_loss_1: 0.02819  focal_loss_2: 0.02652  bbox_loss: 0.07487  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.735  proto_contrastive_loss: 1.675  time: 0.8432  data_time: 0.0055  lr: 0.0002  max_mem: 3251M
+[12/22 22:28:00] fvcore.common.checkpoint INFO: Saving checkpoint to output/vitb/neu-det_5shot/model_0000099.pth
+[12/22 22:28:01] fvcore.common.checkpoint INFO: Saving checkpoint to output/vitb/neu-det_5shot/model_final.pth
+[12/22 22:28:02] d2.utils.events INFO:  eta: 0:00:00  iter: 99  roi_cover_ratio: 0.6673  cls_acc: 0.9531  fg_cls_acc: 0.9649  false_neg_ratio: 0.03513  total_loss: 4.869  aux_bce_loss_0: 0.2208  aux_dice_loss_0: 0.1361  rg_l1_loss_0: 0.04253  aux_bce_loss_1: 0.1584  aux_dice_loss_1: 0.09359  rg_l1_loss_1: 0.02766  aux_bce_loss_2: 0.1294  aux_dice_loss_2: 0.07399  rg_l1_loss_2: 0.0207  aux_bce_loss_3: 0.1169  aux_dice_loss_3: 0.06442  rg_l1_loss_3: 0.01932  aux_bce_loss_4: 0.1092  aux_dice_loss_4: 0.06197  rg_l1_loss_4: 0.01771  focal_loss_0: 0.03439  focal_loss_1: 0.02899  focal_loss_2: 0.02704  bbox_loss: 0.07185  domain_prompter_contrasitive_loss: 0.0005365  prototype_cls_loss: 1.734  proto_contrastive_loss: 1.675  time: 0.8425  data_time: 0.0058  lr: 2e-05  max_mem: 3251M
+[12/22 22:28:02] d2.engine.hooks INFO: Overall training speed: 98 iterations in 0:01:22 (0.8425 s / it)
+[12/22 22:28:02] d2.engine.hooks INFO: Total training time: 0:01:24 (0:00:01 on hooks)
+[12/22 22:28:02] d2.data.datasets.coco INFO: Loaded 360 images in COCO format from datasets/NEUDET/annotations/test.json
+[12/22 22:28:02] d2.data.build INFO: Distribution of instances among all 6 categories:
+[36m|   category    | #instances   |   category    | #instances   |  category  | #instances   |
+|:-------------:|:-------------|:-------------:|:-------------|:----------:|:-------------|
+|    crazing    | 103          |   inclusion   | 159          |  patches   | 222          |
+| pitted_surf.. | 106          | rolled-in_s.. | 141          | scratches  | 103          |
+|               |              |               |              |            |              |
+|     total     | 834          |               |              |            |              |[0m
+[12/22 22:28:02] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 22:28:02] d2.data.common INFO: Serializing 360 elements to byte tensors and concatenating them all ...
+[12/22 22:28:02] d2.data.common INFO: Serialized dataset takes 0.12 MiB
+[12/22 22:28:02] d2.evaluation.evaluator INFO: Start inference on 90 batches
+[12/22 22:28:24] d2.evaluation.evaluator INFO: Inference done 11/90. Dataloading: 0.0008 s / iter. Inference: 0.4304 s / iter. Eval: 0.0003 s / iter. Total: 0.4315 s / iter. ETA=0:00:34
+[12/22 22:28:29] d2.evaluation.evaluator INFO: Inference done 21/90. Dataloading: 0.0012 s / iter. Inference: 0.4921 s / iter. Eval: 0.0003 s / iter. Total: 0.4937 s / iter. ETA=0:00:34
+[12/22 22:28:35] d2.evaluation.evaluator INFO: Inference done 34/90. Dataloading: 0.0013 s / iter. Inference: 0.4590 s / iter. Eval: 0.0003 s / iter. Total: 0.4606 s / iter. ETA=0:00:25
+[12/22 22:28:40] d2.evaluation.evaluator INFO: Inference done 46/90. Dataloading: 0.0013 s / iter. Inference: 0.4514 s / iter. Eval: 0.0003 s / iter. Total: 0.4531 s / iter. ETA=0:00:19
+[12/22 22:28:45] d2.evaluation.evaluator INFO: Inference done 58/90. Dataloading: 0.0013 s / iter. Inference: 0.4443 s / iter. Eval: 0.0003 s / iter. Total: 0.4460 s / iter. ETA=0:00:14
+[12/22 22:28:50] d2.evaluation.evaluator INFO: Inference done 70/90. Dataloading: 0.0013 s / iter. Inference: 0.4390 s / iter. Eval: 0.0003 s / iter. Total: 0.4407 s / iter. ETA=0:00:08
+[12/22 22:28:55] d2.evaluation.evaluator INFO: Inference done 82/90. Dataloading: 0.0013 s / iter. Inference: 0.4400 s / iter. Eval: 0.0003 s / iter. Total: 0.4418 s / iter. ETA=0:00:03
+[12/23 16:20:30] detectron2 INFO: Rank of current process: 0. World size: 1
+[12/23 16:20:31] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0                   NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 16:20:31] detectron2 INFO: Command line arguments: Namespace(config_file='configs/neu-det/vitb_shot5_neu-det_finetune.yaml', resume=False, eval_only=True, num_gpus=1, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/neu-det_5shot/model_final.pth', 'OUTPUT_DIR', 'output/vitb/neu-det_5shot/'])
+[12/23 16:20:31] detectron2 INFO: Contents of args.config_file=configs/neu-det/vitb_shot5_neu-det_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/NEUDET_5shot.vitb14.bbox.p5.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("NEUDET_5shot",)
+  TEST: ("NEUDET_test",)
+TEST:
+  EVAL_PERIOD: 100
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (50, 80)
+  MAX_ITER: 100
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 100
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 16:20:31] detectron2 INFO: Full config saved to output/vitb/neu-det_5shot/config.yaml
+[12/23 16:33:28] detectron2 INFO: Rank of current process: 0. World size: 1
+[12/23 16:33:29] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0                   NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 16:33:29] detectron2 INFO: Command line arguments: Namespace(config_file='configs/neu-det/vitb_shot5_neu-det_finetune.yaml', resume=False, eval_only=True, num_gpus=1, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/neu-det_5shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-det_5shot/'])
+[12/23 16:33:29] detectron2 INFO: Contents of args.config_file=configs/neu-det/vitb_shot5_neu-det_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/NEUDET_5shot.vitb14.bbox.p5.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("NEUDET_5shot",)
+  TEST: ("NEUDET_test",)
+TEST:
+  EVAL_PERIOD: 100
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (50, 80)
+  MAX_ITER: 100
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 100
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 16:33:29] detectron2 INFO: Full config saved to output/vitb/neu-det_5shot/config.yaml
+[12/23 16:33:34] fvcore.common.checkpoint INFO: [Checkpointer] Loading from output/vitb/neu-det_5shot/model_final.pth ...
+[12/23 16:33:35] d2.data.datasets.coco INFO: Loaded 360 images in COCO format from datasets/NEUDET/annotations/test.json
+[12/23 16:33:35] d2.data.build INFO: Distribution of instances among all 6 categories:
+|   category    | #instances   |   category    | #instances   |  category  | #instances   |
+|:-------------:|:-------------|:-------------:|:-------------|:----------:|:-------------|
+|    crazing    | 103          |   inclusion   | 159          |  patches   | 222          |
+| pitted_surf.. | 106          | rolled-in_s.. | 141          | scratches  | 103          |
+|               |              |               |              |            |              |
+|     total     | 834          |               |              |            |              |
+[12/23 16:33:35] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 16:33:35] d2.data.common INFO: Serializing 360 elements to byte tensors and concatenating them all ...
+[12/23 16:33:35] d2.data.common INFO: Serialized dataset takes 0.12 MiB
+[12/23 16:33:35] d2.evaluation.evaluator INFO: Start inference on 360 batches
+[12/23 16:33:41] d2.evaluation.evaluator INFO: Inference done 11/360. Dataloading: 0.0010 s / iter. Inference: 0.4362 s / iter. Eval: 0.0003 s / iter. Total: 0.4376 s / iter. ETA=0:02:32
+[12/23 16:33:46] d2.evaluation.evaluator INFO: Inference done 21/360. Dataloading: 0.0014 s / iter. Inference: 0.5027 s / iter. Eval: 0.0003 s / iter. Total: 0.5045 s / iter. ETA=0:02:51
+[12/23 16:33:52] d2.evaluation.evaluator INFO: Inference done 34/360. Dataloading: 0.0015 s / iter. Inference: 0.4707 s / iter. Eval: 0.0003 s / iter. Total: 0.4726 s / iter. ETA=0:02:34
+[12/23 16:33:57] d2.evaluation.evaluator INFO: Inference done 45/360. Dataloading: 0.0015 s / iter. Inference: 0.4677 s / iter. Eval: 0.0003 s / iter. Total: 0.4696 s / iter. ETA=0:02:27
+[12/23 16:34:02] d2.evaluation.evaluator INFO: Inference done 57/360. Dataloading: 0.0016 s / iter. Inference: 0.4589 s / iter. Eval: 0.0003 s / iter. Total: 0.4608 s / iter. ETA=0:02:19
+[12/23 16:34:07] d2.evaluation.evaluator INFO: Inference done 68/360. Dataloading: 0.0016 s / iter. Inference: 0.4589 s / iter. Eval: 0.0003 s / iter. Total: 0.4609 s / iter. ETA=0:02:14
+[12/23 16:34:12] d2.evaluation.evaluator INFO: Inference done 80/360. Dataloading: 0.0016 s / iter. Inference: 0.4539 s / iter. Eval: 0.0003 s / iter. Total: 0.4558 s / iter. ETA=0:02:07
+[12/23 16:34:17] d2.evaluation.evaluator INFO: Inference done 93/360. Dataloading: 0.0016 s / iter. Inference: 0.4445 s / iter. Eval: 0.0003 s / iter. Total: 0.4464 s / iter. ETA=0:01:59
+[12/23 16:34:23] d2.evaluation.evaluator INFO: Inference done 104/360. Dataloading: 0.0015 s / iter. Inference: 0.4493 s / iter. Eval: 0.0003 s / iter. Total: 0.4513 s / iter. ETA=0:01:55
+[12/23 16:34:28] d2.evaluation.evaluator INFO: Inference done 115/360. Dataloading: 0.0015 s / iter. Inference: 0.4533 s / iter. Eval: 0.0003 s / iter. Total: 0.4553 s / iter. ETA=0:01:51
+[12/23 16:34:33] d2.evaluation.evaluator INFO: Inference done 128/360. Dataloading: 0.0015 s / iter. Inference: 0.4481 s / iter. Eval: 0.0003 s / iter. Total: 0.4500 s / iter. ETA=0:01:44
+[12/23 16:34:39] d2.evaluation.evaluator INFO: Inference done 139/360. Dataloading: 0.0015 s / iter. Inference: 0.4498 s / iter. Eval: 0.0003 s / iter. Total: 0.4517 s / iter. ETA=0:01:39
+[12/23 16:34:44] d2.evaluation.evaluator INFO: Inference done 150/360. Dataloading: 0.0015 s / iter. Inference: 0.4524 s / iter. Eval: 0.0003 s / iter. Total: 0.4544 s / iter. ETA=0:01:35
+[12/23 19:39:25] detectron2 INFO: Rank of current process: 0. World size: 4
+[12/23 19:39:26] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 19:39:26] detectron2 INFO: Command line arguments: Namespace(config_file='configs/neu-det/vitb_shot5_neu-det_finetune.yaml', resume=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/neu-det_5shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-det_5shot/', 'SOLVER.IMS_PER_BATCH', '4'])
+[12/23 19:39:26] detectron2 INFO: Contents of args.config_file=configs/neu-det/vitb_shot5_neu-det_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/NEUDET_5shot.vitb14.bbox.p5.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("NEUDET_5shot",)
+  TEST: ("NEUDET_test",)
+TEST:
+  EVAL_PERIOD: 100
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (50, 80)
+  MAX_ITER: 100
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 100
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 19:39:26] detectron2 INFO: Full config saved to output/vitb/neu-det_5shot/config.yaml
+[12/23 19:39:32] fvcore.common.checkpoint INFO: [Checkpointer] Loading from output/vitb/neu-det_5shot/model_final.pth ...
+[12/23 19:39:33] d2.data.datasets.coco INFO: Loaded 360 images in COCO format from datasets/NEUDET/annotations/test.json
+[12/23 19:39:33] d2.data.build INFO: Distribution of instances among all 6 categories:
+|   category    | #instances   |   category    | #instances   |  category  | #instances   |
+|:-------------:|:-------------|:-------------:|:-------------|:----------:|:-------------|
+|    crazing    | 103          |   inclusion   | 159          |  patches   | 222          |
+| pitted_surf.. | 106          | rolled-in_s.. | 141          | scratches  | 103          |
+|               |              |               |              |            |              |
+|     total     | 834          |               |              |            |              |
+[12/23 19:39:33] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 19:39:33] d2.data.common INFO: Serializing 360 elements to byte tensors and concatenating them all ...
+[12/23 19:39:33] d2.data.common INFO: Serialized dataset takes 0.12 MiB
+[12/23 19:39:33] d2.evaluation.evaluator INFO: Start inference on 90 batches
+[12/23 19:40:04] d2.evaluation.evaluator INFO: Inference done 11/90. Dataloading: 0.0010 s / iter. Inference: 0.8297 s / iter. Eval: 0.0004 s / iter. Total: 0.8311 s / iter. ETA=0:01:05
+[12/23 19:40:09] d2.evaluation.evaluator INFO: Inference done 16/90. Dataloading: 0.0013 s / iter. Inference: 0.9090 s / iter. Eval: 0.0004 s / iter. Total: 0.9108 s / iter. ETA=0:01:07
+[12/23 19:40:14] d2.evaluation.evaluator INFO: Inference done 20/90. Dataloading: 0.0014 s / iter. Inference: 1.0003 s / iter. Eval: 0.0004 s / iter. Total: 1.0021 s / iter. ETA=0:01:10
+[12/23 19:40:19] d2.evaluation.evaluator INFO: Inference done 27/90. Dataloading: 0.0015 s / iter. Inference: 0.9146 s / iter. Eval: 0.0004 s / iter. Total: 0.9166 s / iter. ETA=0:00:57
+[12/23 19:40:25] d2.evaluation.evaluator INFO: Inference done 34/90. Dataloading: 0.0016 s / iter. Inference: 0.8992 s / iter. Eval: 0.0003 s / iter. Total: 0.9012 s / iter. ETA=0:00:50
+[12/23 19:40:30] d2.evaluation.evaluator INFO: Inference done 40/90. Dataloading: 0.0016 s / iter. Inference: 0.8942 s / iter. Eval: 0.0003 s / iter. Total: 0.8962 s / iter. ETA=0:00:44
+[12/23 19:40:36] d2.evaluation.evaluator INFO: Inference done 47/90. Dataloading: 0.0015 s / iter. Inference: 0.8813 s / iter. Eval: 0.0003 s / iter. Total: 0.8833 s / iter. ETA=0:00:37
+[12/23 19:40:41] d2.evaluation.evaluator INFO: Inference done 54/90. Dataloading: 0.0015 s / iter. Inference: 0.8682 s / iter. Eval: 0.0003 s / iter. Total: 0.8702 s / iter. ETA=0:00:31
+[12/23 19:40:47] d2.evaluation.evaluator INFO: Inference done 61/90. Dataloading: 0.0015 s / iter. Inference: 0.8615 s / iter. Eval: 0.0003 s / iter. Total: 0.8634 s / iter. ETA=0:00:25
+[12/23 19:40:52] d2.evaluation.evaluator INFO: Inference done 67/90. Dataloading: 0.0015 s / iter. Inference: 0.8605 s / iter. Eval: 0.0003 s / iter. Total: 0.8625 s / iter. ETA=0:00:19
+[12/23 19:40:57] d2.evaluation.evaluator INFO: Inference done 73/90. Dataloading: 0.0015 s / iter. Inference: 0.8585 s / iter. Eval: 0.0003 s / iter. Total: 0.8605 s / iter. ETA=0:00:14
+[12/23 19:41:02] d2.evaluation.evaluator INFO: Inference done 79/90. Dataloading: 0.0015 s / iter. Inference: 0.8580 s / iter. Eval: 0.0003 s / iter. Total: 0.8600 s / iter. ETA=0:00:09
+[12/23 19:41:08] d2.evaluation.evaluator INFO: Inference done 85/90. Dataloading: 0.0015 s / iter. Inference: 0.8631 s / iter. Eval: 0.0003 s / iter. Total: 0.8651 s / iter. ETA=0:00:04
+[12/23 19:41:31] d2.evaluation.evaluator INFO: Total inference time: 0:01:32.065972 (1.083129 s / iter per device, on 4 devices)
+[12/23 19:41:31] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:01:11 (0.845589 s / iter per device, on 4 devices)
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: Saving results to output/vitb/neu-det_5shot/inference/coco_instances_results.json
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[12/23 19:41:36] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[12/23 19:41:36] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.17 seconds.
+[12/23 19:41:36] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[12/23 19:41:36] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.05 seconds.
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|   AP   |  AP50  |  AP75  |  APs  |  APm  |  APl   |
+|:------:|:------:|:------:|:-----:|:-----:|:------:|
+| 10.919 | 28.800 | 6.103  | 0.517 | 8.848 | 17.635 |
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: target AP50: -1
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: base AP50: 0.2880023119450457
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: all AP50: 0.2880023119450457
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: target AP75: -1
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: base AP75: 0.06103297133708119
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: all AP75: 0.06103297133708119
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: target mAP: -1.0
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: base mAP: 0.1091854337989073
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: all mAP: 0.1091854337989073
+[12/23 19:41:36] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category       | AP     | category        | AP    | category   | AP     |
+|:---------------|:-------|:----------------|:------|:-----------|:-------|
+| crazing        | 1.963  | inclusion       | 8.393 | patches    | 18.852 |
+| pitted_surface | 20.924 | rolled-in_scale | 7.186 | scratches  | 8.192  |
+[12/23 19:41:36] d2.engine.defaults INFO: Evaluation results for NEUDET_test in csv format:
+[12/23 19:41:36] d2.evaluation.testing INFO: copypaste: Task: bbox
+[12/23 19:41:36] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[12/23 19:41:36] d2.evaluation.testing INFO: copypaste: 10.9185,28.8002,6.1033,0.5167,8.8475,17.6349
+[12/23 19:41:36] d2.evaluation.testing INFO: ###################### ('AP', 10.918543379890732) ######################

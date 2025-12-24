@@ -1,0 +1,343 @@
+[12/22 19:50:29] detectron2 INFO: Rank of current process: 2. World size: 4
+[12/22 19:50:30] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 19:50:30] detectron2 INFO: Command line arguments: Namespace(config_file='configs/fish/vitb_shot1_fish_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/fish_1shot/'])
+[12/22 19:50:30] detectron2 INFO: Contents of args.config_file=configs/fish/vitb_shot1_fish_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/FISH_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 1
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("FISH_1shot",)
+  TEST: ("FISH_test",)
+TEST:
+  EVAL_PERIOD: 200
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.001
+  STEPS: (120, 180)
+  MAX_ITER: 200
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 200
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 21:51:03] detectron2 INFO: Rank of current process: 2. World size: 4
+[12/22 21:51:04] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 21:51:04] detectron2 INFO: Command line arguments: Namespace(config_file='configs/fish/vitb_shot1_fish_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/fish_1shot/'])
+[12/22 21:51:04] detectron2 INFO: Contents of args.config_file=configs/fish/vitb_shot1_fish_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/FISH_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 1
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("FISH_1shot",)
+  TEST: ("FISH_test",)
+TEST:
+  EVAL_PERIOD: 200
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.001
+  STEPS: (120, 180)
+  MAX_ITER: 200
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 200
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 21:51:10] detectron2.data.datasets.coco INFO: Loaded 1 images in COCO format from datasets/FISH/annotations/1_shot.json
+[12/22 21:51:10] detectron2.data.build INFO: Removed 0 images with no usable annotations. 1 images left.
+[12/22 21:51:10] detectron2.data.build INFO: Distribution of instances among all 1 categories:
+[36m|  category  | #instances   |
+|:----------:|:-------------|
+|    fish    | 1            |
+|            |              |[0m
+[12/22 21:51:10] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 21:51:10] detectron2.data.build INFO: Using training sampler TrainingSampler
+[12/22 21:51:10] detectron2.data.common INFO: Serializing 1 elements to byte tensors and concatenating them all ...
+[12/22 21:51:10] detectron2.data.common INFO: Serialized dataset takes 0.00 MiB
+[12/22 21:51:10] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 21:51:11] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (1, 768) in the model! You might want to double check if this is expected.
+[12/22 21:51:11] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mtest_class_weight[0m
+[12/22 21:51:11] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+[12/22 21:51:11] detectron2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 21:53:35] detectron2.engine.hooks INFO: Overall training speed: 198 iterations in 0:02:15 (0.6841 s / it)
+[12/22 21:53:35] detectron2.engine.hooks INFO: Total training time: 0:02:15 (0:00:00 on hooks)
+[12/22 21:53:35] detectron2.data.datasets.coco INFO: Loaded 909 images in COCO format from datasets/FISH/annotations/test.json
+[12/22 21:53:35] detectron2.data.build INFO: Distribution of instances among all 1 categories:
+[36m|  category  | #instances   |
+|:----------:|:-------------|
+|    fish    | 3029         |
+|            |              |[0m
+[12/22 21:53:35] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 21:53:35] detectron2.data.common INFO: Serializing 909 elements to byte tensors and concatenating them all ...
+[12/22 21:53:35] detectron2.data.common INFO: Serialized dataset takes 0.35 MiB
+[12/22 21:53:35] detectron2.evaluation.evaluator INFO: Start inference on 228 batches
+[12/22 21:53:57] detectron2.evaluation.evaluator INFO: Inference done 11/228. Dataloading: 0.0011 s / iter. Inference: 0.2743 s / iter. Eval: 0.0002 s / iter. Total: 0.2756 s / iter. ETA=0:00:59
+[12/22 21:54:02] detectron2.evaluation.evaluator INFO: Inference done 28/228. Dataloading: 0.0016 s / iter. Inference: 0.2947 s / iter. Eval: 0.0003 s / iter. Total: 0.2966 s / iter. ETA=0:00:59
+[12/22 21:54:07] detectron2.evaluation.evaluator INFO: Inference done 45/228. Dataloading: 0.0017 s / iter. Inference: 0.2960 s / iter. Eval: 0.0003 s / iter. Total: 0.2980 s / iter. ETA=0:00:54
+[12/22 21:54:12] detectron2.evaluation.evaluator INFO: Inference done 64/228. Dataloading: 0.0017 s / iter. Inference: 0.2865 s / iter. Eval: 0.0003 s / iter. Total: 0.2885 s / iter. ETA=0:00:47
+[12/22 21:54:18] detectron2.evaluation.evaluator INFO: Inference done 84/228. Dataloading: 0.0017 s / iter. Inference: 0.2771 s / iter. Eval: 0.0003 s / iter. Total: 0.2791 s / iter. ETA=0:00:40
+[12/22 21:54:23] detectron2.evaluation.evaluator INFO: Inference done 103/228. Dataloading: 0.0017 s / iter. Inference: 0.2747 s / iter. Eval: 0.0003 s / iter. Total: 0.2768 s / iter. ETA=0:00:34
+[12/22 21:54:28] detectron2.evaluation.evaluator INFO: Inference done 121/228. Dataloading: 0.0017 s / iter. Inference: 0.2757 s / iter. Eval: 0.0003 s / iter. Total: 0.2778 s / iter. ETA=0:00:29
+[12/22 21:54:33] detectron2.evaluation.evaluator INFO: Inference done 141/228. Dataloading: 0.0017 s / iter. Inference: 0.2731 s / iter. Eval: 0.0003 s / iter. Total: 0.2751 s / iter. ETA=0:00:23
+[12/22 21:54:38] detectron2.evaluation.evaluator INFO: Inference done 165/228. Dataloading: 0.0017 s / iter. Inference: 0.2631 s / iter. Eval: 0.0002 s / iter. Total: 0.2651 s / iter. ETA=0:00:16
+[12/22 21:54:43] detectron2.evaluation.evaluator INFO: Inference done 186/228. Dataloading: 0.0017 s / iter. Inference: 0.2617 s / iter. Eval: 0.0003 s / iter. Total: 0.2638 s / iter. ETA=0:00:11
+[12/22 21:54:48] detectron2.evaluation.evaluator INFO: Inference done 205/228. Dataloading: 0.0017 s / iter. Inference: 0.2617 s / iter. Eval: 0.0003 s / iter. Total: 0.2638 s / iter. ETA=0:00:06
+[12/22 21:54:53] detectron2.evaluation.evaluator INFO: Inference done 225/228. Dataloading: 0.0017 s / iter. Inference: 0.2609 s / iter. Eval: 0.0003 s / iter. Total: 0.2629 s / iter. ETA=0:00:00
+[12/22 21:55:14] detectron2.evaluation.evaluator INFO: Total inference time: 0:01:18.889066 (0.353763 s / iter per device, on 4 devices)
+[12/22 21:55:14] detectron2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:58 (0.261914 s / iter per device, on 4 devices)
+[12/23 19:54:45] detectron2 INFO: Rank of current process: 2. World size: 4
+[12/23 19:54:47] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 19:54:47] detectron2 INFO: Command line arguments: Namespace(config_file='configs/fish/vitb_shot1_fish_finetune.yaml', resume=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/fish_1shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/fish_1shot/', 'SOLVER.IMS_PER_BATCH', '4', 'INPUT.MIN_SIZE_TEST', '600', 'INPUT.MAX_SIZE_TEST', '1000'])
+[12/23 19:54:47] detectron2 INFO: Contents of args.config_file=configs/fish/vitb_shot1_fish_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/FISH_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 1
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("FISH_1shot",)
+  TEST: ("FISH_test",)
+TEST:
+  EVAL_PERIOD: 200
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.001
+  STEPS: (120, 180)
+  MAX_ITER: 200
+  WARMUP_ITERS: 100
+  CHECKPOINT_PERIOD: 200
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 19:54:54] fvcore.common.checkpoint INFO: [Checkpointer] Loading from output/vitb/fish_1shot/model_final.pth ...
+[12/23 19:54:57] detectron2.data.datasets.coco INFO: Loaded 909 images in COCO format from datasets/FISH/annotations/test.json
+[12/23 19:54:57] detectron2.data.build INFO: Distribution of instances among all 1 categories:
+|  category  | #instances   |
+|:----------:|:-------------|
+|    fish    | 3029         |
+|            |              |
+[12/23 19:54:57] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(600, 600), max_size=1000, sample_style='choice')]
+[12/23 19:54:57] detectron2.data.common INFO: Serializing 909 elements to byte tensors and concatenating them all ...
+[12/23 19:54:57] detectron2.data.common INFO: Serialized dataset takes 0.35 MiB
+[12/23 19:54:57] detectron2.evaluation.evaluator INFO: Start inference on 228 batches
+[12/23 19:55:21] detectron2.evaluation.evaluator INFO: Inference done 11/228. Dataloading: 0.0010 s / iter. Inference: 0.3391 s / iter. Eval: 0.0003 s / iter. Total: 0.3404 s / iter. ETA=0:01:13
+[12/23 19:55:26] detectron2.evaluation.evaluator INFO: Inference done 26/228. Dataloading: 0.0013 s / iter. Inference: 0.3389 s / iter. Eval: 0.0003 s / iter. Total: 0.3405 s / iter. ETA=0:01:08
+[12/23 19:55:31] detectron2.evaluation.evaluator INFO: Inference done 41/228. Dataloading: 0.0013 s / iter. Inference: 0.3382 s / iter. Eval: 0.0003 s / iter. Total: 0.3398 s / iter. ETA=0:01:03
+[12/23 19:55:36] detectron2.evaluation.evaluator INFO: Inference done 56/228. Dataloading: 0.0013 s / iter. Inference: 0.3372 s / iter. Eval: 0.0003 s / iter. Total: 0.3389 s / iter. ETA=0:00:58
+[12/23 19:55:41] detectron2.evaluation.evaluator INFO: Inference done 71/228. Dataloading: 0.0013 s / iter. Inference: 0.3371 s / iter. Eval: 0.0003 s / iter. Total: 0.3388 s / iter. ETA=0:00:53
+[12/23 19:55:46] detectron2.evaluation.evaluator INFO: Inference done 86/228. Dataloading: 0.0013 s / iter. Inference: 0.3366 s / iter. Eval: 0.0003 s / iter. Total: 0.3382 s / iter. ETA=0:00:48
+[12/23 19:55:51] detectron2.evaluation.evaluator INFO: Inference done 101/228. Dataloading: 0.0013 s / iter. Inference: 0.3363 s / iter. Eval: 0.0003 s / iter. Total: 0.3380 s / iter. ETA=0:00:42
+[12/23 19:55:56] detectron2.evaluation.evaluator INFO: Inference done 116/228. Dataloading: 0.0013 s / iter. Inference: 0.3364 s / iter. Eval: 0.0003 s / iter. Total: 0.3381 s / iter. ETA=0:00:37
+[12/23 19:56:01] detectron2.evaluation.evaluator INFO: Inference done 131/228. Dataloading: 0.0013 s / iter. Inference: 0.3363 s / iter. Eval: 0.0003 s / iter. Total: 0.3379 s / iter. ETA=0:00:32
+[12/23 19:56:06] detectron2.evaluation.evaluator INFO: Inference done 146/228. Dataloading: 0.0013 s / iter. Inference: 0.3359 s / iter. Eval: 0.0003 s / iter. Total: 0.3375 s / iter. ETA=0:00:27
+[12/23 19:56:12] detectron2.evaluation.evaluator INFO: Inference done 164/228. Dataloading: 0.0013 s / iter. Inference: 0.3304 s / iter. Eval: 0.0003 s / iter. Total: 0.3321 s / iter. ETA=0:00:21
+[12/23 19:56:17] detectron2.evaluation.evaluator INFO: Inference done 180/228. Dataloading: 0.0013 s / iter. Inference: 0.3300 s / iter. Eval: 0.0003 s / iter. Total: 0.3316 s / iter. ETA=0:00:15
+[12/23 19:56:22] detectron2.evaluation.evaluator INFO: Inference done 195/228. Dataloading: 0.0013 s / iter. Inference: 0.3314 s / iter. Eval: 0.0003 s / iter. Total: 0.3331 s / iter. ETA=0:00:10
+[12/23 19:56:27] detectron2.evaluation.evaluator INFO: Inference done 210/228. Dataloading: 0.0013 s / iter. Inference: 0.3315 s / iter. Eval: 0.0003 s / iter. Total: 0.3331 s / iter. ETA=0:00:05
+[12/23 19:56:32] detectron2.evaluation.evaluator INFO: Inference done 225/228. Dataloading: 0.0013 s / iter. Inference: 0.3319 s / iter. Eval: 0.0003 s / iter. Total: 0.3335 s / iter. ETA=0:00:01
+[12/23 19:56:53] detectron2.evaluation.evaluator INFO: Total inference time: 0:01:34.429252 (0.423450 s / iter per device, on 4 devices)
+[12/23 19:56:53] detectron2.evaluation.evaluator INFO: Total inference pure compute time: 0:01:14 (0.332021 s / iter per device, on 4 devices)

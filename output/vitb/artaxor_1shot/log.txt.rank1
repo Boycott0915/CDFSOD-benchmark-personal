@@ -1,0 +1,1351 @@
+[12/22 19:15:28] detectron2 INFO: Rank of current process: 1. World size: 4
+[12/22 19:15:29] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 19:15:29] detectron2 INFO: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot1_artaxor_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_1shot/'])
+[12/22 19:15:29] detectron2 INFO: Contents of args.config_file=configs/artaxor/vitb_shot1_artaxor_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_1shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 40
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (20, 35)
+  MAX_ITER: 40
+  WARMUP_ITERS: 10
+  CHECKPOINT_PERIOD: 40
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 19:15:35] detectron2.data.datasets.coco INFO: Loaded 7 images in COCO format from datasets/ArTaxOr/annotations/1_shot.json
+[12/22 19:15:35] detectron2.data.build INFO: Removed 0 images with no usable annotations. 7 images left.
+[12/22 19:15:35] detectron2.data.build INFO: Distribution of instances among all 7 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 1            | Coleoptera  | 1            |   Diptera   | 1            |
+| Hemiptera  | 1            | Hymenoptera | 1            | Lepidoptera | 1            |
+|  Odonata   | 1            |             |              |             |              |
+|   total    | 7            |             |              |             |              |[0m
+[12/22 19:15:35] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 19:15:35] detectron2.data.build INFO: Using training sampler TrainingSampler
+[12/22 19:15:36] detectron2.data.common INFO: Serializing 7 elements to byte tensors and concatenating them all ...
+[12/22 19:15:36] detectron2.data.common INFO: Serialized dataset takes 0.00 MiB
+[12/22 19:15:36] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 1024) in the checkpoint but (7, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.cls_token' to the model due to incompatible shapes: (1, 1, 1024) in the checkpoint but (1, 1, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.pos_embed' to the model due to incompatible shapes: (1, 1370, 1024) in the checkpoint but (1, 1370, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.mask_token' to the model due to incompatible shapes: (1, 1024) in the checkpoint but (1, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.patch_embed.proj.weight' to the model due to incompatible shapes: (1024, 3, 14, 14) in the checkpoint but (768, 3, 14, 14) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.patch_embed.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.0.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.1.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.2.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.3.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.4.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.5.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.6.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.7.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.8.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.9.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.10.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.norm1.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.norm1.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.attn.qkv.weight' to the model due to incompatible shapes: (3072, 1024) in the checkpoint but (2304, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.attn.qkv.bias' to the model due to incompatible shapes: (3072,) in the checkpoint but (2304,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.attn.proj.weight' to the model due to incompatible shapes: (1024, 1024) in the checkpoint but (768, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.attn.proj.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.ls1.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.norm2.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.norm2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.mlp.fc1.weight' to the model due to incompatible shapes: (4096, 1024) in the checkpoint but (3072, 768) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.mlp.fc1.bias' to the model due to incompatible shapes: (4096,) in the checkpoint but (3072,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.mlp.fc2.weight' to the model due to incompatible shapes: (1024, 4096) in the checkpoint but (768, 3072) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.mlp.fc2.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.blocks.11.ls2.gamma' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.norm.weight' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Skip loading parameter 'backbone.norm.bias' to the model due to incompatible shapes: (1024,) in the checkpoint but (768,) in the model! You might want to double check if this is expected.
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbackbone.blocks.0.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.0.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.0.ls1.gamma[0m
+[34mbackbone.blocks.0.ls2.gamma[0m
+[34mbackbone.blocks.0.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.0.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.0.norm1.{bias, weight}[0m
+[34mbackbone.blocks.0.norm2.{bias, weight}[0m
+[34mbackbone.blocks.1.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.1.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.1.ls1.gamma[0m
+[34mbackbone.blocks.1.ls2.gamma[0m
+[34mbackbone.blocks.1.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.1.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.1.norm1.{bias, weight}[0m
+[34mbackbone.blocks.1.norm2.{bias, weight}[0m
+[34mbackbone.blocks.10.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.10.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.10.ls1.gamma[0m
+[34mbackbone.blocks.10.ls2.gamma[0m
+[34mbackbone.blocks.10.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.10.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.10.norm1.{bias, weight}[0m
+[34mbackbone.blocks.10.norm2.{bias, weight}[0m
+[34mbackbone.blocks.11.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.11.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.11.ls1.gamma[0m
+[34mbackbone.blocks.11.ls2.gamma[0m
+[34mbackbone.blocks.11.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.11.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.11.norm1.{bias, weight}[0m
+[34mbackbone.blocks.11.norm2.{bias, weight}[0m
+[34mbackbone.blocks.2.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.2.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.2.ls1.gamma[0m
+[34mbackbone.blocks.2.ls2.gamma[0m
+[34mbackbone.blocks.2.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.2.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.2.norm1.{bias, weight}[0m
+[34mbackbone.blocks.2.norm2.{bias, weight}[0m
+[34mbackbone.blocks.3.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.3.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.3.ls1.gamma[0m
+[34mbackbone.blocks.3.ls2.gamma[0m
+[34mbackbone.blocks.3.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.3.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.3.norm1.{bias, weight}[0m
+[34mbackbone.blocks.3.norm2.{bias, weight}[0m
+[34mbackbone.blocks.4.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.4.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.4.ls1.gamma[0m
+[34mbackbone.blocks.4.ls2.gamma[0m
+[34mbackbone.blocks.4.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.4.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.4.norm1.{bias, weight}[0m
+[34mbackbone.blocks.4.norm2.{bias, weight}[0m
+[34mbackbone.blocks.5.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.5.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.5.ls1.gamma[0m
+[34mbackbone.blocks.5.ls2.gamma[0m
+[34mbackbone.blocks.5.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.5.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.5.norm1.{bias, weight}[0m
+[34mbackbone.blocks.5.norm2.{bias, weight}[0m
+[34mbackbone.blocks.6.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.6.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.6.ls1.gamma[0m
+[34mbackbone.blocks.6.ls2.gamma[0m
+[34mbackbone.blocks.6.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.6.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.6.norm1.{bias, weight}[0m
+[34mbackbone.blocks.6.norm2.{bias, weight}[0m
+[34mbackbone.blocks.7.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.7.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.7.ls1.gamma[0m
+[34mbackbone.blocks.7.ls2.gamma[0m
+[34mbackbone.blocks.7.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.7.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.7.norm1.{bias, weight}[0m
+[34mbackbone.blocks.7.norm2.{bias, weight}[0m
+[34mbackbone.blocks.8.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.8.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.8.ls1.gamma[0m
+[34mbackbone.blocks.8.ls2.gamma[0m
+[34mbackbone.blocks.8.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.8.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.8.norm1.{bias, weight}[0m
+[34mbackbone.blocks.8.norm2.{bias, weight}[0m
+[34mbackbone.blocks.9.attn.proj.{bias, weight}[0m
+[34mbackbone.blocks.9.attn.qkv.{bias, weight}[0m
+[34mbackbone.blocks.9.ls1.gamma[0m
+[34mbackbone.blocks.9.ls2.gamma[0m
+[34mbackbone.blocks.9.mlp.fc1.{bias, weight}[0m
+[34mbackbone.blocks.9.mlp.fc2.{bias, weight}[0m
+[34mbackbone.blocks.9.norm1.{bias, weight}[0m
+[34mbackbone.blocks.9.norm2.{bias, weight}[0m
+[34mbackbone.norm.{bias, weight}[0m
+[34mbackbone.patch_embed.proj.{bias, weight}[0m
+[34mbackbone.{cls_token, mask_token, pos_embed}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mdomain_prompter.weight[0m
+[34mprototype_classifier.linear.{bias, weight}[0m
+[34mtest_class_weight[0m
+[12/22 19:15:38] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+  [35mbackbone.blocks.12.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.12.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.12.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.12.ls1.gamma[0m
+  [35mbackbone.blocks.12.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.12.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.12.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.12.ls2.gamma[0m
+  [35mbackbone.blocks.13.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.13.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.13.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.13.ls1.gamma[0m
+  [35mbackbone.blocks.13.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.13.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.13.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.13.ls2.gamma[0m
+  [35mbackbone.blocks.14.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.14.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.14.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.14.ls1.gamma[0m
+  [35mbackbone.blocks.14.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.14.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.14.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.14.ls2.gamma[0m
+  [35mbackbone.blocks.15.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.15.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.15.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.15.ls1.gamma[0m
+  [35mbackbone.blocks.15.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.15.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.15.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.15.ls2.gamma[0m
+  [35mbackbone.blocks.16.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.16.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.16.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.16.ls1.gamma[0m
+  [35mbackbone.blocks.16.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.16.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.16.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.16.ls2.gamma[0m
+  [35mbackbone.blocks.17.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.17.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.17.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.17.ls1.gamma[0m
+  [35mbackbone.blocks.17.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.17.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.17.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.17.ls2.gamma[0m
+  [35mbackbone.blocks.18.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.18.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.18.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.18.ls1.gamma[0m
+  [35mbackbone.blocks.18.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.18.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.18.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.18.ls2.gamma[0m
+  [35mbackbone.blocks.19.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.19.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.19.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.19.ls1.gamma[0m
+  [35mbackbone.blocks.19.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.19.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.19.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.19.ls2.gamma[0m
+  [35mbackbone.blocks.20.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.20.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.20.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.20.ls1.gamma[0m
+  [35mbackbone.blocks.20.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.20.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.20.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.20.ls2.gamma[0m
+  [35mbackbone.blocks.21.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.21.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.21.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.21.ls1.gamma[0m
+  [35mbackbone.blocks.21.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.21.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.21.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.21.ls2.gamma[0m
+  [35mbackbone.blocks.22.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.22.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.22.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.22.ls1.gamma[0m
+  [35mbackbone.blocks.22.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.22.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.22.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.22.ls2.gamma[0m
+  [35mbackbone.blocks.23.norm1.{bias, weight}[0m
+  [35mbackbone.blocks.23.attn.qkv.{bias, weight}[0m
+  [35mbackbone.blocks.23.attn.proj.{bias, weight}[0m
+  [35mbackbone.blocks.23.ls1.gamma[0m
+  [35mbackbone.blocks.23.norm2.{bias, weight}[0m
+  [35mbackbone.blocks.23.mlp.fc1.{bias, weight}[0m
+  [35mbackbone.blocks.23.mlp.fc2.{bias, weight}[0m
+  [35mbackbone.blocks.23.ls2.gamma[0m
+[12/22 19:15:38] detectron2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 19:15:44] detectron2.engine.train_loop ERROR: Exception during training:
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/train_loop.py", line 149, in train
+    self.run_step()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 510, in run_step
+    self._trainer.run_step()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/train_loop.py", line 273, in run_step
+    loss_dict = self.model(data)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1040, in forward
+    output = self._run_ddp_forward(*inputs, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1000, in _run_ddp_forward
+    return module_to_run(*inputs[0], **kwargs[0])
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/devit.py", line 1308, in forward
+    bg_feats = roi_features.transpose(-2, -1) @ self.bg_tokens.weight.t()  # N x spatial x back
+RuntimeError: Expected size for first two dimensions of batch2 tensor to be: [512, 768] but got: [512, 1024].
+[12/22 19:15:44] detectron2.engine.hooks INFO: Total training time: 0:00:06 (0:00:00 on hooks)
+[12/22 19:24:24] detectron2 INFO: Rank of current process: 1. World size: 4
+[12/22 19:24:25] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 19:24:25] detectron2 INFO: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot1_artaxor_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_1shot/'])
+[12/22 19:24:25] detectron2 INFO: Contents of args.config_file=configs/artaxor/vitb_shot1_artaxor_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_1shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 40
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (20, 35)
+  MAX_ITER: 40
+  WARMUP_ITERS: 10
+  CHECKPOINT_PERIOD: 40
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 19:31:20] detectron2 INFO: Rank of current process: 1. World size: 4
+[12/22 19:31:21] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 19:31:21] detectron2 INFO: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot1_artaxor_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_1shot/'])
+[12/22 19:31:21] detectron2 INFO: Contents of args.config_file=configs/artaxor/vitb_shot1_artaxor_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_1shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 40
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (20, 35)
+  MAX_ITER: 40
+  WARMUP_ITERS: 10
+  CHECKPOINT_PERIOD: 40
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 19:31:27] detectron2.data.datasets.coco INFO: Loaded 7 images in COCO format from datasets/ArTaxOr/annotations/1_shot.json
+[12/22 19:31:27] detectron2.data.build INFO: Removed 0 images with no usable annotations. 7 images left.
+[12/22 19:31:27] detectron2.data.build INFO: Distribution of instances among all 7 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 1            | Coleoptera  | 1            |   Diptera   | 1            |
+| Hemiptera  | 1            | Hymenoptera | 1            | Lepidoptera | 1            |
+|  Odonata   | 1            |             |              |             |              |
+|   total    | 7            |             |              |             |              |[0m
+[12/22 19:31:27] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 19:31:27] detectron2.data.build INFO: Using training sampler TrainingSampler
+[12/22 19:31:28] detectron2.data.common INFO: Serializing 7 elements to byte tensors and concatenating them all ...
+[12/22 19:31:28] detectron2.data.common INFO: Serialized dataset takes 0.00 MiB
+[12/22 19:31:28] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 19:31:29] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (7, 768) in the model! You might want to double check if this is expected.
+[12/22 19:31:29] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mdomain_prompter.weight[0m
+[34mprototype_classifier.linear.{bias, weight}[0m
+[34mtest_class_weight[0m
+[12/22 19:31:29] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+[12/22 19:31:29] detectron2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 19:32:13] detectron2.engine.hooks INFO: Overall training speed: 38 iterations in 0:00:36 (0.9611 s / it)
+[12/22 19:32:13] detectron2.engine.hooks INFO: Total training time: 0:00:36 (0:00:00 on hooks)
+[12/22 19:32:13] detectron2.data.datasets.coco INFO: Loaded 1383 images in COCO format from datasets/ArTaxOr/annotations/test.json
+[12/22 19:32:13] detectron2.data.build INFO: Distribution of instances among all 7 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 455          | Coleoptera  | 145          |   Diptera   | 35           |
+| Hemiptera  | 474          | Hymenoptera | 60           | Lepidoptera | 136          |
+|  Odonata   | 323          |             |              |             |              |
+|   total    | 1628         |             |              |             |              |[0m
+[12/22 19:32:13] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 19:32:13] detectron2.data.common INFO: Serializing 1383 elements to byte tensors and concatenating them all ...
+[12/22 19:32:13] detectron2.data.common INFO: Serialized dataset takes 0.40 MiB
+[12/22 19:32:13] detectron2.evaluation.evaluator INFO: Start inference on 346 batches
+[12/22 19:41:42] detectron2 INFO: Rank of current process: 1. World size: 4
+[12/22 19:41:43] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 19:41:43] detectron2 INFO: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot1_artaxor_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_1shot/'])
+[12/22 19:41:43] detectron2 INFO: Contents of args.config_file=configs/artaxor/vitb_shot1_artaxor_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_1shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 40
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (20, 35)
+  MAX_ITER: 40
+  WARMUP_ITERS: 10
+  CHECKPOINT_PERIOD: 40
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 19:41:49] detectron2.data.datasets.coco INFO: Loaded 7 images in COCO format from datasets/ArTaxOr/annotations/1_shot.json
+[12/22 19:41:49] detectron2.data.build INFO: Removed 0 images with no usable annotations. 7 images left.
+[12/22 19:41:49] detectron2.data.build INFO: Distribution of instances among all 7 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 1            | Coleoptera  | 1            |   Diptera   | 1            |
+| Hemiptera  | 1            | Hymenoptera | 1            | Lepidoptera | 1            |
+|  Odonata   | 1            |             |              |             |              |
+|   total    | 7            |             |              |             |              |[0m
+[12/22 19:41:49] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 19:41:49] detectron2.data.build INFO: Using training sampler TrainingSampler
+[12/22 19:41:49] detectron2.data.common INFO: Serializing 7 elements to byte tensors and concatenating them all ...
+[12/22 19:41:49] detectron2.data.common INFO: Serialized dataset takes 0.00 MiB
+[12/22 19:41:49] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 19:41:51] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (7, 768) in the model! You might want to double check if this is expected.
+[12/22 19:41:51] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mdomain_prompter.weight[0m
+[34mprototype_classifier.linear.{bias, weight}[0m
+[34mtest_class_weight[0m
+[12/22 19:41:51] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+[12/22 19:41:51] detectron2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 19:42:35] detectron2.engine.hooks INFO: Overall training speed: 38 iterations in 0:00:36 (0.9583 s / it)
+[12/22 19:42:35] detectron2.engine.hooks INFO: Total training time: 0:00:36 (0:00:00 on hooks)
+[12/22 19:42:35] detectron2.data.datasets.coco INFO: Loaded 1383 images in COCO format from datasets/ArTaxOr/annotations/test.json
+[12/22 19:42:35] detectron2.data.build INFO: Distribution of instances among all 7 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 455          | Coleoptera  | 145          |   Diptera   | 35           |
+| Hemiptera  | 474          | Hymenoptera | 60           | Lepidoptera | 136          |
+|  Odonata   | 323          |             |              |             |              |
+|   total    | 1628         |             |              |             |              |[0m
+[12/22 19:42:35] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 19:42:35] detectron2.data.common INFO: Serializing 1383 elements to byte tensors and concatenating them all ...
+[12/22 19:42:35] detectron2.data.common INFO: Serialized dataset takes 0.40 MiB
+[12/22 19:42:35] detectron2.evaluation.evaluator INFO: Start inference on 346 batches
+[12/22 21:40:55] detectron2 INFO: Rank of current process: 1. World size: 4
+[12/22 21:40:55] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/22 21:40:55] detectron2 INFO: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot1_artaxor_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'weights/trained/few-shot/vitb_0089999.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_1shot/'])
+[12/22 21:40:55] detectron2 INFO: Contents of args.config_file=configs/artaxor/vitb_shot1_artaxor_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_1shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 40
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (20, 35)
+  MAX_ITER: 40
+  WARMUP_ITERS: 10
+  CHECKPOINT_PERIOD: 40
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/22 21:41:00] detectron2.data.datasets.coco INFO: Loaded 7 images in COCO format from datasets/ArTaxOr/annotations/1_shot.json
+[12/22 21:41:00] detectron2.data.build INFO: Removed 0 images with no usable annotations. 7 images left.
+[12/22 21:41:00] detectron2.data.build INFO: Distribution of instances among all 7 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 1            | Coleoptera  | 1            |   Diptera   | 1            |
+| Hemiptera  | 1            | Hymenoptera | 1            | Lepidoptera | 1            |
+|  Odonata   | 1            |             |              |             |              |
+|   total    | 7            |             |              |             |              |[0m
+[12/22 21:41:00] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/22 21:41:00] detectron2.data.build INFO: Using training sampler TrainingSampler
+[12/22 21:41:01] detectron2.data.common INFO: Serializing 7 elements to byte tensors and concatenating them all ...
+[12/22 21:41:01] detectron2.data.common INFO: Serialized dataset takes 0.00 MiB
+[12/22 21:41:01] fvcore.common.checkpoint INFO: [Checkpointer] Loading from weights/trained/few-shot/vitb_0089999.pth ...
+[12/22 21:41:02] fvcore.common.checkpoint WARNING: Skip loading parameter 'test_class_weight' to the model due to incompatible shapes: (80, 768) in the checkpoint but (7, 768) in the model! You might want to double check if this is expected.
+[12/22 21:41:02] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+[34madapter.proto_center_attn.attention_weights.0.{bias, weight}[0m
+[34madapter.proto_center_attn.fc.{bias, weight}[0m
+[34mbg_tokens.weight[0m
+[34mclass_weights.weight[0m
+[34mdomain_prompter.weight[0m
+[34mprototype_classifier.linear.{bias, weight}[0m
+[34mtest_class_weight[0m
+[12/22 21:41:02] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  [35mtrain_class_weight[0m
+[12/22 21:41:02] detectron2.engine.train_loop INFO: Starting training from iteration 0
+[12/22 21:41:47] detectron2.engine.hooks INFO: Overall training speed: 38 iterations in 0:00:36 (0.9541 s / it)
+[12/22 21:41:47] detectron2.engine.hooks INFO: Total training time: 0:00:36 (0:00:00 on hooks)
+[12/22 21:41:47] detectron2.data.datasets.coco INFO: Loaded 1383 images in COCO format from datasets/ArTaxOr/annotations/test.json
+[12/22 21:41:47] detectron2.data.build INFO: Distribution of instances among all 7 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 455          | Coleoptera  | 145          |   Diptera   | 35           |
+| Hemiptera  | 474          | Hymenoptera | 60           | Lepidoptera | 136          |
+|  Odonata   | 323          |             |              |             |              |
+|   total    | 1628         |             |              |             |              |[0m
+[12/22 21:41:47] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/22 21:41:47] detectron2.data.common INFO: Serializing 1383 elements to byte tensors and concatenating them all ...
+[12/22 21:41:47] detectron2.data.common INFO: Serialized dataset takes 0.40 MiB
+[12/22 21:41:47] detectron2.evaluation.evaluator INFO: Start inference on 346 batches
+[12/23 18:32:59] detectron2 INFO: Rank of current process: 1. World size: 4
+[12/23 18:33:00] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 18:33:00] detectron2 INFO: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot1_artaxor_finetune.yaml', resume=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/artaxor_1shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_1shot/', 'SOLVER.IMS_PER_BATCH', '4'])
+[12/23 18:33:00] detectron2 INFO: Contents of args.config_file=configs/artaxor/vitb_shot1_artaxor_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_1shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 40
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (20, 35)
+  MAX_ITER: 40
+  WARMUP_ITERS: 10
+  CHECKPOINT_PERIOD: 40
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 18:33:05] fvcore.common.checkpoint INFO: [Checkpointer] Loading from output/vitb/artaxor_1shot/model_final.pth ...
+[12/23 18:33:06] detectron2.data.datasets.coco INFO: Loaded 1383 images in COCO format from datasets/ArTaxOr/annotations/test.json
+[12/23 18:33:06] detectron2.data.build INFO: Distribution of instances among all 7 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 455          | Coleoptera  | 145          |   Diptera   | 35           |
+| Hemiptera  | 474          | Hymenoptera | 60           | Lepidoptera | 136          |
+|  Odonata   | 323          |             |              |             |              |
+|   total    | 1628         |             |              |             |              |[0m
+[12/23 18:33:06] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 18:33:06] detectron2.data.common INFO: Serializing 1383 elements to byte tensors and concatenating them all ...
+[12/23 18:33:06] detectron2.data.common INFO: Serialized dataset takes 0.40 MiB
+[12/23 18:33:06] detectron2.evaluation.evaluator INFO: Start inference on 346 batches
+[12/23 18:33:40] detectron2.evaluation.evaluator INFO: Inference done 11/346. Dataloading: 0.0011 s / iter. Inference: 1.3427 s / iter. Eval: 0.0002 s / iter. Total: 1.3440 s / iter. ETA=0:07:30
+[12/23 18:33:47] detectron2.evaluation.evaluator INFO: Inference done 15/346. Dataloading: 0.0014 s / iter. Inference: 1.5073 s / iter. Eval: 0.0003 s / iter. Total: 1.5091 s / iter. ETA=0:08:19
+[12/23 18:33:54] detectron2.evaluation.evaluator INFO: Inference done 19/346. Dataloading: 0.0015 s / iter. Inference: 1.5199 s / iter. Eval: 0.0003 s / iter. Total: 1.5218 s / iter. ETA=0:08:17
+[12/23 18:33:59] detectron2.evaluation.evaluator INFO: Inference done 24/346. Dataloading: 0.0016 s / iter. Inference: 1.3932 s / iter. Eval: 0.0003 s / iter. Total: 1.3952 s / iter. ETA=0:07:29
+[12/23 18:34:06] detectron2.evaluation.evaluator INFO: Inference done 27/346. Dataloading: 0.0016 s / iter. Inference: 1.5382 s / iter. Eval: 0.0003 s / iter. Total: 1.5403 s / iter. ETA=0:08:11
+[12/23 18:34:13] detectron2.evaluation.evaluator INFO: Inference done 31/346. Dataloading: 0.0016 s / iter. Inference: 1.5741 s / iter. Eval: 0.0003 s / iter. Total: 1.5762 s / iter. ETA=0:08:16
+[12/23 18:34:18] detectron2.evaluation.evaluator INFO: Inference done 34/346. Dataloading: 0.0016 s / iter. Inference: 1.5861 s / iter. Eval: 0.0003 s / iter. Total: 1.5881 s / iter. ETA=0:08:15
+[12/23 18:34:25] detectron2.evaluation.evaluator INFO: Inference done 39/346. Dataloading: 0.0016 s / iter. Inference: 1.5342 s / iter. Eval: 0.0003 s / iter. Total: 1.5363 s / iter. ETA=0:07:51
+[12/23 18:34:31] detectron2.evaluation.evaluator INFO: Inference done 43/346. Dataloading: 0.0016 s / iter. Inference: 1.5315 s / iter. Eval: 0.0003 s / iter. Total: 1.5335 s / iter. ETA=0:07:44
+[12/23 18:34:36] detectron2.evaluation.evaluator INFO: Inference done 47/346. Dataloading: 0.0016 s / iter. Inference: 1.5151 s / iter. Eval: 0.0003 s / iter. Total: 1.5172 s / iter. ETA=0:07:33
+[12/23 18:34:41] detectron2.evaluation.evaluator INFO: Inference done 52/346. Dataloading: 0.0016 s / iter. Inference: 1.4675 s / iter. Eval: 0.0003 s / iter. Total: 1.4695 s / iter. ETA=0:07:12
+[12/23 18:34:47] detectron2.evaluation.evaluator INFO: Inference done 56/346. Dataloading: 0.0016 s / iter. Inference: 1.4623 s / iter. Eval: 0.0003 s / iter. Total: 1.4644 s / iter. ETA=0:07:04
+[12/23 18:34:53] detectron2.evaluation.evaluator INFO: Inference done 60/346. Dataloading: 0.0016 s / iter. Inference: 1.4667 s / iter. Eval: 0.0003 s / iter. Total: 1.4688 s / iter. ETA=0:07:00
+[12/23 18:34:58] detectron2.evaluation.evaluator INFO: Inference done 64/346. Dataloading: 0.0016 s / iter. Inference: 1.4572 s / iter. Eval: 0.0003 s / iter. Total: 1.4593 s / iter. ETA=0:06:51
+[12/23 18:35:04] detectron2.evaluation.evaluator INFO: Inference done 69/346. Dataloading: 0.0016 s / iter. Inference: 1.4323 s / iter. Eval: 0.0003 s / iter. Total: 1.4344 s / iter. ETA=0:06:37
+[12/23 18:35:10] detectron2.evaluation.evaluator INFO: Inference done 73/346. Dataloading: 0.0016 s / iter. Inference: 1.4398 s / iter. Eval: 0.0003 s / iter. Total: 1.4419 s / iter. ETA=0:06:33
+[12/23 18:35:16] detectron2.evaluation.evaluator INFO: Inference done 76/346. Dataloading: 0.0016 s / iter. Inference: 1.4517 s / iter. Eval: 0.0003 s / iter. Total: 1.4538 s / iter. ETA=0:06:32
+[12/23 18:35:21] detectron2.evaluation.evaluator INFO: Inference done 80/346. Dataloading: 0.0016 s / iter. Inference: 1.4486 s / iter. Eval: 0.0003 s / iter. Total: 1.4507 s / iter. ETA=0:06:25
+[12/23 18:35:28] detectron2.evaluation.evaluator INFO: Inference done 84/346. Dataloading: 0.0017 s / iter. Inference: 1.4605 s / iter. Eval: 0.0003 s / iter. Total: 1.4626 s / iter. ETA=0:06:23
+[12/23 18:35:34] detectron2.evaluation.evaluator INFO: Inference done 88/346. Dataloading: 0.0017 s / iter. Inference: 1.4701 s / iter. Eval: 0.0003 s / iter. Total: 1.4722 s / iter. ETA=0:06:19
+[12/23 18:35:40] detectron2.evaluation.evaluator INFO: Inference done 93/346. Dataloading: 0.0017 s / iter. Inference: 1.4521 s / iter. Eval: 0.0003 s / iter. Total: 1.4542 s / iter. ETA=0:06:07
+[12/23 18:35:46] detectron2.evaluation.evaluator INFO: Inference done 96/346. Dataloading: 0.0017 s / iter. Inference: 1.4657 s / iter. Eval: 0.0003 s / iter. Total: 1.4678 s / iter. ETA=0:06:06
+[12/23 18:35:51] detectron2.evaluation.evaluator INFO: Inference done 101/346. Dataloading: 0.0017 s / iter. Inference: 1.4474 s / iter. Eval: 0.0003 s / iter. Total: 1.4495 s / iter. ETA=0:05:55
+[12/23 18:35:57] detectron2.evaluation.evaluator INFO: Inference done 105/346. Dataloading: 0.0017 s / iter. Inference: 1.4480 s / iter. Eval: 0.0003 s / iter. Total: 1.4501 s / iter. ETA=0:05:49
+[12/23 18:36:04] detectron2.evaluation.evaluator INFO: Inference done 109/346. Dataloading: 0.0017 s / iter. Inference: 1.4602 s / iter. Eval: 0.0003 s / iter. Total: 1.4623 s / iter. ETA=0:05:46
+[12/23 18:36:10] detectron2.evaluation.evaluator INFO: Inference done 114/346. Dataloading: 0.0017 s / iter. Inference: 1.4419 s / iter. Eval: 0.0003 s / iter. Total: 1.4440 s / iter. ETA=0:05:35
+[12/23 18:36:15] detectron2.evaluation.evaluator INFO: Inference done 118/346. Dataloading: 0.0017 s / iter. Inference: 1.4382 s / iter. Eval: 0.0003 s / iter. Total: 1.4403 s / iter. ETA=0:05:28
+[12/23 18:36:20] detectron2.evaluation.evaluator INFO: Inference done 123/346. Dataloading: 0.0017 s / iter. Inference: 1.4224 s / iter. Eval: 0.0003 s / iter. Total: 1.4245 s / iter. ETA=0:05:17
+[12/23 18:36:26] detectron2.evaluation.evaluator INFO: Inference done 128/346. Dataloading: 0.0017 s / iter. Inference: 1.4102 s / iter. Eval: 0.0003 s / iter. Total: 1.4123 s / iter. ETA=0:05:07
+[12/23 18:36:32] detectron2.evaluation.evaluator INFO: Inference done 131/346. Dataloading: 0.0017 s / iter. Inference: 1.4255 s / iter. Eval: 0.0003 s / iter. Total: 1.4276 s / iter. ETA=0:05:06
+[12/23 18:36:39] detectron2.evaluation.evaluator INFO: Inference done 136/346. Dataloading: 0.0017 s / iter. Inference: 1.4197 s / iter. Eval: 0.0003 s / iter. Total: 1.4218 s / iter. ETA=0:04:58
+[12/23 18:36:45] detectron2.evaluation.evaluator INFO: Inference done 140/346. Dataloading: 0.0017 s / iter. Inference: 1.4245 s / iter. Eval: 0.0003 s / iter. Total: 1.4266 s / iter. ETA=0:04:53
+[12/23 18:36:51] detectron2.evaluation.evaluator INFO: Inference done 144/346. Dataloading: 0.0017 s / iter. Inference: 1.4293 s / iter. Eval: 0.0003 s / iter. Total: 1.4314 s / iter. ETA=0:04:49
+[12/23 18:36:57] detectron2.evaluation.evaluator INFO: Inference done 147/346. Dataloading: 0.0017 s / iter. Inference: 1.4362 s / iter. Eval: 0.0003 s / iter. Total: 1.4383 s / iter. ETA=0:04:46
+[12/23 18:37:02] detectron2.evaluation.evaluator INFO: Inference done 153/346. Dataloading: 0.0017 s / iter. Inference: 1.4158 s / iter. Eval: 0.0003 s / iter. Total: 1.4179 s / iter. ETA=0:04:33
+[12/23 18:37:08] detectron2.evaluation.evaluator INFO: Inference done 158/346. Dataloading: 0.0017 s / iter. Inference: 1.4045 s / iter. Eval: 0.0003 s / iter. Total: 1.4066 s / iter. ETA=0:04:24
+[12/23 18:37:13] detectron2.evaluation.evaluator INFO: Inference done 162/346. Dataloading: 0.0017 s / iter. Inference: 1.4009 s / iter. Eval: 0.0003 s / iter. Total: 1.4031 s / iter. ETA=0:04:18
+[12/23 18:37:18] detectron2.evaluation.evaluator INFO: Inference done 167/346. Dataloading: 0.0017 s / iter. Inference: 1.3906 s / iter. Eval: 0.0003 s / iter. Total: 1.3927 s / iter. ETA=0:04:09
+[12/23 18:37:23] detectron2.evaluation.evaluator INFO: Inference done 170/346. Dataloading: 0.0017 s / iter. Inference: 1.3966 s / iter. Eval: 0.0003 s / iter. Total: 1.3988 s / iter. ETA=0:04:06
+[12/23 18:37:31] detectron2.evaluation.evaluator INFO: Inference done 175/346. Dataloading: 0.0017 s / iter. Inference: 1.4003 s / iter. Eval: 0.0003 s / iter. Total: 1.4025 s / iter. ETA=0:03:59
+[12/23 18:37:38] detectron2.evaluation.evaluator INFO: Inference done 178/346. Dataloading: 0.0017 s / iter. Inference: 1.4164 s / iter. Eval: 0.0003 s / iter. Total: 1.4185 s / iter. ETA=0:03:58
+[12/23 18:37:44] detectron2.evaluation.evaluator INFO: Inference done 182/346. Dataloading: 0.0017 s / iter. Inference: 1.4214 s / iter. Eval: 0.0003 s / iter. Total: 1.4235 s / iter. ETA=0:03:53
+[12/23 18:37:50] detectron2.evaluation.evaluator INFO: Inference done 187/346. Dataloading: 0.0017 s / iter. Inference: 1.4153 s / iter. Eval: 0.0003 s / iter. Total: 1.4175 s / iter. ETA=0:03:45
+[12/23 18:37:57] detectron2.evaluation.evaluator INFO: Inference done 192/346. Dataloading: 0.0017 s / iter. Inference: 1.4153 s / iter. Eval: 0.0003 s / iter. Total: 1.4175 s / iter. ETA=0:03:38
+[12/23 18:38:03] detectron2.evaluation.evaluator INFO: Inference done 196/346. Dataloading: 0.0017 s / iter. Inference: 1.4158 s / iter. Eval: 0.0003 s / iter. Total: 1.4180 s / iter. ETA=0:03:32
+[12/23 18:38:10] detectron2.evaluation.evaluator INFO: Inference done 200/346. Dataloading: 0.0017 s / iter. Inference: 1.4215 s / iter. Eval: 0.0003 s / iter. Total: 1.4236 s / iter. ETA=0:03:27
+[12/23 18:38:15] detectron2.evaluation.evaluator INFO: Inference done 205/346. Dataloading: 0.0017 s / iter. Inference: 1.4122 s / iter. Eval: 0.0003 s / iter. Total: 1.4144 s / iter. ETA=0:03:19
+[12/23 18:38:20] detectron2.evaluation.evaluator INFO: Inference done 208/346. Dataloading: 0.0017 s / iter. Inference: 1.4162 s / iter. Eval: 0.0003 s / iter. Total: 1.4183 s / iter. ETA=0:03:15
+[12/23 18:38:25] detectron2.evaluation.evaluator INFO: Inference done 211/346. Dataloading: 0.0017 s / iter. Inference: 1.4201 s / iter. Eval: 0.0003 s / iter. Total: 1.4223 s / iter. ETA=0:03:12
+[12/23 18:38:31] detectron2.evaluation.evaluator INFO: Inference done 214/346. Dataloading: 0.0017 s / iter. Inference: 1.4248 s / iter. Eval: 0.0003 s / iter. Total: 1.4270 s / iter. ETA=0:03:08
+[12/23 18:38:36] detectron2.evaluation.evaluator INFO: Inference done 218/346. Dataloading: 0.0017 s / iter. Inference: 1.4255 s / iter. Eval: 0.0003 s / iter. Total: 1.4276 s / iter. ETA=0:03:02
+[12/23 18:38:42] detectron2.evaluation.evaluator INFO: Inference done 222/346. Dataloading: 0.0017 s / iter. Inference: 1.4273 s / iter. Eval: 0.0003 s / iter. Total: 1.4294 s / iter. ETA=0:02:57
+[12/23 18:38:48] detectron2.evaluation.evaluator INFO: Inference done 228/346. Dataloading: 0.0017 s / iter. Inference: 1.4144 s / iter. Eval: 0.0003 s / iter. Total: 1.4165 s / iter. ETA=0:02:47
+[12/23 18:38:55] detectron2.evaluation.evaluator INFO: Inference done 231/346. Dataloading: 0.0017 s / iter. Inference: 1.4252 s / iter. Eval: 0.0003 s / iter. Total: 1.4273 s / iter. ETA=0:02:44
+[12/23 18:39:00] detectron2.evaluation.evaluator INFO: Inference done 235/346. Dataloading: 0.0017 s / iter. Inference: 1.4233 s / iter. Eval: 0.0003 s / iter. Total: 1.4255 s / iter. ETA=0:02:38
+[12/23 18:39:06] detectron2.evaluation.evaluator INFO: Inference done 240/346. Dataloading: 0.0017 s / iter. Inference: 1.4183 s / iter. Eval: 0.0003 s / iter. Total: 1.4204 s / iter. ETA=0:02:30
+[12/23 18:39:12] detectron2.evaluation.evaluator INFO: Inference done 244/346. Dataloading: 0.0017 s / iter. Inference: 1.4199 s / iter. Eval: 0.0003 s / iter. Total: 1.4221 s / iter. ETA=0:02:25
+[12/23 18:39:19] detectron2.evaluation.evaluator INFO: Inference done 248/346. Dataloading: 0.0017 s / iter. Inference: 1.4227 s / iter. Eval: 0.0003 s / iter. Total: 1.4248 s / iter. ETA=0:02:19
+[12/23 18:39:25] detectron2.evaluation.evaluator INFO: Inference done 254/346. Dataloading: 0.0017 s / iter. Inference: 1.4148 s / iter. Eval: 0.0003 s / iter. Total: 1.4169 s / iter. ETA=0:02:10
+[12/23 18:39:31] detectron2.evaluation.evaluator INFO: Inference done 258/346. Dataloading: 0.0017 s / iter. Inference: 1.4143 s / iter. Eval: 0.0003 s / iter. Total: 1.4164 s / iter. ETA=0:02:04
+[12/23 18:39:36] detectron2.evaluation.evaluator INFO: Inference done 261/346. Dataloading: 0.0017 s / iter. Inference: 1.4179 s / iter. Eval: 0.0003 s / iter. Total: 1.4200 s / iter. ETA=0:02:00
+[12/23 18:39:42] detectron2.evaluation.evaluator INFO: Inference done 266/346. Dataloading: 0.0017 s / iter. Inference: 1.4132 s / iter. Eval: 0.0003 s / iter. Total: 1.4153 s / iter. ETA=0:01:53
+[12/23 18:39:47] detectron2.evaluation.evaluator INFO: Inference done 271/346. Dataloading: 0.0017 s / iter. Inference: 1.4079 s / iter. Eval: 0.0003 s / iter. Total: 1.4100 s / iter. ETA=0:01:45
+[12/23 18:39:54] detectron2.evaluation.evaluator INFO: Inference done 275/346. Dataloading: 0.0017 s / iter. Inference: 1.4107 s / iter. Eval: 0.0003 s / iter. Total: 1.4128 s / iter. ETA=0:01:40
+[12/23 18:40:00] detectron2.evaluation.evaluator INFO: Inference done 279/346. Dataloading: 0.0017 s / iter. Inference: 1.4137 s / iter. Eval: 0.0003 s / iter. Total: 1.4158 s / iter. ETA=0:01:34
+[12/23 18:40:07] detectron2.evaluation.evaluator INFO: Inference done 284/346. Dataloading: 0.0017 s / iter. Inference: 1.4118 s / iter. Eval: 0.0003 s / iter. Total: 1.4139 s / iter. ETA=0:01:27
+[12/23 18:40:13] detectron2.evaluation.evaluator INFO: Inference done 289/346. Dataloading: 0.0017 s / iter. Inference: 1.4094 s / iter. Eval: 0.0003 s / iter. Total: 1.4115 s / iter. ETA=0:01:20
+[12/23 18:40:20] detectron2.evaluation.evaluator INFO: Inference done 292/346. Dataloading: 0.0017 s / iter. Inference: 1.4190 s / iter. Eval: 0.0003 s / iter. Total: 1.4212 s / iter. ETA=0:01:16
+[12/23 18:40:26] detectron2.evaluation.evaluator INFO: Inference done 296/346. Dataloading: 0.0017 s / iter. Inference: 1.4194 s / iter. Eval: 0.0003 s / iter. Total: 1.4215 s / iter. ETA=0:01:11
+[12/23 18:40:32] detectron2.evaluation.evaluator INFO: Inference done 300/346. Dataloading: 0.0017 s / iter. Inference: 1.4194 s / iter. Eval: 0.0003 s / iter. Total: 1.4215 s / iter. ETA=0:01:05
+[12/23 18:40:37] detectron2.evaluation.evaluator INFO: Inference done 303/346. Dataloading: 0.0017 s / iter. Inference: 1.4236 s / iter. Eval: 0.0003 s / iter. Total: 1.4257 s / iter. ETA=0:01:01
+[12/23 18:40:42] detectron2.evaluation.evaluator INFO: Inference done 306/346. Dataloading: 0.0017 s / iter. Inference: 1.4260 s / iter. Eval: 0.0003 s / iter. Total: 1.4282 s / iter. ETA=0:00:57
+[12/23 18:40:47] detectron2.evaluation.evaluator INFO: Inference done 311/346. Dataloading: 0.0017 s / iter. Inference: 1.4200 s / iter. Eval: 0.0003 s / iter. Total: 1.4221 s / iter. ETA=0:00:49
+[12/23 18:40:53] detectron2.evaluation.evaluator INFO: Inference done 315/346. Dataloading: 0.0017 s / iter. Inference: 1.4191 s / iter. Eval: 0.0003 s / iter. Total: 1.4212 s / iter. ETA=0:00:44
+[12/23 18:40:59] detectron2.evaluation.evaluator INFO: Inference done 318/346. Dataloading: 0.0017 s / iter. Inference: 1.4260 s / iter. Eval: 0.0003 s / iter. Total: 1.4281 s / iter. ETA=0:00:39
+[12/23 18:41:06] detectron2.evaluation.evaluator INFO: Inference done 321/346. Dataloading: 0.0017 s / iter. Inference: 1.4341 s / iter. Eval: 0.0003 s / iter. Total: 1.4362 s / iter. ETA=0:00:35
+[12/23 18:41:12] detectron2.evaluation.evaluator INFO: Inference done 325/346. Dataloading: 0.0017 s / iter. Inference: 1.4333 s / iter. Eval: 0.0003 s / iter. Total: 1.4355 s / iter. ETA=0:00:30
+[12/23 18:41:17] detectron2.evaluation.evaluator INFO: Inference done 330/346. Dataloading: 0.0017 s / iter. Inference: 1.4286 s / iter. Eval: 0.0003 s / iter. Total: 1.4307 s / iter. ETA=0:00:22
+[12/23 18:41:23] detectron2.evaluation.evaluator INFO: Inference done 334/346. Dataloading: 0.0017 s / iter. Inference: 1.4285 s / iter. Eval: 0.0003 s / iter. Total: 1.4307 s / iter. ETA=0:00:17
+[12/23 18:41:28] detectron2.evaluation.evaluator INFO: Inference done 340/346. Dataloading: 0.0017 s / iter. Inference: 1.4189 s / iter. Eval: 0.0003 s / iter. Total: 1.4211 s / iter. ETA=0:00:08
+[12/23 18:41:35] detectron2.evaluation.evaluator INFO: Inference done 345/346. Dataloading: 0.0017 s / iter. Inference: 1.4161 s / iter. Eval: 0.0003 s / iter. Total: 1.4183 s / iter. ETA=0:00:01
+[12/23 18:41:56] detectron2.evaluation.evaluator INFO: Total inference time: 0:08:23.483121 (1.476490 s / iter per device, on 4 devices)
+[12/23 18:41:56] detectron2.evaluation.evaluator INFO: Total inference pure compute time: 0:08:02 (1.415636 s / iter per device, on 4 devices)
+[12/23 18:53:21] detectron2 INFO: Rank of current process: 1. World size: 4
+[12/23 18:53:21] detectron2 INFO: Environment info:
+----------------------  ----------------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  ----------------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[12/23 18:53:21] detectron2 INFO: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot1_artaxor_finetune.yaml', resume=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/artaxor_1shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_1shot/', 'SOLVER.IMS_PER_BATCH', '4'])
+[12/23 18:53:21] detectron2 INFO: Contents of args.config_file=configs/artaxor/vitb_shot1_artaxor_finetune.yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_1shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 40
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (20, 35)
+  MAX_ITER: 40
+  WARMUP_ITERS: 10
+  CHECKPOINT_PERIOD: 40
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 18:53:26] fvcore.common.checkpoint INFO: [Checkpointer] Loading from output/vitb/artaxor_1shot/model_final.pth ...
+[12/23 18:53:28] detectron2.data.datasets.coco INFO: Loaded 1383 images in COCO format from datasets/ArTaxOr/annotations/test.json
+[12/23 18:53:28] detectron2.data.build INFO: Distribution of instances among all 7 categories:
+|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 455          | Coleoptera  | 145          |   Diptera   | 35           |
+| Hemiptera  | 474          | Hymenoptera | 60           | Lepidoptera | 136          |
+|  Odonata   | 323          |             |              |             |              |
+|   total    | 1628         |             |              |             |              |
+[12/23 18:53:28] detectron2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 18:53:28] detectron2.data.common INFO: Serializing 1383 elements to byte tensors and concatenating them all ...
+[12/23 18:53:28] detectron2.data.common INFO: Serialized dataset takes 0.40 MiB
+[12/23 18:53:28] detectron2.evaluation.evaluator INFO: Start inference on 346 batches
+[12/23 18:54:01] detectron2.evaluation.evaluator INFO: Inference done 11/346. Dataloading: 0.0012 s / iter. Inference: 1.2921 s / iter. Eval: 0.0003 s / iter. Total: 1.2936 s / iter. ETA=0:07:13
+[12/23 18:54:08] detectron2.evaluation.evaluator INFO: Inference done 15/346. Dataloading: 0.0014 s / iter. Inference: 1.4662 s / iter. Eval: 0.0003 s / iter. Total: 1.4679 s / iter. ETA=0:08:05
+[12/23 18:54:14] detectron2.evaluation.evaluator INFO: Inference done 19/346. Dataloading: 0.0015 s / iter. Inference: 1.4672 s / iter. Eval: 0.0003 s / iter. Total: 1.4691 s / iter. ETA=0:08:00
+[12/23 18:54:19] detectron2.evaluation.evaluator INFO: Inference done 24/346. Dataloading: 0.0016 s / iter. Inference: 1.3595 s / iter. Eval: 0.0003 s / iter. Total: 1.3615 s / iter. ETA=0:07:18
+[12/23 18:54:27] detectron2.evaluation.evaluator INFO: Inference done 27/346. Dataloading: 0.0017 s / iter. Inference: 1.5119 s / iter. Eval: 0.0003 s / iter. Total: 1.5140 s / iter. ETA=0:08:02
+[12/23 18:54:34] detectron2.evaluation.evaluator INFO: Inference done 31/346. Dataloading: 0.0017 s / iter. Inference: 1.5508 s / iter. Eval: 0.0003 s / iter. Total: 1.5529 s / iter. ETA=0:08:09
+[12/23 18:54:40] detectron2.evaluation.evaluator INFO: Inference done 35/346. Dataloading: 0.0017 s / iter. Inference: 1.5358 s / iter. Eval: 0.0003 s / iter. Total: 1.5379 s / iter. ETA=0:07:58
+[12/23 18:54:47] detectron2.evaluation.evaluator INFO: Inference done 40/346. Dataloading: 0.0017 s / iter. Inference: 1.5116 s / iter. Eval: 0.0003 s / iter. Total: 1.5136 s / iter. ETA=0:07:43
+[12/23 18:54:52] detectron2.evaluation.evaluator INFO: Inference done 44/346. Dataloading: 0.0017 s / iter. Inference: 1.4908 s / iter. Eval: 0.0003 s / iter. Total: 1.4928 s / iter. ETA=0:07:30
+[12/23 18:54:57] detectron2.evaluation.evaluator INFO: Inference done 48/346. Dataloading: 0.0017 s / iter. Inference: 1.4787 s / iter. Eval: 0.0003 s / iter. Total: 1.4808 s / iter. ETA=0:07:21
+[12/23 18:55:02] detectron2.evaluation.evaluator INFO: Inference done 53/346. Dataloading: 0.0017 s / iter. Inference: 1.4315 s / iter. Eval: 0.0003 s / iter. Total: 1.4336 s / iter. ETA=0:07:00
+[12/23 18:55:07] detectron2.evaluation.evaluator INFO: Inference done 56/346. Dataloading: 0.0017 s / iter. Inference: 1.4482 s / iter. Eval: 0.0003 s / iter. Total: 1.4503 s / iter. ETA=0:07:00
+[12/23 18:55:13] detectron2.evaluation.evaluator INFO: Inference done 60/346. Dataloading: 0.0017 s / iter. Inference: 1.4502 s / iter. Eval: 0.0003 s / iter. Total: 1.4523 s / iter. ETA=0:06:55
+[12/23 18:55:19] detectron2.evaluation.evaluator INFO: Inference done 65/346. Dataloading: 0.0017 s / iter. Inference: 1.4305 s / iter. Eval: 0.0003 s / iter. Total: 1.4326 s / iter. ETA=0:06:42
+[12/23 18:55:27] detectron2.evaluation.evaluator INFO: Inference done 70/346. Dataloading: 0.0017 s / iter. Inference: 1.4341 s / iter. Eval: 0.0003 s / iter. Total: 1.4362 s / iter. ETA=0:06:36
+[12/23 18:55:32] detectron2.evaluation.evaluator INFO: Inference done 75/346. Dataloading: 0.0017 s / iter. Inference: 1.4055 s / iter. Eval: 0.0003 s / iter. Total: 1.4076 s / iter. ETA=0:06:21
+[12/23 18:55:37] detectron2.evaluation.evaluator INFO: Inference done 78/346. Dataloading: 0.0017 s / iter. Inference: 1.4213 s / iter. Eval: 0.0003 s / iter. Total: 1.4234 s / iter. ETA=0:06:21
+[12/23 18:55:43] detectron2.evaluation.evaluator INFO: Inference done 81/346. Dataloading: 0.0017 s / iter. Inference: 1.4325 s / iter. Eval: 0.0003 s / iter. Total: 1.4346 s / iter. ETA=0:06:20
+[12/23 18:55:48] detectron2.evaluation.evaluator INFO: Inference done 84/346. Dataloading: 0.0017 s / iter. Inference: 1.4477 s / iter. Eval: 0.0003 s / iter. Total: 1.4498 s / iter. ETA=0:06:19
+[12/23 18:55:55] detectron2.evaluation.evaluator INFO: Inference done 88/346. Dataloading: 0.0017 s / iter. Inference: 1.4575 s / iter. Eval: 0.0003 s / iter. Total: 1.4596 s / iter. ETA=0:06:16
+[12/23 18:56:00] detectron2.evaluation.evaluator INFO: Inference done 93/346. Dataloading: 0.0017 s / iter. Inference: 1.4385 s / iter. Eval: 0.0003 s / iter. Total: 1.4406 s / iter. ETA=0:06:04
+[12/23 18:56:06] detectron2.evaluation.evaluator INFO: Inference done 96/346. Dataloading: 0.0017 s / iter. Inference: 1.4527 s / iter. Eval: 0.0003 s / iter. Total: 1.4548 s / iter. ETA=0:06:03
+[12/23 18:56:11] detectron2.evaluation.evaluator INFO: Inference done 101/346. Dataloading: 0.0017 s / iter. Inference: 1.4333 s / iter. Eval: 0.0003 s / iter. Total: 1.4355 s / iter. ETA=0:05:51
+[12/23 18:56:17] detectron2.evaluation.evaluator INFO: Inference done 105/346. Dataloading: 0.0017 s / iter. Inference: 1.4346 s / iter. Eval: 0.0003 s / iter. Total: 1.4367 s / iter. ETA=0:05:46
+[12/23 18:56:24] detectron2.evaluation.evaluator INFO: Inference done 109/346. Dataloading: 0.0017 s / iter. Inference: 1.4488 s / iter. Eval: 0.0003 s / iter. Total: 1.4510 s / iter. ETA=0:05:43
+[12/23 18:56:30] detectron2.evaluation.evaluator INFO: Inference done 114/346. Dataloading: 0.0017 s / iter. Inference: 1.4303 s / iter. Eval: 0.0003 s / iter. Total: 1.4325 s / iter. ETA=0:05:32
+[12/23 18:56:35] detectron2.evaluation.evaluator INFO: Inference done 118/346. Dataloading: 0.0017 s / iter. Inference: 1.4294 s / iter. Eval: 0.0003 s / iter. Total: 1.4315 s / iter. ETA=0:05:26
+[12/23 18:56:41] detectron2.evaluation.evaluator INFO: Inference done 123/346. Dataloading: 0.0017 s / iter. Inference: 1.4139 s / iter. Eval: 0.0003 s / iter. Total: 1.4160 s / iter. ETA=0:05:15
+[12/23 18:56:46] detectron2.evaluation.evaluator INFO: Inference done 128/346. Dataloading: 0.0017 s / iter. Inference: 1.4013 s / iter. Eval: 0.0003 s / iter. Total: 1.4034 s / iter. ETA=0:05:05
+[12/23 18:56:52] detectron2.evaluation.evaluator INFO: Inference done 131/346. Dataloading: 0.0017 s / iter. Inference: 1.4132 s / iter. Eval: 0.0003 s / iter. Total: 1.4154 s / iter. ETA=0:05:04
+[12/23 18:56:57] detectron2.evaluation.evaluator INFO: Inference done 135/346. Dataloading: 0.0017 s / iter. Inference: 1.4086 s / iter. Eval: 0.0003 s / iter. Total: 1.4107 s / iter. ETA=0:04:57
+[12/23 18:57:03] detectron2.evaluation.evaluator INFO: Inference done 139/346. Dataloading: 0.0017 s / iter. Inference: 1.4128 s / iter. Eval: 0.0003 s / iter. Total: 1.4149 s / iter. ETA=0:04:52
+[12/23 18:57:09] detectron2.evaluation.evaluator INFO: Inference done 143/346. Dataloading: 0.0017 s / iter. Inference: 1.4158 s / iter. Eval: 0.0003 s / iter. Total: 1.4180 s / iter. ETA=0:04:47
+[12/23 18:57:15] detectron2.evaluation.evaluator INFO: Inference done 146/346. Dataloading: 0.0017 s / iter. Inference: 1.4283 s / iter. Eval: 0.0003 s / iter. Total: 1.4304 s / iter. ETA=0:04:46
+[12/23 18:57:21] detectron2.evaluation.evaluator INFO: Inference done 152/346. Dataloading: 0.0017 s / iter. Inference: 1.4064 s / iter. Eval: 0.0003 s / iter. Total: 1.4086 s / iter. ETA=0:04:33
+[12/23 18:57:26] detectron2.evaluation.evaluator INFO: Inference done 157/346. Dataloading: 0.0017 s / iter. Inference: 1.3962 s / iter. Eval: 0.0003 s / iter. Total: 1.3983 s / iter. ETA=0:04:24
+[12/23 18:57:32] detectron2.evaluation.evaluator INFO: Inference done 162/346. Dataloading: 0.0017 s / iter. Inference: 1.3887 s / iter. Eval: 0.0003 s / iter. Total: 1.3909 s / iter. ETA=0:04:15
+[12/23 18:57:37] detectron2.evaluation.evaluator INFO: Inference done 167/346. Dataloading: 0.0017 s / iter. Inference: 1.3794 s / iter. Eval: 0.0003 s / iter. Total: 1.3816 s / iter. ETA=0:04:07
+[12/23 18:57:44] detectron2.evaluation.evaluator INFO: Inference done 171/346. Dataloading: 0.0017 s / iter. Inference: 1.3860 s / iter. Eval: 0.0003 s / iter. Total: 1.3882 s / iter. ETA=0:04:02
+[12/23 18:57:50] detectron2.evaluation.evaluator INFO: Inference done 175/346. Dataloading: 0.0017 s / iter. Inference: 1.3895 s / iter. Eval: 0.0003 s / iter. Total: 1.3916 s / iter. ETA=0:03:57
+[12/23 18:57:57] detectron2.evaluation.evaluator INFO: Inference done 178/346. Dataloading: 0.0017 s / iter. Inference: 1.4039 s / iter. Eval: 0.0003 s / iter. Total: 1.4060 s / iter. ETA=0:03:56
+[12/23 18:58:04] detectron2.evaluation.evaluator INFO: Inference done 182/346. Dataloading: 0.0017 s / iter. Inference: 1.4111 s / iter. Eval: 0.0003 s / iter. Total: 1.4132 s / iter. ETA=0:03:51
+[12/23 18:58:09] detectron2.evaluation.evaluator INFO: Inference done 187/346. Dataloading: 0.0017 s / iter. Inference: 1.4034 s / iter. Eval: 0.0003 s / iter. Total: 1.4055 s / iter. ETA=0:03:43
+[12/23 18:58:16] detectron2.evaluation.evaluator INFO: Inference done 192/346. Dataloading: 0.0017 s / iter. Inference: 1.4037 s / iter. Eval: 0.0003 s / iter. Total: 1.4058 s / iter. ETA=0:03:36
+[12/23 18:58:21] detectron2.evaluation.evaluator INFO: Inference done 195/346. Dataloading: 0.0017 s / iter. Inference: 1.4082 s / iter. Eval: 0.0003 s / iter. Total: 1.4104 s / iter. ETA=0:03:32
+[12/23 18:58:27] detectron2.evaluation.evaluator INFO: Inference done 199/346. Dataloading: 0.0017 s / iter. Inference: 1.4070 s / iter. Eval: 0.0003 s / iter. Total: 1.4092 s / iter. ETA=0:03:27
+[12/23 18:58:33] detectron2.evaluation.evaluator INFO: Inference done 203/346. Dataloading: 0.0017 s / iter. Inference: 1.4081 s / iter. Eval: 0.0003 s / iter. Total: 1.4102 s / iter. ETA=0:03:21
+[12/23 18:58:39] detectron2.evaluation.evaluator INFO: Inference done 207/346. Dataloading: 0.0017 s / iter. Inference: 1.4117 s / iter. Eval: 0.0003 s / iter. Total: 1.4138 s / iter. ETA=0:03:16
+[12/23 18:58:45] detectron2.evaluation.evaluator INFO: Inference done 211/346. Dataloading: 0.0017 s / iter. Inference: 1.4134 s / iter. Eval: 0.0003 s / iter. Total: 1.4156 s / iter. ETA=0:03:11
+[12/23 18:58:51] detectron2.evaluation.evaluator INFO: Inference done 215/346. Dataloading: 0.0017 s / iter. Inference: 1.4159 s / iter. Eval: 0.0003 s / iter. Total: 1.4180 s / iter. ETA=0:03:05
+[12/23 18:58:57] detectron2.evaluation.evaluator INFO: Inference done 219/346. Dataloading: 0.0017 s / iter. Inference: 1.4160 s / iter. Eval: 0.0003 s / iter. Total: 1.4181 s / iter. ETA=0:03:00
+[12/23 18:59:03] detectron2.evaluation.evaluator INFO: Inference done 223/346. Dataloading: 0.0017 s / iter. Inference: 1.4177 s / iter. Eval: 0.0003 s / iter. Total: 1.4198 s / iter. ETA=0:02:54
+[12/23 18:59:08] detectron2.evaluation.evaluator INFO: Inference done 229/346. Dataloading: 0.0017 s / iter. Inference: 1.4038 s / iter. Eval: 0.0003 s / iter. Total: 1.4060 s / iter. ETA=0:02:44
+[12/23 18:59:14] detectron2.evaluation.evaluator INFO: Inference done 231/346. Dataloading: 0.0017 s / iter. Inference: 1.4159 s / iter. Eval: 0.0003 s / iter. Total: 1.4180 s / iter. ETA=0:02:43
+[12/23 18:59:20] detectron2.evaluation.evaluator INFO: Inference done 235/346. Dataloading: 0.0017 s / iter. Inference: 1.4155 s / iter. Eval: 0.0003 s / iter. Total: 1.4177 s / iter. ETA=0:02:37
+[12/23 18:59:26] detectron2.evaluation.evaluator INFO: Inference done 240/346. Dataloading: 0.0017 s / iter. Inference: 1.4112 s / iter. Eval: 0.0003 s / iter. Total: 1.4133 s / iter. ETA=0:02:29
+[12/23 18:59:32] detectron2.evaluation.evaluator INFO: Inference done 244/346. Dataloading: 0.0017 s / iter. Inference: 1.4132 s / iter. Eval: 0.0003 s / iter. Total: 1.4154 s / iter. ETA=0:02:24
+[12/23 18:59:38] detectron2.evaluation.evaluator INFO: Inference done 248/346. Dataloading: 0.0017 s / iter. Inference: 1.4151 s / iter. Eval: 0.0003 s / iter. Total: 1.4173 s / iter. ETA=0:02:18
+[12/23 18:59:45] detectron2.evaluation.evaluator INFO: Inference done 254/346. Dataloading: 0.0017 s / iter. Inference: 1.4079 s / iter. Eval: 0.0003 s / iter. Total: 1.4100 s / iter. ETA=0:02:09
+[12/23 18:59:50] detectron2.evaluation.evaluator INFO: Inference done 258/346. Dataloading: 0.0017 s / iter. Inference: 1.4075 s / iter. Eval: 0.0003 s / iter. Total: 1.4096 s / iter. ETA=0:02:04
+[12/23 18:59:55] detectron2.evaluation.evaluator INFO: Inference done 261/346. Dataloading: 0.0017 s / iter. Inference: 1.4105 s / iter. Eval: 0.0003 s / iter. Total: 1.4127 s / iter. ETA=0:02:00
+[12/23 19:00:01] detectron2.evaluation.evaluator INFO: Inference done 266/346. Dataloading: 0.0017 s / iter. Inference: 1.4060 s / iter. Eval: 0.0003 s / iter. Total: 1.4082 s / iter. ETA=0:01:52
+[12/23 19:00:07] detectron2.evaluation.evaluator INFO: Inference done 271/346. Dataloading: 0.0017 s / iter. Inference: 1.4022 s / iter. Eval: 0.0003 s / iter. Total: 1.4043 s / iter. ETA=0:01:45
+[12/23 19:00:14] detectron2.evaluation.evaluator INFO: Inference done 275/346. Dataloading: 0.0017 s / iter. Inference: 1.4058 s / iter. Eval: 0.0003 s / iter. Total: 1.4079 s / iter. ETA=0:01:39
+[12/23 19:00:20] detectron2.evaluation.evaluator INFO: Inference done 279/346. Dataloading: 0.0017 s / iter. Inference: 1.4078 s / iter. Eval: 0.0003 s / iter. Total: 1.4099 s / iter. ETA=0:01:34
+[12/23 19:00:26] detectron2.evaluation.evaluator INFO: Inference done 284/346. Dataloading: 0.0017 s / iter. Inference: 1.4051 s / iter. Eval: 0.0003 s / iter. Total: 1.4073 s / iter. ETA=0:01:27
+[12/23 19:00:33] detectron2.evaluation.evaluator INFO: Inference done 289/346. Dataloading: 0.0017 s / iter. Inference: 1.4029 s / iter. Eval: 0.0003 s / iter. Total: 1.4051 s / iter. ETA=0:01:20
+[12/23 19:00:39] detectron2.evaluation.evaluator INFO: Inference done 292/346. Dataloading: 0.0017 s / iter. Inference: 1.4116 s / iter. Eval: 0.0003 s / iter. Total: 1.4138 s / iter. ETA=0:01:16
+[12/23 19:00:45] detectron2.evaluation.evaluator INFO: Inference done 296/346. Dataloading: 0.0017 s / iter. Inference: 1.4135 s / iter. Eval: 0.0003 s / iter. Total: 1.4157 s / iter. ETA=0:01:10
+[12/23 19:00:51] detectron2.evaluation.evaluator INFO: Inference done 300/346. Dataloading: 0.0017 s / iter. Inference: 1.4144 s / iter. Eval: 0.0003 s / iter. Total: 1.4165 s / iter. ETA=0:01:05
+[12/23 19:00:57] detectron2.evaluation.evaluator INFO: Inference done 303/346. Dataloading: 0.0017 s / iter. Inference: 1.4186 s / iter. Eval: 0.0003 s / iter. Total: 1.4207 s / iter. ETA=0:01:01
+[12/23 19:01:02] detectron2.evaluation.evaluator INFO: Inference done 306/346. Dataloading: 0.0017 s / iter. Inference: 1.4222 s / iter. Eval: 0.0003 s / iter. Total: 1.4244 s / iter. ETA=0:00:56
+[12/23 19:01:07] detectron2.evaluation.evaluator INFO: Inference done 311/346. Dataloading: 0.0017 s / iter. Inference: 1.4160 s / iter. Eval: 0.0003 s / iter. Total: 1.4181 s / iter. ETA=0:00:49
+[12/23 19:01:13] detectron2.evaluation.evaluator INFO: Inference done 315/346. Dataloading: 0.0017 s / iter. Inference: 1.4152 s / iter. Eval: 0.0003 s / iter. Total: 1.4173 s / iter. ETA=0:00:43
+[12/23 19:01:20] detectron2.evaluation.evaluator INFO: Inference done 318/346. Dataloading: 0.0017 s / iter. Inference: 1.4227 s / iter. Eval: 0.0003 s / iter. Total: 1.4249 s / iter. ETA=0:00:39
+[12/23 19:01:26] detectron2.evaluation.evaluator INFO: Inference done 321/346. Dataloading: 0.0017 s / iter. Inference: 1.4304 s / iter. Eval: 0.0003 s / iter. Total: 1.4325 s / iter. ETA=0:00:35
+[12/23 19:01:32] detectron2.evaluation.evaluator INFO: Inference done 325/346. Dataloading: 0.0017 s / iter. Inference: 1.4300 s / iter. Eval: 0.0003 s / iter. Total: 1.4322 s / iter. ETA=0:00:30
+[12/23 19:01:37] detectron2.evaluation.evaluator INFO: Inference done 329/346. Dataloading: 0.0017 s / iter. Inference: 1.4279 s / iter. Eval: 0.0003 s / iter. Total: 1.4301 s / iter. ETA=0:00:24
+[12/23 19:01:42] detectron2.evaluation.evaluator INFO: Inference done 333/346. Dataloading: 0.0017 s / iter. Inference: 1.4270 s / iter. Eval: 0.0003 s / iter. Total: 1.4291 s / iter. ETA=0:00:18
+[12/23 19:01:48] detectron2.evaluation.evaluator INFO: Inference done 338/346. Dataloading: 0.0017 s / iter. Inference: 1.4218 s / iter. Eval: 0.0003 s / iter. Total: 1.4240 s / iter. ETA=0:00:11
+[12/23 19:01:53] detectron2.evaluation.evaluator INFO: Inference done 344/346. Dataloading: 0.0017 s / iter. Inference: 1.4129 s / iter. Eval: 0.0003 s / iter. Total: 1.4151 s / iter. ETA=0:00:02
+[12/23 19:02:16] detectron2.evaluation.evaluator INFO: Total inference time: 0:08:22.808237 (1.474511 s / iter per device, on 4 devices)
+[12/23 19:02:16] detectron2.evaluation.evaluator INFO: Total inference pure compute time: 0:08:02 (1.413618 s / iter per device, on 4 devices)

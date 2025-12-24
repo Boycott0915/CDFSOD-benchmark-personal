@@ -1,0 +1,1979 @@
+    outputs = model(inputs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/devit.
+py", line 1450, in forward
+    embedding = rp(embedding)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/container
+.py", line 204, in forward
+    input = module(input)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/conv.py",
+ line 463, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/conv.py",
+ line 459, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.84 GiB (GPU 0; 23.52 GiB total cap
+acity; 8.86 GiB already allocated; 780.94 MiB free; 12.82 GiB reserved in total by PyTorch) If reserved
+ memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation
+ for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+>>> 正在补全评价: neu-det 5shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/neu-det/vitb_shot5_neu-det_finetune.yaml', resume=Fal
+se, eval_only=True, num_gpus=1, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts
+=['MODEL.WEIGHTS', 'output/vitb/neu-det_5shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/m
+ask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-det_5shot/'])
+[12/23 16:33:28 detectron2]: Rank of current process: 0. World size: 1
+[12/23 16:33:29 detectron2]: Environment info:
+----------------------  -------------------------------------------------------------------------------
+---------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectro
+n2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0                   NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  -------------------------------------------------------------------------------
+---------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture a
+pplications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-g
+encode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_
+75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMP
+ILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-in
+lines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_
+QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narro
+wing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-ty
+pe-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unu
+sed-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declara
+tions -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-s
+tyle-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialize
+d -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow,
+LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=
+ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI
+=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF,
+
+[12/23 16:33:29 detectron2]: Command line arguments: Namespace(config_file='configs/neu-det/vitb_shot5_
+neu-det_finetune.yaml', resume=False, eval_only=True, num_gpus=1, controller=False, num_machines=1, mac
+hine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/neu-det_5shot/model_final.pth', 'DE.O
+FFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-det
+_5shot/'])
+[12/23 16:33:29 detectron2]: Contents of args.config_file=configs/neu-det/vitb_shot5_neu-det_finetune.y
+aml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/NEUDET_5shot.vitb14.bbox.p5.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("NEUDET_5shot",)
+  TEST: ("NEUDET_test",)
+TEST:
+  EVAL_PERIOD: 100
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (50, 80)
+  MAX_ITER: 100
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 100
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 16:33:29 detectron2]: Full config saved to output/vitb/neu-det_5shot/config.yaml
+('NEUDET_test',)
+[12/23 16:33:34 fvcore.common.checkpoint]: [Checkpointer] Loading from output/vitb/neu-det_5shot/model_
+final.pth ...
+[12/23 16:33:35 d2.data.datasets.coco]: Loaded 360 images in COCO format from datasets/NEUDET/annotatio
+ns/test.json
+[12/23 16:33:35 d2.data.build]: Distribution of instances among all 6 categories:
+|   category    | #instances   |   category    | #instances   |  category  | #instances   |
+|:-------------:|:-------------|:-------------:|:-------------|:----------:|:-------------|
+|    crazing    | 103          |   inclusion   | 159          |  patches   | 222          |
+| pitted_surf.. | 106          | rolled-in_s.. | 141          | scratches  | 103          |
+|               |              |               |              |            |              |
+|     total     | 834          |               |              |            |              |
+[12/23 16:33:35 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShorte
+stEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 16:33:35 d2.data.common]: Serializing 360 elements to byte tensors and concatenating them all ..
+.
+[12/23 16:33:35 d2.data.common]: Serialized dataset takes 0.12 MiB
+[12/23 16:33:35 d2.evaluation.evaluator]: Start inference on 360 batches
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarni
+ng: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Trigger
+ed internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[12/23 16:33:41 d2.evaluation.evaluator]: Inference done 11/360. Dataloading: 0.0010 s / iter. Inferenc
+e: 0.4362 s / iter. Eval: 0.0003 s / iter. Total: 0.4376 s / iter. ETA=0:02:32
+[12/23 16:33:46 d2.evaluation.evaluator]: Inference done 21/360. Dataloading: 0.0014 s / iter. Inferenc
+e: 0.5027 s / iter. Eval: 0.0003 s / iter. Total: 0.5045 s / iter. ETA=0:02:51
+[12/23 16:33:52 d2.evaluation.evaluator]: Inference done 34/360. Dataloading: 0.0015 s / iter. Inferenc
+e: 0.4707 s / iter. Eval: 0.0003 s / iter. Total: 0.4726 s / iter. ETA=0:02:34
+[12/23 16:33:57 d2.evaluation.evaluator]: Inference done 45/360. Dataloading: 0.0015 s / iter. Inferenc
+e: 0.4677 s / iter. Eval: 0.0003 s / iter. Total: 0.4696 s / iter. ETA=0:02:27
+[12/23 16:34:02 d2.evaluation.evaluator]: Inference done 57/360. Dataloading: 0.0016 s / iter. Inferenc
+e: 0.4589 s / iter. Eval: 0.0003 s / iter. Total: 0.4608 s / iter. ETA=0:02:19
+[12/23 16:34:07 d2.evaluation.evaluator]: Inference done 68/360. Dataloading: 0.0016 s / iter. Inferenc
+e: 0.4589 s / iter. Eval: 0.0003 s / iter. Total: 0.4609 s / iter. ETA=0:02:14
+[12/23 16:34:12 d2.evaluation.evaluator]: Inference done 80/360. Dataloading: 0.0016 s / iter. Inferenc
+e: 0.4539 s / iter. Eval: 0.0003 s / iter. Total: 0.4558 s / iter. ETA=0:02:07
+[12/23 16:34:17 d2.evaluation.evaluator]: Inference done 93/360. Dataloading: 0.0016 s / iter. Inferenc
+e: 0.4445 s / iter. Eval: 0.0003 s / iter. Total: 0.4464 s / iter. ETA=0:01:59
+[12/23 16:34:23 d2.evaluation.evaluator]: Inference done 104/360. Dataloading: 0.0015 s / iter. Inferen
+ce: 0.4493 s / iter. Eval: 0.0003 s / iter. Total: 0.4513 s / iter. ETA=0:01:55
+[12/23 16:34:28 d2.evaluation.evaluator]: Inference done 115/360. Dataloading: 0.0015 s / iter. Inferen
+ce: 0.4533 s / iter. Eval: 0.0003 s / iter. Total: 0.4553 s / iter. ETA=0:01:51
+[12/23 16:34:33 d2.evaluation.evaluator]: Inference done 128/360. Dataloading: 0.0015 s / iter. Inferen
+ce: 0.4481 s / iter. Eval: 0.0003 s / iter. Total: 0.4500 s / iter. ETA=0:01:44
+[12/23 16:34:39 d2.evaluation.evaluator]: Inference done 139/360. Dataloading: 0.0015 s / iter. Inferen
+ce: 0.4498 s / iter. Eval: 0.0003 s / iter. Total: 0.4517 s / iter. ETA=0:01:39
+[12/23 16:34:44 d2.evaluation.evaluator]: Inference done 150/360. Dataloading: 0.0015 s / iter. Inferen
+ce: 0.4524 s / iter. Eval: 0.0003 s / iter. Total: 0.4544 s / iter. ETA=0:01:35
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 8
+2, in launch
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 184, in main
+    res = Trainer.test(cfg, model)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line
+ 622, in test
+    results_i = inference_on_dataset(model, data_loader, evaluator)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/evaluation/evaluator.py",
+ line 181, in inference_on_dataset
+    outputs = model(inputs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/devit.
+py", line 1450, in forward
+    embedding = rp(embedding)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/container
+.py", line 204, in forward
+    input = module(input)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/conv.py",
+ line 463, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/conv.py",
+ line 459, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.84 GiB (GPU 0; 23.52 GiB total cap
+acity; 8.86 GiB already allocated; 780.94 MiB free; 12.82 GiB reserved in total by PyTorch) If reserved
+ memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation
+ for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+>>> 正在补全评价: neu-det 10shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/neu-det/vitb_shot10_neu-det_finetune.yaml', resume=Fa
+lse, eval_only=True, num_gpus=1, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opt
+s=['MODEL.WEIGHTS', 'output/vitb/neu-det_10shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN
+/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-det_10shot/'])
+[12/23 16:34:51 detectron2]: Rank of current process: 0. World size: 1
+[12/23 16:34:52 detectron2]: Environment info:
+----------------------  -------------------------------------------------------------------------------
+---------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectro
+n2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0                   NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  -------------------------------------------------------------------------------
+---------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture a
+pplications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-g
+encode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_
+75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMP
+ILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-in
+lines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_
+QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narro
+wing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-ty
+pe-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unu
+sed-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declara
+tions -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-s
+tyle-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialize
+d -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow,
+LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=
+ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI
+=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF,
+
+[12/23 16:34:52 detectron2]: Command line arguments: Namespace(config_file='configs/neu-det/vitb_shot10
+_neu-det_finetune.yaml', resume=False, eval_only=True, num_gpus=1, controller=False, num_machines=1, ma
+chine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/neu-det_10shot/model_final.pth', 'DE
+.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-d
+et_10shot/'])
+[12/23 16:34:52 detectron2]: Contents of args.config_file=configs/neu-det/vitb_shot10_neu-det_finetune.
+yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/NEUDET_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("NEUDET_10shot",)
+  TEST: ("NEUDET_test",)
+TEST:
+  EVAL_PERIOD: 200
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (120, 180)
+  MAX_ITER: 200
+  WARMUP_ITERS: 50
+  CHECKPOINT_PERIOD: 200
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 16:34:52 detectron2]: Full config saved to output/vitb/neu-det_10shot/config.yaml
+('NEUDET_test',)
+[12/23 16:34:57 fvcore.common.checkpoint]: [Checkpointer] Loading from output/vitb/neu-det_10shot/model
+_final.pth ...
+[12/23 16:34:58 d2.data.datasets.coco]: Loaded 360 images in COCO format from datasets/NEUDET/annotatio
+ns/test.json
+[12/23 16:34:58 d2.data.build]: Distribution of instances among all 6 categories:
+|   category    | #instances   |   category    | #instances   |  category  | #instances   |
+|:-------------:|:-------------|:-------------:|:-------------|:----------:|:-------------|
+|    crazing    | 103          |   inclusion   | 159          |  patches   | 222          |
+| pitted_surf.. | 106          | rolled-in_s.. | 141          | scratches  | 103          |
+|               |              |               |              |            |              |
+|     total     | 834          |               |              |            |              |
+[12/23 16:34:58 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShorte
+stEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 16:34:58 d2.data.common]: Serializing 360 elements to byte tensors and concatenating them all ..
+.
+[12/23 16:34:58 d2.data.common]: Serialized dataset takes 0.12 MiB
+[12/23 16:34:58 d2.evaluation.evaluator]: Start inference on 360 batches
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarni
+ng: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Trigger
+ed internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[12/23 16:35:04 d2.evaluation.evaluator]: Inference done 11/360. Dataloading: 0.0011 s / iter. Inferenc
+e: 0.4384 s / iter. Eval: 0.0003 s / iter. Total: 0.4397 s / iter. ETA=0:02:33
+[12/23 16:35:09 d2.evaluation.evaluator]: Inference done 20/360. Dataloading: 0.0014 s / iter. Inferenc
+e: 0.5078 s / iter. Eval: 0.0003 s / iter. Total: 0.5095 s / iter. ETA=0:02:53
+[12/23 16:35:14 d2.evaluation.evaluator]: Inference done 33/360. Dataloading: 0.0014 s / iter. Inferenc
+e: 0.4603 s / iter. Eval: 0.0003 s / iter. Total: 0.4620 s / iter. ETA=0:02:31
+[12/23 16:35:19 d2.evaluation.evaluator]: Inference done 44/360. Dataloading: 0.0014 s / iter. Inferenc
+e: 0.4652 s / iter. Eval: 0.0003 s / iter. Total: 0.4671 s / iter. ETA=0:02:27
+[12/23 16:35:25 d2.evaluation.evaluator]: Inference done 56/360. Dataloading: 0.0014 s / iter. Inferenc
+e: 0.4603 s / iter. Eval: 0.0003 s / iter. Total: 0.4621 s / iter. ETA=0:02:20
+[12/23 16:35:30 d2.evaluation.evaluator]: Inference done 68/360. Dataloading: 0.0015 s / iter. Inferenc
+e: 0.4556 s / iter. Eval: 0.0003 s / iter. Total: 0.4574 s / iter. ETA=0:02:13
+[12/23 16:35:35 d2.evaluation.evaluator]: Inference done 80/360. Dataloading: 0.0015 s / iter. Inferenc
+e: 0.4510 s / iter. Eval: 0.0003 s / iter. Total: 0.4528 s / iter. ETA=0:02:06
+[12/23 16:35:40 d2.evaluation.evaluator]: Inference done 93/360. Dataloading: 0.0015 s / iter. Inferenc
+e: 0.4420 s / iter. Eval: 0.0003 s / iter. Total: 0.4438 s / iter. ETA=0:01:58
+[12/23 16:35:46 d2.evaluation.evaluator]: Inference done 104/360. Dataloading: 0.0032 s / iter. Inferen
+ce: 0.4473 s / iter. Eval: 0.0003 s / iter. Total: 0.4508 s / iter. ETA=0:01:55
+[12/23 16:35:51 d2.evaluation.evaluator]: Inference done 115/360. Dataloading: 0.0031 s / iter. Inferen
+ce: 0.4514 s / iter. Eval: 0.0003 s / iter. Total: 0.4548 s / iter. ETA=0:01:51
+[12/23 16:35:56 d2.evaluation.evaluator]: Inference done 128/360. Dataloading: 0.0029 s / iter. Inferen
+ce: 0.4464 s / iter. Eval: 0.0003 s / iter. Total: 0.4497 s / iter. ETA=0:01:44
+[12/23 16:36:02 d2.evaluation.evaluator]: Inference done 139/360. Dataloading: 0.0028 s / iter. Inferen
+ce: 0.4478 s / iter. Eval: 0.0003 s / iter. Total: 0.4510 s / iter. ETA=0:01:39
+[12/23 16:36:07 d2.evaluation.evaluator]: Inference done 149/360. Dataloading: 0.0027 s / iter. Inferen
+ce: 0.4514 s / iter. Eval: 0.0003 s / iter. Total: 0.4544 s / iter. ETA=0:01:35
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 8
+2, in launch
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 184, in main
+    res = Trainer.test(cfg, model)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line
+ 622, in test
+    results_i = inference_on_dataset(model, data_loader, evaluator)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/evaluation/evaluator.py",
+ line 181, in inference_on_dataset
+    outputs = model(inputs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/devit.
+py", line 1450, in forward
+    embedding = rp(embedding)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/container
+.py", line 204, in forward
+    input = module(input)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/conv.py",
+ line 463, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/conv.py",
+ line 459, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.84 GiB (GPU 0; 23.52 GiB total cap
+acity; 8.86 GiB already allocated; 780.94 MiB free; 12.82 GiB reserved in total by PyTorch) If reserved
+ memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation
+ for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+(cdfsod) fee@ubuntu-R8428-A12:~/sdb_flf/project_zyh/CDFSOD-benchmark$ tmux capture-pane -pS -10000 > ch
+eck_log02.txt
+(cdfsod) fee@ubuntu-R8428-A12:~/sdb_flf/project_zyh/CDFSOD-benchmark$ bash main_results.sh
+
+>>> 正在补全评价: artaxor 1shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/artaxor/vitb_shot1_artaxor_finetune.yaml', resume=Fal
+se, eval_only=True, num_gpus=1, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts
+=['MODEL.WEIGHTS', 'output/vitb/artaxor_1shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/m
+ask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_1shot/'])
+[12/23 18:23:51 detectron2]: Rank of current process: 0. World size: 1
+[12/23 18:23:52 detectron2]: Environment info:
+----------------------  -------------------------------------------------------------------------------
+---------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectro
+n2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0                   NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  -------------------------------------------------------------------------------
+---------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture a
+pplications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-g
+encode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_
+75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMP
+ILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-in
+lines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_
+QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narro
+wing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-ty
+pe-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unu
+sed-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declara
+tions -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-s
+tyle-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialize
+d -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow,
+LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=
+ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI
+=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF,
+
+[12/23 18:23:52 detectron2]: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot1_
+artaxor_finetune.yaml', resume=False, eval_only=True, num_gpus=1, controller=False, num_machines=1, mac
+hine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/artaxor_1shot/model_final.pth', 'DE.O
+FFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor
+_1shot/'])
+[12/23 18:23:52 detectron2]: Contents of args.config_file=configs/artaxor/vitb_shot1_artaxor_finetune.y
+aml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_1shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 40
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (20, 35)
+  MAX_ITER: 40
+  WARMUP_ITERS: 10
+  CHECKPOINT_PERIOD: 40
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 18:23:52 detectron2]: Full config saved to output/vitb/artaxor_1shot/config.yaml
+('ArTaxOr_test',)
+[12/23 18:23:57 fvcore.common.checkpoint]: [Checkpointer] Loading from output/vitb/artaxor_1shot/model_
+final.pth ...
+[12/23 18:23:58 d2.data.datasets.coco]: Loaded 1383 images in COCO format from datasets/ArTaxOr/annotat
+ions/test.json
+[12/23 18:23:58 d2.data.build]: Distribution of instances among all 7 categories:
+|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 455          | Coleoptera  | 145          |   Diptera   | 35           |
+| Hemiptera  | 474          | Hymenoptera | 60           | Lepidoptera | 136          |
+|  Odonata   | 323          |             |              |             |              |
+|   total    | 1628         |             |              |             |              |
+[12/23 18:23:58 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShorte
+stEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 18:23:58 d2.data.common]: Serializing 1383 elements to byte tensors and concatenating them all .
+..
+[12/23 18:23:58 d2.data.common]: Serialized dataset takes 0.40 MiB
+[12/23 18:23:58 d2.evaluation.evaluator]: Start inference on 1383 batches
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarni
+ng: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Trigger
+ed internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+^[[A^[[A^[[A[12/23 18:24:07 d2.evaluation.evaluator]: Inference done 11/1383. Dataloading: 0.0015 s / i
+ter. Inference: 0.7454 s / iter. Eval: 0.0003 s / iter. Total: 0.7472 s / iter. ETA=0:17:05
+^[[A^[[A^[[B^[[B^[[B^[[B[12/23 18:24:12 d2.evaluation.evaluator]: Inference done 21/1383. Dataloading:
+0.0020 s / iter. Inference: 0.6149 s / iter. Eval: 0.0003 s / iter. Total: 0.6173 s / iter. ETA=0:14:00
+[12/23 18:24:18 d2.evaluation.evaluator]: Inference done 31/1383. Dataloading: 0.0020 s / iter. Inferen
+ce: 0.5964 s / iter. Eval: 0.0003 s / iter. Total: 0.5988 s / iter. ETA=0:13:29
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 8
+2, in launch
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 184, in main
+    res = Trainer.test(cfg, model)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line
+ 622, in test
+    results_i = inference_on_dataset(model, data_loader, evaluator)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/evaluation/evaluator.py",
+ line 181, in inference_on_dataset
+    outputs = model(inputs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/devit.
+py", line 1450, in forward
+    embedding = rp(embedding)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/container
+.py", line 204, in forward
+    input = module(input)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/batchnorm
+.py", line 171, in forward
+    return F.batch_norm(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/functional.py", l
+ine 2450, in batch_norm
+    return torch.batch_norm(
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.51 GiB (GPU 0; 23.52 GiB total cap
+acity; 8.87 GiB already allocated; 1.23 GiB free; 12.36 GiB reserved in total by PyTorch) If reserved m
+emory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation f
+or Memory Management and PYTORCH_CUDA_ALLOC_CONF
+>>> 正在补全评价: artaxor 5shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/artaxor/vitb_shot5_artaxor_finetune.yaml', resume=Fal
+se, eval_only=True, num_gpus=1, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts
+=['MODEL.WEIGHTS', 'output/vitb/artaxor_5shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/m
+ask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_5shot/'])
+[12/23 18:24:30 detectron2]: Rank of current process: 0. World size: 1
+[12/23 18:24:31 detectron2]: Environment info:
+----------------------  -------------------------------------------------------------------------------
+---------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectro
+n2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0                   NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  -------------------------------------------------------------------------------
+---------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture a
+pplications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-g
+encode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_
+75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMP
+ILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-in
+lines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_
+QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narro
+wing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-ty
+pe-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unu
+sed-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declara
+tions -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-s
+tyle-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialize
+d -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow,
+LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=
+ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI
+=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF,
+
+[12/23 18:24:31 detectron2]: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot5_
+artaxor_finetune.yaml', resume=False, eval_only=True, num_gpus=1, controller=False, num_machines=1, mac
+hine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/artaxor_5shot/model_final.pth', 'DE.O
+FFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor
+_5shot/'])
+[12/23 18:24:31 detectron2]: Contents of args.config_file=configs/artaxor/vitb_shot5_artaxor_finetune.y
+aml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_5shot.vitb14.bbox.p5.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_5shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 100
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (50, 80)
+  MAX_ITER: 100
+  WARMUP_ITERS: 20
+  CHECKPOINT_PERIOD: 100
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 18:24:31 detectron2]: Full config saved to output/vitb/artaxor_5shot/config.yaml
+('ArTaxOr_test',)
+[12/23 18:24:36 fvcore.common.checkpoint]: [Checkpointer] Loading from output/vitb/artaxor_5shot/model_
+final.pth ...
+[12/23 18:24:37 d2.data.datasets.coco]: Loaded 1383 images in COCO format from datasets/ArTaxOr/annotat
+ions/test.json
+[12/23 18:24:37 d2.data.build]: Distribution of instances among all 7 categories:
+|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 455          | Coleoptera  | 145          |   Diptera   | 35           |
+| Hemiptera  | 474          | Hymenoptera | 60           | Lepidoptera | 136          |
+|  Odonata   | 323          |             |              |             |              |
+|   total    | 1628         |             |              |             |              |
+[12/23 18:24:37 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShorte
+stEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 18:24:37 d2.data.common]: Serializing 1383 elements to byte tensors and concatenating them all .
+..
+[12/23 18:24:37 d2.data.common]: Serialized dataset takes 0.40 MiB
+[12/23 18:24:37 d2.evaluation.evaluator]: Start inference on 1383 batches
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarni
+ng: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Trigger
+ed internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[12/23 18:24:46 d2.evaluation.evaluator]: Inference done 11/1383. Dataloading: 0.0014 s / iter. Inferen
+ce: 0.7380 s / iter. Eval: 0.0003 s / iter. Total: 0.7398 s / iter. ETA=0:16:54
+[12/23 18:24:52 d2.evaluation.evaluator]: Inference done 21/1383. Dataloading: 0.0017 s / iter. Inferen
+ce: 0.6107 s / iter. Eval: 0.0003 s / iter. Total: 0.6128 s / iter. ETA=0:13:54
+[12/23 18:24:57 d2.evaluation.evaluator]: Inference done 31/1383. Dataloading: 0.0018 s / iter. Inferen
+ce: 0.5933 s / iter. Eval: 0.0003 s / iter. Total: 0.5954 s / iter. ETA=0:13:25
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 8
+2, in launch
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 184, in main
+    res = Trainer.test(cfg, model)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line
+ 622, in test
+    results_i = inference_on_dataset(model, data_loader, evaluator)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/evaluation/evaluator.py",
+ line 181, in inference_on_dataset
+    outputs = model(inputs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/devit.
+py", line 1450, in forward
+    embedding = rp(embedding)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/container
+.py", line 204, in forward
+    input = module(input)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py
+", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/batchnorm
+.py", line 171, in forward
+    return F.batch_norm(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/functional.py", l
+ine 2450, in batch_norm
+    return torch.batch_norm(
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.51 GiB (GPU 0; 23.52 GiB total cap
+acity; 8.87 GiB already allocated; 1.23 GiB free; 12.36 GiB reserved in total by PyTorch) If reserved m
+emory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation f
+or Memory Management and PYTORCH_CUDA_ALLOC_CONF
+>>> 正在补全评价: artaxor 10shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/artaxor/vitb_shot10_artaxor_finetune.yaml', resume=Fa
+lse, eval_only=True, num_gpus=1, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opt
+s=['MODEL.WEIGHTS', 'output/vitb/artaxor_10shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN
+/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_10shot/'])
+[12/23 18:25:09 detectron2]: Rank of current process: 0. World size: 1
+[12/23 18:25:10 detectron2]: Environment info:
+----------------------  -------------------------------------------------------------------------------
+---------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectro
+n2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0                   NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  -------------------------------------------------------------------------------
+---------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture a
+pplications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-g
+encode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_
+75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMP
+ILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-in
+lines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_
+QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narro
+wing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-ty
+pe-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unu
+sed-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declara
+tions -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-s
+tyle-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialize
+d -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow,
+LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=
+ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI
+=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF,
+
+[12/23 18:25:10 detectron2]: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot10
+_artaxor_finetune.yaml', resume=False, eval_only=True, num_gpus=1, controller=False, num_machines=1, ma
+chine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/artaxor_10shot/model_final.pth', 'DE
+.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artax
+or_10shot/'])
+[12/23 18:25:10 detectron2]: Contents of args.config_file=configs/artaxor/vitb_shot10_artaxor_finetune.
+yaml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_10shot.vitb14.bbox.p10.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_10shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 200
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (120, 180)
+  MAX_ITER: 200
+  WARMUP_ITERS: 50
+  CHECKPOINT_PERIOD: 200
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 18:25:10 detectron2]: Full config saved to output/vitb/artaxor_10shot/config.yaml
+^C
+(cdfsod) fee@ubuntu-R8428-A12:~/sdb_flf/project_zyh/CDFSOD-benchmark$ ^C
+(cdfsod) fee@ubuntu-R8428-A12:~/sdb_flf/project_zyh/CDFSOD-benchmark$ bash main_results.sh
+>>> 正在补全评价: artaxor 1shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/artaxor/vitb_shot1_artaxor_finetune.yaml', resume=Fal
+se, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts
+=['MODEL.WEIGHTS', 'output/vitb/artaxor_1shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/m
+ask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_1shot/', 'TEST.IMS_PER_BATCH', '4
+'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 6
+7, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 2 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 1
+25, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 177, in main
+    cfg = setup(args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 167, in setup
+    cfg.merge_from_list(args.opts)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/fvcore/common/config.py",
+line 143, in merge_from_list
+    return super().merge_from_list(cfg_list)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 243,
+ in merge_from_list
+    _assert_with_logging(subkey in d, "Non-existent key: {}".format(full_key))
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 545,
+ in _assert_with_logging
+    assert cond, msg
+AssertionError: Non-existent key: TEST.IMS_PER_BATCH
+
+>>> 正在补全评价: artaxor 5shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/artaxor/vitb_shot5_artaxor_finetune.yaml', resume=Fal
+se, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts
+=['MODEL.WEIGHTS', 'output/vitb/artaxor_5shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/m
+ask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_5shot/', 'TEST.IMS_PER_BATCH', '4
+'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 6
+7, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 2 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 1
+25, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 177, in main
+    cfg = setup(args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 167, in setup
+    cfg.merge_from_list(args.opts)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/fvcore/common/config.py",
+line 143, in merge_from_list
+    return super().merge_from_list(cfg_list)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 243,
+ in merge_from_list
+    _assert_with_logging(subkey in d, "Non-existent key: {}".format(full_key))
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 545,
+ in _assert_with_logging
+    assert cond, msg
+AssertionError: Non-existent key: TEST.IMS_PER_BATCH
+
+>>> 正在补全评价: artaxor 10shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/artaxor/vitb_shot10_artaxor_finetune.yaml', resume=Fa
+lse, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opt
+s=['MODEL.WEIGHTS', 'output/vitb/artaxor_10shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN
+/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_10shot/', 'TEST.IMS_PER_BATCH',
+ '4'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 6
+7, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 2 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 1
+25, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 177, in main
+    cfg = setup(args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 167, in setup
+    cfg.merge_from_list(args.opts)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/fvcore/common/config.py",
+line 143, in merge_from_list
+    return super().merge_from_list(cfg_list)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 243,
+ in merge_from_list
+    _assert_with_logging(subkey in d, "Non-existent key: {}".format(full_key))
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 545,
+ in _assert_with_logging
+    assert cond, msg
+AssertionError: Non-existent key: TEST.IMS_PER_BATCH
+
+>>> 正在补全评价: clipart1k 1shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/clipart1k/vitb_shot1_clipart1k_finetune.yaml', resume
+=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto',
+opts=['MODEL.WEIGHTS', 'output/vitb/clipart1k_1shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs
+/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/clipart1k_1shot/', 'TEST.IMS_PER_BA
+TCH', '4'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 6
+7, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 1
+25, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 177, in main
+    cfg = setup(args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 167, in setup
+    cfg.merge_from_list(args.opts)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/fvcore/common/config.py",
+line 143, in merge_from_list
+    return super().merge_from_list(cfg_list)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 243,
+ in merge_from_list
+    _assert_with_logging(subkey in d, "Non-existent key: {}".format(full_key))
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 545,
+ in _assert_with_logging
+    assert cond, msg
+AssertionError: Non-existent key: TEST.IMS_PER_BATCH
+
+>>> 正在补全评价: clipart1k 5shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/clipart1k/vitb_shot5_clipart1k_finetune.yaml', resume
+=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto',
+opts=['MODEL.WEIGHTS', 'output/vitb/clipart1k_5shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs
+/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/clipart1k_5shot/', 'TEST.IMS_PER_BA
+TCH', '4'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 6
+7, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 1
+25, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 177, in main
+    cfg = setup(args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 167, in setup
+    cfg.merge_from_list(args.opts)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/fvcore/common/config.py",
+line 143, in merge_from_list
+    return super().merge_from_list(cfg_list)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 243,
+ in merge_from_list
+    _assert_with_logging(subkey in d, "Non-existent key: {}".format(full_key))
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 545,
+ in _assert_with_logging
+    assert cond, msg
+AssertionError: Non-existent key: TEST.IMS_PER_BATCH
+
+>>> 正在补全评价: clipart1k 10shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/clipart1k/vitb_shot10_clipart1k_finetune.yaml', resum
+e=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto',
+ opts=['MODEL.WEIGHTS', 'output/vitb/clipart1k_10shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'confi
+gs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/clipart1k_10shot/', 'TEST.IMS_PER
+_BATCH', '4'])
+^[[A^[[A^[[A^[[BxFormers not available
+^[[BxFormers not available
+xFormers not available
+xFormers not available
+^[[B^[[B^[[B^[[B^[[ATraceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 6
+7, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 1
+25, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 177, in main
+    cfg = setup(args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 167, in setup
+    cfg.merge_from_list(args.opts)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/fvcore/common/config.py",
+line 143, in merge_from_list
+    return super().merge_from_list(cfg_list)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 243,
+ in merge_from_list
+    _assert_with_logging(subkey in d, "Non-existent key: {}".format(full_key))
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 545,
+ in _assert_with_logging
+    assert cond, msg
+AssertionError: Non-existent key: TEST.IMS_PER_BATCH
+
+>>> [警告] 找不到权重文件: output/vitb/dior_1shot/model_final.pth
+>>> [警告] 找不到权重文件: output/vitb/dior_5shot/model_final.pth
+>>> [警告] 找不到权重文件: output/vitb/dior_10shot/model_final.pth
+>>> 正在补全评价: neu-det 1shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/neu-det/vitb_shot1_neu-det_finetune.yaml', resume=Fal
+se, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts
+=['MODEL.WEIGHTS', 'output/vitb/neu-det_1shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/m
+ask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-det_1shot/', 'TEST.IMS_PER_BATCH', '4
+'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 6
+7, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 2 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 1
+25, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 177, in main
+    cfg = setup(args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 167, in setup
+    cfg.merge_from_list(args.opts)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/fvcore/common/config.py",
+line 143, in merge_from_list
+    return super().merge_from_list(cfg_list)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 243,
+ in merge_from_list
+    _assert_with_logging(subkey in d, "Non-existent key: {}".format(full_key))
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 545,
+ in _assert_with_logging
+    assert cond, msg
+AssertionError: Non-existent key: TEST.IMS_PER_BATCH
+
+>>> 正在补全评价: neu-det 5shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/neu-det/vitb_shot5_neu-det_finetune.yaml', resume=Fal
+se, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts
+=['MODEL.WEIGHTS', 'output/vitb/neu-det_5shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/m
+ask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-det_5shot/', 'TEST.IMS_PER_BATCH', '4
+'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 6
+7, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 1 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 1
+25, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 177, in main
+    cfg = setup(args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 167, in setup
+    cfg.merge_from_list(args.opts)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/fvcore/common/config.py",
+line 143, in merge_from_list
+    return super().merge_from_list(cfg_list)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 243,
+ in merge_from_list
+    _assert_with_logging(subkey in d, "Non-existent key: {}".format(full_key))
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 545,
+ in _assert_with_logging
+    assert cond, msg
+AssertionError: Non-existent key: TEST.IMS_PER_BATCH
+
+>>> 正在补全评价: neu-det 10shot...
+xFormers not available
+Command Line Args: Namespace(config_file='configs/neu-det/vitb_shot10_neu-det_finetune.yaml', resume=Fa
+lse, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opt
+s=['MODEL.WEIGHTS', 'output/vitb/neu-det_10shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN
+/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/neu-det_10shot/', 'TEST.IMS_PER_BATCH',
+ '4'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+Traceback (most recent call last):
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
+    launch(
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 6
+7, in launch
+    mp.spawn(
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 240, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 198, in start_processes
+    while not context.join():
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException:
+
+-- Process 1 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spaw
+n.py", line 69, in _wrap
+    fn(i, *args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 1
+25, in _distributed_worker
+    main_func(*args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 177, in main
+    cfg = setup(args)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 167, in setup
+    cfg.merge_from_list(args.opts)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/fvcore/common/config.py",
+line 143, in merge_from_list
+    return super().merge_from_list(cfg_list)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 243,
+ in merge_from_list
+    _assert_with_logging(subkey in d, "Non-existent key: {}".format(full_key))
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/yacs/config.py", line 545,
+ in _assert_with_logging
+    assert cond, msg
+AssertionError: Non-existent key: TEST.IMS_PER_BATCH
+
+(cdfsod) fee@ubuntu-R8428-A12:~/sdb_flf/project_zyh/CDFSOD-benchmark$ for dataset in "${datalist[@]}";
+do   for shot in "${shot_list[@]}"; do          CHECKPOINT="output/vitb/${dataset}_${shot}shot/model_fi
+nal.pth";     OUTPUT_DIR="output/vitb/${dataset}_${shot}shot/"         if [ -f "$CHECKPOINT" ]; then
+    echo ">>> 正在补全评价: ${dataset} ${shot}shot..."
+-bash: syntax error near unexpected token `then'
+(cdfsod) fee@ubuntu-R8428-A12:~/sdb_flf/project_zyh/CDFSOD-benchmark$ clear
+(cdfsod) fee@ubuntu-R8428-A12:~/sdb_flf/project_zyh/CDFSOD-benchmark$ # 设置环境变量，防止碎片化 OOM
+export PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
+
+CUDA_VISIBLE_DEVICES=4,5,6,7 python tools/train_net.py \
+  --num-gpus 4 \
+  --eval-only \
+  --config-file configs/artaxor/vitb_shot1_artaxor_finetune.yaml \
+  MODEL.WEIGHTS output/vitb/artaxor_1shot/model_final.pth \
+  DE.OFFLINE_RPN_CONFIG configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml \
+  SOLVER.IMS_PER_BATCH 4/artaxor_1shot/ \
+xFormers not available
+Command Line Args: Namespace(config_file='configs/artaxor/vitb_shot1_artaxor_finetune.yaml', resume=Fal
+se, eval_only=True, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts
+=['MODEL.WEIGHTS', 'output/vitb/artaxor_1shot/model_final.pth', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/m
+ask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor_1shot/', 'SOLVER.IMS_PER_BATCH',
+'4'])
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+[12/23 18:32:59 detectron2]: Rank of current process: 0. World size: 4
+[12/23 18:33:00 detectron2]: Environment info:
+----------------------  -------------------------------------------------------------------------------
+---------------
+sys.platform            linux
+Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
+numpy                   1.22.4
+detectron2              RegionCLIP @/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectro
+n2
+Compiler                GCC 10.5
+CUDA compiler           CUDA 11.8
+detectron2 arch flags   8.6
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torch
+PyTorch debug build     False
+GPU available           True
+GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+CUDA_HOME               /usr/local/cuda-11.8
+Pillow                  9.5.0
+torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packa
+ges/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20221221
+iopath                  0.1.8
+cv2                     Not found
+----------------------  -------------------------------------------------------------------------------
+---------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture a
+pplications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-g
+encode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_
+75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.9.7  (built against CUDA 11.8)
+    - Built with CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMP
+ILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-in
+lines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_
+QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narro
+wing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-ty
+pe-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unu
+sed-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declara
+tions -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-s
+tyle-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialize
+d -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow,
+LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=
+ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI
+=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF,
+
+[12/23 18:33:00 detectron2]: Command line arguments: Namespace(config_file='configs/artaxor/vitb_shot1_
+artaxor_finetune.yaml', resume=False, eval_only=True, num_gpus=4, controller=False, num_machines=1, mac
+hine_rank=0, dist_url='auto', opts=['MODEL.WEIGHTS', 'output/vitb/artaxor_1shot/model_final.pth', 'DE.O
+FFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'OUTPUT_DIR', 'output/vitb/artaxor
+_1shot/', 'SOLVER.IMS_PER_BATCH', '4'])
+[12/23 18:33:00 detectron2]: Contents of args.config_file=configs/artaxor/vitb_shot1_artaxor_finetune.y
+aml:
+_BASE_: ../Base-RCNN-C4.yaml
+DE:
+  CLASS_PROTOTYPES: prototypes_init/ArTaxOr_1shot.vitb14.bbox.p1.sk.pkl
+  BG_PROTOTYPES: weights/initial/background/background_prototypes.vitb14.pth
+  BG_CLS_LOSS_WEIGHT: 0.2
+  TOPK: 5
+  SET_CD_VITO: true
+  ATTN_FUSE_RATIO: 0.7
+MODEL:
+  META_ARCHITECTURE: OpenSetDetectorWithExamples
+  BACKBONE:
+    NAME: build_dino_v2_vit
+    TYPE: base    # base, small
+  WEIGHTS: ''
+  MASK_ON: false
+  RPN:
+    HEAD_NAME: StandardRPNHead
+    IN_FEATURES: [res4]
+  ROI_HEADS:
+    SCORE_THRESH_TEST: 0.001
+  ROI_BOX_HEAD:
+    NAME: ''
+    NUM_FC: 0
+    POOLER_RESOLUTION: 7
+    CLS_AGNOSTIC_BBOX_REG: true
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+DATASETS:
+  TRAIN: ("ArTaxOr_1shot",)
+  TEST: ("ArTaxOr_test",)
+TEST:
+  EVAL_PERIOD: 40
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.002
+  STEPS: (20, 35)
+  MAX_ITER: 40
+  WARMUP_ITERS: 10
+  CHECKPOINT_PERIOD: 40
+INPUT:
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+  FORMAT: RGB
+
+
+[12/23 18:33:00 detectron2]: Full config saved to output/vitb/artaxor_1shot/config.yaml
+('ArTaxOr_test',)
+('ArTaxOr_test',)
+('ArTaxOr_test',)
+('ArTaxOr_test',)
+[12/23 18:33:05 fvcore.common.checkpoint]: [Checkpointer] Loading from output/vitb/artaxor_1shot/model_
+final.pth ...
+[12/23 18:33:06 d2.data.datasets.coco]: Loaded 1383 images in COCO format from datasets/ArTaxOr/annotat
+ions/test.json
+[12/23 18:33:06 d2.data.build]: Distribution of instances among all 7 categories:
+|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+|  Araneae   | 455          | Coleoptera  | 145          |   Diptera   | 35           |
+| Hemiptera  | 474          | Hymenoptera | 60           | Lepidoptera | 136          |
+|  Odonata   | 323          |             |              |             |              |
+|   total    | 1628         |             |              |             |              |
+[12/23 18:33:06 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShorte
+stEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/23 18:33:06 d2.data.common]: Serializing 1383 elements to byte tensors and concatenating them all .
+..
+[12/23 18:33:06 d2.data.common]: Serialized dataset takes 0.40 MiB
+[12/23 18:33:06 d2.evaluation.evaluator]: Start inference on 346 batches
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+xFormers not available
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarn
+ing: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the
+list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally
+at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarni
+ng: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Trigger
+ed internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarni
+ng: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Trigger
+ed internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarni
+ng: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Trigger
+ed internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarni
+ng: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Trigger
+ed internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[12/23 18:33:41 d2.evaluation.evaluator]: Inference done 11/346. Dataloading: 0.0022 s / iter. Inferenc
+e: 1.5116 s / iter. Eval: 0.0004 s / iter. Total: 1.5142 s / iter. ETA=0:08:27
+[12/23 18:33:47 d2.evaluation.evaluator]: Inference done 16/346. Dataloading: 0.0021 s / iter. Inferenc
+e: 1.3897 s / iter. Eval: 0.0003 s / iter. Total: 1.3923 s / iter. ETA=0:07:39
+[12/23 18:33:53 d2.evaluation.evaluator]: Inference done 22/346. Dataloading: 0.0021 s / iter. Inferenc
+e: 1.2271 s / iter. Eval: 0.0003 s / iter. Total: 1.2296 s / iter. ETA=0:06:38
+[12/23 18:33:58 d2.evaluation.evaluator]: Inference done 26/346. Dataloading: 0.0021 s / iter. Inferenc
+e: 1.2399 s / iter. Eval: 0.0003 s / iter. Total: 1.2424 s / iter. ETA=0:06:37
+[12/23 18:34:03 d2.evaluation.evaluator]: Inference done 31/346. Dataloading: 0.0020 s / iter. Inferenc
+e: 1.2179 s / iter. Eval: 0.0003 s / iter. Total: 1.2203 s / iter. ETA=0:06:24
+[12/23 18:34:09 d2.evaluation.evaluator]: Inference done 35/346. Dataloading: 0.0020 s / iter. Inferenc
+e: 1.2302 s / iter. Eval: 0.0003 s / iter. Total: 1.2326 s / iter. ETA=0:06:23
+[12/23 18:34:14 d2.evaluation.evaluator]: Inference done 39/346. Dataloading: 0.0020 s / iter. Inferenc
+e: 1.2412 s / iter. Eval: 0.0003 s / iter. Total: 1.2436 s / iter. ETA=0:06:21
+[12/23 18:34:19 d2.evaluation.evaluator]: Inference done 42/346. Dataloading: 0.0020 s / iter. Inferenc
+e: 1.2884 s / iter. Eval: 0.0003 s / iter. Total: 1.2908 s / iter. ETA=0:06:32
+[12/23 18:34:26 d2.evaluation.evaluator]: Inference done 46/346. Dataloading: 0.0058 s / iter. Inferenc
+e: 1.3095 s / iter. Eval: 0.0003 s / iter. Total: 1.3157 s / iter. ETA=0:06:34
+[12/23 18:34:32 d2.evaluation.evaluator]: Inference done 50/346. Dataloading: 0.0054 s / iter. Inferenc
+e: 1.3331 s / iter. Eval: 0.0003 s / iter. Total: 1.3389 s / iter. ETA=0:06:36
+[12/23 18:34:38 d2.evaluation.evaluator]: Inference done 55/346. Dataloading: 0.0050 s / iter. Inferenc
+e: 1.3155 s / iter. Eval: 0.0003 s / iter. Total: 1.3209 s / iter. ETA=0:06:24
+[12/23 18:34:44 d2.evaluation.evaluator]: Inference done 60/346. Dataloading: 0.0047 s / iter. Inferenc
+e: 1.3110 s / iter. Eval: 0.0003 s / iter. Total: 1.3162 s / iter. ETA=0:06:16
+[12/23 18:34:49 d2.evaluation.evaluator]: Inference done 63/346. Dataloading: 0.0046 s / iter. Inferenc
+e: 1.3297 s / iter. Eval: 0.0003 s / iter. Total: 1.3347 s / iter. ETA=0:06:17
+[12/23 18:34:56 d2.evaluation.evaluator]: Inference done 66/346. Dataloading: 0.0044 s / iter. Inferenc
+e: 1.3691 s / iter. Eval: 0.0003 s / iter. Total: 1.3740 s / iter. ETA=0:06:24
+[12/23 18:35:01 d2.evaluation.evaluator]: Inference done 69/346. Dataloading: 0.0043 s / iter. Inferenc
+e: 1.3903 s / iter. Eval: 0.0003 s / iter. Total: 1.3951 s / iter. ETA=0:06:26
+[12/23 18:35:08 d2.evaluation.evaluator]: Inference done 74/346. Dataloading: 0.0042 s / iter. Inferenc
+e: 1.3943 s / iter. Eval: 0.0003 s / iter. Total: 1.3989 s / iter. ETA=0:06:20
+[12/23 18:35:14 d2.evaluation.evaluator]: Inference done 78/346. Dataloading: 0.0040 s / iter. Inferenc
+e: 1.3971 s / iter. Eval: 0.0003 s / iter. Total: 1.4016 s / iter. ETA=0:06:15
+[12/23 18:35:20 d2.evaluation.evaluator]: Inference done 84/346. Dataloading: 0.0038 s / iter. Inferenc
+e: 1.3608 s / iter. Eval: 0.0003 s / iter. Total: 1.3651 s / iter. ETA=0:05:57
+[12/23 18:35:25 d2.evaluation.evaluator]: Inference done 87/346. Dataloading: 0.0038 s / iter. Inferenc
+e: 1.3777 s / iter. Eval: 0.0003 s / iter. Total: 1.3819 s / iter. ETA=0:05:57
+[12/23 18:35:30 d2.evaluation.evaluator]: Inference done 92/346. Dataloading: 0.0036 s / iter. Inferenc
+e: 1.3593 s / iter. Eval: 0.0003 s / iter. Total: 1.3634 s / iter. ETA=0:05:46
+[12/23 18:35:36 d2.evaluation.evaluator]: Inference done 96/346. Dataloading: 0.0036 s / iter. Inferenc
+e: 1.3617 s / iter. Eval: 0.0003 s / iter. Total: 1.3657 s / iter. ETA=0:05:41
+[12/23 18:35:41 d2.evaluation.evaluator]: Inference done 100/346. Dataloading: 0.0035 s / iter. Inferen
+ce: 1.3594 s / iter. Eval: 0.0003 s / iter. Total: 1.3633 s / iter. ETA=0:05:35
+[12/23 18:35:47 d2.evaluation.evaluator]: Inference done 102/346. Dataloading: 0.0035 s / iter. Inferen
+ce: 1.3938 s / iter. Eval: 0.0003 s / iter. Total: 1.3977 s / iter. ETA=0:05:41
+[12/23 18:35:54 d2.evaluation.evaluator]: Inference done 107/346. Dataloading: 0.0034 s / iter. Inferen
+ce: 1.3896 s / iter. Eval: 0.0003 s / iter. Total: 1.3934 s / iter. ETA=0:05:33
+[12/23 18:35:59 d2.evaluation.evaluator]: Inference done 111/346. Dataloading: 0.0033 s / iter. Inferen
+ce: 1.3866 s / iter. Eval: 0.0003 s / iter. Total: 1.3903 s / iter. ETA=0:05:26
+[12/23 18:36:06 d2.evaluation.evaluator]: Inference done 116/346. Dataloading: 0.0032 s / iter. Inferen
+ce: 1.3899 s / iter. Eval: 0.0003 s / iter. Total: 1.3936 s / iter. ETA=0:05:20
+[12/23 18:36:12 d2.evaluation.evaluator]: Inference done 121/346. Dataloading: 0.0032 s / iter. Inferen
+ce: 1.3753 s / iter. Eval: 0.0003 s / iter. Total: 1.3790 s / iter. ETA=0:05:10
+[12/23 18:36:18 d2.evaluation.evaluator]: Inference done 126/346. Dataloading: 0.0031 s / iter. Inferen
+ce: 1.3704 s / iter. Eval: 0.0003 s / iter. Total: 1.3739 s / iter. ETA=0:05:02
+[12/23 18:36:23 d2.evaluation.evaluator]: Inference done 130/346. Dataloading: 0.0031 s / iter. Inferen
+ce: 1.3666 s / iter. Eval: 0.0003 s / iter. Total: 1.3701 s / iter. ETA=0:04:55
+[12/23 18:36:28 d2.evaluation.evaluator]: Inference done 134/346. Dataloading: 0.0030 s / iter. Inferen
+ce: 1.3642 s / iter. Eval: 0.0003 s / iter. Total: 1.3677 s / iter. ETA=0:04:49
+[12/23 18:36:33 d2.evaluation.evaluator]: Inference done 137/346. Dataloading: 0.0030 s / iter. Inferen
+ce: 1.3732 s / iter. Eval: 0.0003 s / iter. Total: 1.3766 s / iter. ETA=0:04:47
+[12/23 18:36:39 d2.evaluation.evaluator]: Inference done 140/346. Dataloading: 0.0030 s / iter. Inferen
+ce: 1.3821 s / iter. Eval: 0.0003 s / iter. Total: 1.3855 s / iter. ETA=0:04:45
+[12/23 18:36:44 d2.evaluation.evaluator]: Inference done 144/346. Dataloading: 0.0029 s / iter. Inferen
+ce: 1.3794 s / iter. Eval: 0.0003 s / iter. Total: 1.3827 s / iter. ETA=0:04:39
+[12/23 18:36:49 d2.evaluation.evaluator]: Inference done 147/346. Dataloading: 0.0029 s / iter. Inferen
+ce: 1.3865 s / iter. Eval: 0.0003 s / iter. Total: 1.3899 s / iter. ETA=0:04:36
+[12/23 18:36:56 d2.evaluation.evaluator]: Inference done 152/346. Dataloading: 0.0029 s / iter. Inferen
+ce: 1.3893 s / iter. Eval: 0.0003 s / iter. Total: 1.3926 s / iter. ETA=0:04:30
+[12/23 18:37:02 d2.evaluation.evaluator]: Inference done 156/346. Dataloading: 0.0028 s / iter. Inferen
+ce: 1.3869 s / iter. Eval: 0.0003 s / iter. Total: 1.3902 s / iter. ETA=0:04:24
+[12/23 18:37:08 d2.evaluation.evaluator]: Inference done 160/346. Dataloading: 0.0028 s / iter. Inferen
+ce: 1.3908 s / iter. Eval: 0.0003 s / iter. Total: 1.3940 s / iter. ETA=0:04:19
+[12/23 18:37:14 d2.evaluation.evaluator]: Inference done 166/346. Dataloading: 0.0028 s / iter. Inferen
+ce: 1.3788 s / iter. Eval: 0.0003 s / iter. Total: 1.3820 s / iter. ETA=0:04:08
+[12/23 18:37:21 d2.evaluation.evaluator]: Inference done 170/346. Dataloading: 0.0027 s / iter. Inferen
+ce: 1.3880 s / iter. Eval: 0.0003 s / iter. Total: 1.3912 s / iter. ETA=0:04:04
+[12/23 18:37:27 d2.evaluation.evaluator]: Inference done 174/346. Dataloading: 0.0027 s / iter. Inferen
+ce: 1.3903 s / iter. Eval: 0.0003 s / iter. Total: 1.3935 s / iter. ETA=0:03:59
+[12/23 18:37:32 d2.evaluation.evaluator]: Inference done 177/346. Dataloading: 0.0027 s / iter. Inferen
+ce: 1.3952 s / iter. Eval: 0.0003 s / iter. Total: 1.3983 s / iter. ETA=0:03:56
+[12/23 18:37:38 d2.evaluation.evaluator]: Inference done 181/346. Dataloading: 0.0027 s / iter. Inferen
+ce: 1.3935 s / iter. Eval: 0.0003 s / iter. Total: 1.3966 s / iter. ETA=0:03:50
+[12/23 18:37:43 d2.evaluation.evaluator]: Inference done 185/346. Dataloading: 0.0027 s / iter. Inferen
+ce: 1.3947 s / iter. Eval: 0.0003 s / iter. Total: 1.3978 s / iter. ETA=0:03:45
+[12/23 18:37:49 d2.evaluation.evaluator]: Inference done 189/346. Dataloading: 0.0026 s / iter. Inferen
+ce: 1.3929 s / iter. Eval: 0.0003 s / iter. Total: 1.3960 s / iter. ETA=0:03:39
+[12/23 18:37:54 d2.evaluation.evaluator]: Inference done 192/346. Dataloading: 0.0026 s / iter. Inferen
+ce: 1.3978 s / iter. Eval: 0.0003 s / iter. Total: 1.4009 s / iter. ETA=0:03:35
+[12/23 18:38:00 d2.evaluation.evaluator]: Inference done 196/346. Dataloading: 0.0026 s / iter. Inferen
+ce: 1.4004 s / iter. Eval: 0.0003 s / iter. Total: 1.4035 s / iter. ETA=0:03:30
+[12/23 18:38:05 d2.evaluation.evaluator]: Inference done 201/346. Dataloading: 0.0026 s / iter. Inferen
+ce: 1.3922 s / iter. Eval: 0.0003 s / iter. Total: 1.3952 s / iter. ETA=0:03:22
+[12/23 18:38:10 d2.evaluation.evaluator]: Inference done 204/346. Dataloading: 0.0026 s / iter. Inferen
+ce: 1.3975 s / iter. Eval: 0.0003 s / iter. Total: 1.4005 s / iter. ETA=0:03:18
+[12/23 18:38:17 d2.evaluation.evaluator]: Inference done 210/346. Dataloading: 0.0026 s / iter. Inferen
+ce: 1.3901 s / iter. Eval: 0.0003 s / iter. Total: 1.3931 s / iter. ETA=0:03:09
+[12/23 18:38:22 d2.evaluation.evaluator]: Inference done 214/346. Dataloading: 0.0025 s / iter. Inferen
+ce: 1.3882 s / iter. Eval: 0.0003 s / iter. Total: 1.3912 s / iter. ETA=0:03:03
+[12/23 18:38:28 d2.evaluation.evaluator]: Inference done 218/346. Dataloading: 0.0025 s / iter. Inferen
+ce: 1.3890 s / iter. Eval: 0.0003 s / iter. Total: 1.3919 s / iter. ETA=0:02:58
+[12/23 18:38:33 d2.evaluation.evaluator]: Inference done 222/346. Dataloading: 0.0025 s / iter. Inferen
+ce: 1.3869 s / iter. Eval: 0.0003 s / iter. Total: 1.3898 s / iter. ETA=0:02:52
+[12/23 18:38:39 d2.evaluation.evaluator]: Inference done 226/346. Dataloading: 0.0025 s / iter. Inferen
+ce: 1.3896 s / iter. Eval: 0.0003 s / iter. Total: 1.3925 s / iter. ETA=0:02:47
+[12/23 18:38:45 d2.evaluation.evaluator]: Inference done 230/346. Dataloading: 0.0025 s / iter. Inferen
+ce: 1.3900 s / iter. Eval: 0.0003 s / iter. Total: 1.3929 s / iter. ETA=0:02:41
+[12/23 18:38:51 d2.evaluation.evaluator]: Inference done 235/346. Dataloading: 0.0025 s / iter. Inferen
+ce: 1.3850 s / iter. Eval: 0.0003 s / iter. Total: 1.3879 s / iter. ETA=0:02:34
+[12/23 18:38:56 d2.evaluation.evaluator]: Inference done 239/346. Dataloading: 0.0024 s / iter. Inferen
+ce: 1.3836 s / iter. Eval: 0.0003 s / iter. Total: 1.3864 s / iter. ETA=0:02:28
+[12/23 18:39:01 d2.evaluation.evaluator]: Inference done 243/346. Dataloading: 0.0024 s / iter. Inferen
+ce: 1.3814 s / iter. Eval: 0.0003 s / iter. Total: 1.3843 s / iter. ETA=0:02:22
+[12/23 18:39:07 d2.evaluation.evaluator]: Inference done 248/346. Dataloading: 0.0024 s / iter. Inferen
+ce: 1.3786 s / iter. Eval: 0.0003 s / iter. Total: 1.3815 s / iter. ETA=0:02:15
+[12/23 18:39:13 d2.evaluation.evaluator]: Inference done 253/346. Dataloading: 0.0024 s / iter. Inferen
+ce: 1.3738 s / iter. Eval: 0.0003 s / iter. Total: 1.3766 s / iter. ETA=0:02:08
+[12/23 18:39:18 d2.evaluation.evaluator]: Inference done 258/346. Dataloading: 0.0024 s / iter. Inferen
+ce: 1.3676 s / iter. Eval: 0.0003 s / iter. Total: 1.3704 s / iter. ETA=0:02:00
+[12/23 18:39:25 d2.evaluation.evaluator]: Inference done 263/346. Dataloading: 0.0024 s / iter. Inferen
+ce: 1.3677 s / iter. Eval: 0.0003 s / iter. Total: 1.3705 s / iter. ETA=0:01:53
+[12/23 18:39:31 d2.evaluation.evaluator]: Inference done 267/346. Dataloading: 0.0024 s / iter. Inferen
+ce: 1.3680 s / iter. Eval: 0.0003 s / iter. Total: 1.3708 s / iter. ETA=0:01:48
+[12/23 18:39:37 d2.evaluation.evaluator]: Inference done 272/346. Dataloading: 0.0024 s / iter. Inferen
+ce: 1.3635 s / iter. Eval: 0.0003 s / iter. Total: 1.3663 s / iter. ETA=0:01:41
+[12/23 18:39:42 d2.evaluation.evaluator]: Inference done 277/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3579 s / iter. Eval: 0.0003 s / iter. Total: 1.3607 s / iter. ETA=0:01:33
+[12/23 18:39:47 d2.evaluation.evaluator]: Inference done 282/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3526 s / iter. Eval: 0.0003 s / iter. Total: 1.3554 s / iter. ETA=0:01:26
+[12/23 18:39:52 d2.evaluation.evaluator]: Inference done 288/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3424 s / iter. Eval: 0.0003 s / iter. Total: 1.3451 s / iter. ETA=0:01:18
+[12/23 18:39:59 d2.evaluation.evaluator]: Inference done 293/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3408 s / iter. Eval: 0.0003 s / iter. Total: 1.3435 s / iter. ETA=0:01:11
+[12/23 18:40:05 d2.evaluation.evaluator]: Inference done 297/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3455 s / iter. Eval: 0.0003 s / iter. Total: 1.3482 s / iter. ETA=0:01:06
+[12/23 18:40:11 d2.evaluation.evaluator]: Inference done 301/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3462 s / iter. Eval: 0.0003 s / iter. Total: 1.3489 s / iter. ETA=0:01:00
+[12/23 18:40:16 d2.evaluation.evaluator]: Inference done 305/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3458 s / iter. Eval: 0.0003 s / iter. Total: 1.3486 s / iter. ETA=0:00:55
+[12/23 18:40:22 d2.evaluation.evaluator]: Inference done 310/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3430 s / iter. Eval: 0.0003 s / iter. Total: 1.3457 s / iter. ETA=0:00:48
+[12/23 18:40:27 d2.evaluation.evaluator]: Inference done 313/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3471 s / iter. Eval: 0.0003 s / iter. Total: 1.3498 s / iter. ETA=0:00:44
+[12/23 18:40:33 d2.evaluation.evaluator]: Inference done 316/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3507 s / iter. Eval: 0.0003 s / iter. Total: 1.3534 s / iter. ETA=0:00:40
+[12/23 18:40:39 d2.evaluation.evaluator]: Inference done 321/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3496 s / iter. Eval: 0.0003 s / iter. Total: 1.3523 s / iter. ETA=0:00:33
+[12/23 18:40:45 d2.evaluation.evaluator]: Inference done 325/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3509 s / iter. Eval: 0.0003 s / iter. Total: 1.3536 s / iter. ETA=0:00:28
+[12/23 18:40:50 d2.evaluation.evaluator]: Inference done 329/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3514 s / iter. Eval: 0.0003 s / iter. Total: 1.3541 s / iter. ETA=0:00:23
+[12/23 18:40:56 d2.evaluation.evaluator]: Inference done 333/346. Dataloading: 0.0023 s / iter. Inferen
+ce: 1.3520 s / iter. Eval: 0.0003 s / iter. Total: 1.3547 s / iter. ETA=0:00:17
+[12/23 18:41:03 d2.evaluation.evaluator]: Inference done 337/346. Dataloading: 0.0022 s / iter. Inferen
+ce: 1.3573 s / iter. Eval: 0.0003 s / iter. Total: 1.3599 s / iter. ETA=0:00:12
+[12/23 18:41:10 d2.evaluation.evaluator]: Inference done 342/346. Dataloading: 0.0022 s / iter. Inferen
+ce: 1.3564 s / iter. Eval: 0.0003 s / iter. Total: 1.3591 s / iter. ETA=0:00:05
+[12/23 18:41:15 d2.evaluation.evaluator]: Inference done 346/346. Dataloading: 0.0022 s / iter. Inferen
+ce: 1.3567 s / iter. Eval: 0.0003 s / iter. Total: 1.3594 s / iter. ETA=0:00:00
+[12/23 18:41:35 d2.evaluation.evaluator]: Total inference time: 0:08:03.579187 (1.418121 s / iter per d
+evice, on 4 devices)
+[12/23 18:41:35 d2.evaluation.evaluator]: Total inference pure compute time: 0:07:42 (1.356741 s / iter
+ per device, on 4 devices)
+[12/23 18:41:57 d2.evaluation.coco_evaluation]: Preparing results for COCO format ...
+[12/23 18:41:57 d2.evaluation.coco_evaluation]: Saving results to output/vitb/artaxor_1shot/inference/c
+oco_instances_results.json
+[12/23 18:41:58 d2.evaluation.coco_evaluation]: Evaluating predictions with unofficial COCO API...
+Loading and preparing results...
+DONE (t=0.36s)
+creating index...
+index created!
+[12/23 18:41:58 d2.evaluation.fast_eval_api]: Evaluate annotation type *bbox*
+[12/23 18:41:59 d2.evaluation.fast_eval_api]: COCOeval_opt.evaluate() finished in 0.67 seconds.
+[12/23 18:41:59 d2.evaluation.fast_eval_api]: Accumulating evaluation results...
+[12/23 18:41:59 d2.evaluation.fast_eval_api]: COCOeval_opt.accumulate() finished in 0.15 seconds.
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.133
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.255
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.112
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.001
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.136
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.392
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.473
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.480
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.049
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.484
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: Evaluation results for bbox:
+|   AP   |  AP50  |  AP75  |  APs  |  APm  |  APl   |
+|:------:|:------:|:------:|:-----:|:-----:|:------:|
+| 13.275 | 25.484 | 11.155 | 0.000 | 0.056 | 13.615 |
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: target AP50: -1
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: base AP50: 0.2548398683510468
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: all AP50: 0.2548398683510468
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: target AP75: -1
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: base AP75: 0.11155405582824855
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: all AP75: 0.11155405582824855
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: target mAP: -1.0
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: base mAP: 0.13274850094636356
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: all mAP: 0.13274850094636356
+[12/23 18:41:59 d2.evaluation.coco_evaluation]: Per-category bbox AP:
+| category   | AP     | category    | AP    | category    | AP    |
+|:-----------|:-------|:------------|:------|:------------|:------|
+| Araneae    | 20.221 | Coleoptera  | 5.684 | Diptera     | 5.052 |
+| Hemiptera  | 5.761  | Hymenoptera | 8.562 | Lepidoptera | 9.109 |
+| Odonata    | 38.534 |             |       |             |       |
+[12/23 18:41:59 d2.engine.defaults]: Evaluation results for ArTaxOr_test in csv format:
+[12/23 18:41:59 d2.evaluation.testing]: copypaste: Task: bbox
+[12/23 18:41:59 d2.evaluation.testing]: copypaste: AP,AP50,AP75,APs,APm,APl
+[12/23 18:41:59 d2.evaluation.testing]: copypaste: 13.2749,25.4840,11.1554,0.0000,0.0560,13.6148
+[12/23 18:41:59 d2.evaluation.testing]: ###################### ('AP', 13.27485009463636) ##############
+########
+(cdfsod) fee@ubuntu-R8428-A12:~/sdb_flf/project_zyh/CDFSOD-benchmark$ tmux capture-pane -pS -10000 > ch
+eck_log03.txt
+
+

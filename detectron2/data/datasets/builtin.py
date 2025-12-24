@@ -317,7 +317,7 @@ def register_all_ade20k(root):
         )
 
 # custom datasets
-datasets_name = ('ArTaxOr', 'clipart1k')#, 'DIOR', 'FISH', 'NEUDET', 'UODD')
+datasets_name = ('ArTaxOr', 'clipart1k', 'DIOR', 'FISH', 'NEUDET', 'UODD')
 
 _PREDEFINED_CD = []
 for dataset in datasets_name:
