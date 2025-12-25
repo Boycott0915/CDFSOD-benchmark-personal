@@ -112,7 +112,7 @@ INPUT:
   MASK_FORMAT: polygon
   MAX_SIZE_TEST: 1333
   MAX_SIZE_TRAIN: 1333
-  MIN_SIZE_TEST: 800
+  MIN_SIZE_TEST: 600
   MIN_SIZE_TRAIN:
   - 640
   - 672
@@ -357,7 +357,7 @@ MODEL:
     LOSS_WEIGHT: 1.0
     NMS_THRESH: 0.7
     POSITIVE_FRACTION: 0.5
-    POST_NMS_TOPK_TEST: 1000
+    POST_NMS_TOPK_TEST: 300
     POST_NMS_TOPK_TRAIN: 2000
     PRE_NMS_TOPK_TEST: 6000
     PRE_NMS_TOPK_TRAIN: 12000
@@ -375,8 +375,8 @@ MODEL:
     NAME: SemSegFPNHead
     NORM: GN
     NUM_CLASSES: 54
-  WEIGHTS: weights/trained/few-shot/vitb_0089999.pth
-OUTPUT_DIR: output/vitb/dior_1shot/
+  WEIGHTS: output/vitb/dior_1shot/model_final.pth
+OUTPUT_DIR: ./output
 SEED: 0
 SOLVER:
   AMP:

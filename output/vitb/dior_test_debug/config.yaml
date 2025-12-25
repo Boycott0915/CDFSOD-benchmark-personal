@@ -376,7 +376,7 @@ MODEL:
     NORM: GN
     NUM_CLASSES: 54
   WEIGHTS: weights/trained/few-shot/vitb_0089999.pth
-OUTPUT_DIR: output/vitb/dior_1shot/
+OUTPUT_DIR: output/vitb/dior_test_debug/
 SEED: 0
 SOLVER:
   AMP:
@@ -390,7 +390,7 @@ SOLVER:
     ENABLED: false
     NORM_TYPE: 2.0
   GAMMA: 0.1
-  IMS_PER_BATCH: 8
+  IMS_PER_BATCH: 16
   LR_SCHEDULER_NAME: WarmupMultiStepLR
   MAX_ITER: 100
   MOMENTUM: 0.9
