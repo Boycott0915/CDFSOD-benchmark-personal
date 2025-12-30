@@ -1,11 +1,9 @@
 xFormers not available
-Command Line Args: Namespace(config_file='configs/dior/vitb_shot5_dior_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['OUTPUT_DIR', 'output/vitb/dior_5shot/', 'SOLVER.IMS_PER_BATCH', '4', 'SOLVER.BASE_LR', '0.0001'])
+Command Line Args: Namespace(config_file='configs/dior/vitb_shot5_dior_finetune.yaml', resume=False, eval_only=False, num_gpus=2, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['OUTPUT_DIR', 'output/vitb/dior_5shot/', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'SOLVER.IMS_PER_BATCH', '4', 'SOLVER.BASE_LR', '0.0001'])
 xFormers not available
 xFormers not available
-xFormers not available
-xFormers not available
-[12/23 21:56:12 detectron2]: Rank of current process: 0. World size: 4
-[12/23 21:56:13 detectron2]: Environment info:
+[12/30 10:51:30 detectron2]: Rank of current process: 0. World size: 2
+[12/30 10:51:31 detectron2]: Environment info:
 ----------------------  ----------------------------------------------------------------------------------------------
 sys.platform            linux
 Python                  3.9.23 | packaged by conda-forge | (main, Jun  4 2025, 17:57:12) [GCC 13.3.0]
@@ -18,7 +16,7 @@ DETECTRON2_ENV_MODULE   <not set>
 PyTorch                 1.13.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch
 PyTorch debug build     False
 GPU available           True
-GPU 0,1,2,3             NVIDIA GeForce RTX 4090 (arch=8.9)
+GPU 0,1                 NVIDIA GeForce RTX 4090 (arch=8.9)
 CUDA_HOME               /usr/local/cuda-11.8
 Pillow                  9.5.0
 torchvision             0.14.1+cu117 @/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torchvision
@@ -43,8 +41,8 @@ PyTorch built with:
   - Magma 2.6.1
   - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
 
-[12/23 21:56:13 detectron2]: Command line arguments: Namespace(config_file='configs/dior/vitb_shot5_dior_finetune.yaml', resume=False, eval_only=False, num_gpus=4, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['OUTPUT_DIR', 'output/vitb/dior_5shot/', 'SOLVER.IMS_PER_BATCH', '4', 'SOLVER.BASE_LR', '0.0001'])
-[12/23 21:56:13 detectron2]: Contents of args.config_file=configs/dior/vitb_shot5_dior_finetune.yaml:
+[12/30 10:51:31 detectron2]: Command line arguments: Namespace(config_file='configs/dior/vitb_shot5_dior_finetune.yaml', resume=False, eval_only=False, num_gpus=2, controller=False, num_machines=1, machine_rank=0, dist_url='auto', opts=['OUTPUT_DIR', 'output/vitb/dior_5shot/', 'DE.OFFLINE_RPN_CONFIG', 'configs/RPN/mask_rcnn_R_50_C4_1x_ovd_FSD.yaml', 'SOLVER.IMS_PER_BATCH', '4', 'SOLVER.BASE_LR', '0.0001'])
+[12/30 10:51:31 detectron2]: Contents of args.config_file=configs/dior/vitb_shot5_dior_finetune.yaml:
 _BASE_: ../Base-RCNN-C4.yaml
 DE:
   CLASS_PROTOTYPES: prototypes_init/DIOR_5shot.vitb14.bbox.p5.sk.pkl
@@ -93,11 +91,114 @@ INPUT:
   FORMAT: RGB
 
 
+[12/30 10:51:31 detectron2]: Full config saved to output/vitb/dior_5shot/config.yaml
 ('DIOR_test',)
+[12/30 10:51:33 d2.data.datasets.coco]: Loaded 86 images in COCO format from datasets/DIOR/annotations/5_shot.json
+[12/30 10:51:33 d2.data.build]: Removed 0 images with no usable annotations. 86 images left.
+[12/30 10:51:33 d2.data.build]: Distribution of instances among all 20 categories:
+|   category    | #instances   |   category    | #instances   |   category    | #instances   |
+|:-------------:|:-------------|:-------------:|:-------------|:-------------:|:-------------|
+| Expressway-.. | 5            | Expressway-.. | 5            |   airplane    | 5            |
+|    airport    | 5            | baseballfield | 5            | basketballc.. | 5            |
+|    bridge     | 5            |    chimney    | 5            |      dam      | 5            |
+|   golffield   | 5            | groundtrack.. | 5            |    harbor     | 5            |
+|   overpass    | 5            |     ship      | 5            |    stadium    | 5            |
+|  storagetank  | 5            |  tenniscourt  | 5            | trainstation  | 5            |
+|    vehicle    | 5            |   windmill    | 5            |               |              |
+|     total     | 100          |               |              |               |              |
+[12/30 10:51:33 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[12/30 10:51:33 d2.data.build]: Using training sampler TrainingSampler
+[12/30 10:51:33 d2.data.common]: Serializing 86 elements to byte tensors and concatenating them all ...
+[12/30 10:51:33 d2.data.common]: Serialized dataset takes 0.02 MiB
 ('DIOR_test',)
-[12/23 21:56:13 detectron2]: Full config saved to output/vitb/dior_5shot/config.yaml
-('DIOR_test',)
-('DIOR_test',)
+[12/30 10:51:33 fvcore.common.checkpoint]: No checkpoint found. Initializing model from scratch
+[12/30 10:51:33 d2.engine.train_loop]: Starting training from iteration 0
+xFormers not available
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3190.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+[12/30 10:51:43 d2.utils.events]:  eta: 0:00:31  iter: 19  roi_cover_ratio: 0.9226  cls_acc: 0.1535  fg_cls_acc: 0.225  false_neg_ratio: 0  total_loss: 29.29  aux_bce_loss_0: 1.396  aux_dice_loss_0: 0.5361  rg_l1_loss_0: 0.1669  aux_bce_loss_1: 1.28  aux_dice_loss_1: 0.5086  rg_l1_loss_1: 0.1509  aux_bce_loss_2: 1.245  aux_dice_loss_2: 0.485  rg_l1_loss_2: 0.1397  aux_bce_loss_3: 1.414  aux_dice_loss_3: 0.4839  rg_l1_loss_3: 0.1625  aux_bce_loss_4: 2.685  aux_dice_loss_4: 0.4292  rg_l1_loss_4: 0.2268  focal_loss_0: 2.356  focal_loss_1: 2.284  focal_loss_2: 2.07  bbox_loss: 3.998  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.996  proto_contrastive_loss: 2.869  time: 0.1365  data_time: 0.3536  lr: 3.8062e-05  max_mem: 988M
+[12/30 10:51:46 d2.utils.events]:  eta: 0:00:29  iter: 39  roi_cover_ratio: 0.9354  cls_acc: 0.2386  fg_cls_acc: 0.1909  false_neg_ratio: 0.25  total_loss: 20.74  aux_bce_loss_0: 0.8042  aux_dice_loss_0: 0.3341  rg_l1_loss_0: 0.1454  aux_bce_loss_1: 0.7449  aux_dice_loss_1: 0.2948  rg_l1_loss_1: 0.1441  aux_bce_loss_2: 0.8234  aux_dice_loss_2: 0.2952  rg_l1_loss_2: 0.1377  aux_bce_loss_3: 0.859  aux_dice_loss_3: 0.2723  rg_l1_loss_3: 0.1515  aux_bce_loss_4: 1.126  aux_dice_loss_4: 0.2686  rg_l1_loss_4: 0.1215  focal_loss_0: 1.863  focal_loss_1: 1.601  focal_loss_2: 1.621  bbox_loss: 2.511  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.997  proto_contrastive_loss: 2.87  time: 0.1391  data_time: 0.0025  lr: 7.8022e-05  max_mem: 988M
+[12/30 10:51:49 d2.utils.events]:  eta: 0:00:26  iter: 59  roi_cover_ratio: 0.8879  cls_acc: 0.2353  fg_cls_acc: 0.1981  false_neg_ratio: 0.1404  total_loss: 18.57  aux_bce_loss_0: 0.6815  aux_dice_loss_0: 0.2494  rg_l1_loss_0: 0.1  aux_bce_loss_1: 0.6924  aux_dice_loss_1: 0.2422  rg_l1_loss_1: 0.09454  aux_bce_loss_2: 0.6824  aux_dice_loss_2: 0.2442  rg_l1_loss_2: 0.09355  aux_bce_loss_3: 0.7182  aux_dice_loss_3: 0.2413  rg_l1_loss_3: 0.09949  aux_bce_loss_4: 1.106  aux_dice_loss_4: 0.2258  rg_l1_loss_4: 0.09885  focal_loss_0: 1.67  focal_loss_1: 1.403  focal_loss_2: 1.394  bbox_loss: 2.047  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.996  proto_contrastive_loss: 2.869  time: 0.1385  data_time: 0.0023  lr: 0.0001  max_mem: 1023M
+[12/30 10:51:51 d2.utils.events]:  eta: 0:00:23  iter: 79  roi_cover_ratio: 0.8912  cls_acc: 0.4524  fg_cls_acc: 0.3818  false_neg_ratio: 0.1056  total_loss: 16.09  aux_bce_loss_0: 0.6283  aux_dice_loss_0: 0.2435  rg_l1_loss_0: 0.1006  aux_bce_loss_1: 0.6254  aux_dice_loss_1: 0.2431  rg_l1_loss_1: 0.09717  aux_bce_loss_2: 0.5929  aux_dice_loss_2: 0.2442  rg_l1_loss_2: 0.09581  aux_bce_loss_3: 0.6249  aux_dice_loss_3: 0.2483  rg_l1_loss_3: 0.09411  aux_bce_loss_4: 0.848  aux_dice_loss_4: 0.2223  rg_l1_loss_4: 0.09324  focal_loss_0: 1.134  focal_loss_1: 0.9634  focal_loss_2: 0.9353  bbox_loss: 1.94  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.994  proto_contrastive_loss: 2.869  time: 0.1381  data_time: 0.0024  lr: 0.0001  max_mem: 1023M
+[12/30 10:51:54 d2.utils.events]:  eta: 0:00:20  iter: 99  roi_cover_ratio: 0.9405  cls_acc: 0.3299  fg_cls_acc: 0.3  false_neg_ratio: 0.2222  total_loss: 15.88  aux_bce_loss_0: 0.6066  aux_dice_loss_0: 0.2523  rg_l1_loss_0: 0.09474  aux_bce_loss_1: 0.5686  aux_dice_loss_1: 0.2402  rg_l1_loss_1: 0.088  aux_bce_loss_2: 0.5543  aux_dice_loss_2: 0.2404  rg_l1_loss_2: 0.08682  aux_bce_loss_3: 0.5781  aux_dice_loss_3: 0.2419  rg_l1_loss_3: 0.08545  aux_bce_loss_4: 0.8119  aux_dice_loss_4: 0.2203  rg_l1_loss_4: 0.08656  focal_loss_0: 1.211  focal_loss_1: 1.098  focal_loss_2: 1.036  bbox_loss: 1.915  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.994  proto_contrastive_loss: 2.868  time: 0.1380  data_time: 0.0026  lr: 0.0001  max_mem: 1073M
+[12/30 10:51:57 d2.utils.events]:  eta: 0:00:17  iter: 119  roi_cover_ratio: 0.9167  cls_acc: 0.3571  fg_cls_acc: 0.3667  false_neg_ratio: 0.2071  total_loss: 15.88  aux_bce_loss_0: 0.5247  aux_dice_loss_0: 0.2456  rg_l1_loss_0: 0.08429  aux_bce_loss_1: 0.5515  aux_dice_loss_1: 0.2447  rg_l1_loss_1: 0.09058  aux_bce_loss_2: 0.5406  aux_dice_loss_2: 0.2525  rg_l1_loss_2: 0.08734  aux_bce_loss_3: 0.584  aux_dice_loss_3: 0.2536  rg_l1_loss_3: 0.08775  aux_bce_loss_4: 0.7624  aux_dice_loss_4: 0.224  rg_l1_loss_4: 0.0847  focal_loss_0: 1.245  focal_loss_1: 1.028  focal_loss_2: 0.9872  bbox_loss: 1.971  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.994  proto_contrastive_loss: 2.868  time: 0.1382  data_time: 0.0025  lr: 1e-05  max_mem: 1073M
+[12/30 10:52:00 d2.utils.events]:  eta: 0:00:15  iter: 139  roi_cover_ratio: 0.9  cls_acc: 0.2993  fg_cls_acc: 0.2614  false_neg_ratio: 0.1791  total_loss: 14.89  aux_bce_loss_0: 0.5334  aux_dice_loss_0: 0.2355  rg_l1_loss_0: 0.08145  aux_bce_loss_1: 0.5456  aux_dice_loss_1: 0.2376  rg_l1_loss_1: 0.07879  aux_bce_loss_2: 0.5445  aux_dice_loss_2: 0.2384  rg_l1_loss_2: 0.07887  aux_bce_loss_3: 0.5453  aux_dice_loss_3: 0.2409  rg_l1_loss_3: 0.08176  aux_bce_loss_4: 0.6856  aux_dice_loss_4: 0.2216  rg_l1_loss_4: 0.07715  focal_loss_0: 1.18  focal_loss_1: 1.057  focal_loss_2: 0.9321  bbox_loss: 1.56  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.993  proto_contrastive_loss: 2.868  time: 0.1378  data_time: 0.0025  lr: 1e-05  max_mem: 1073M
+[12/30 10:52:03 d2.utils.events]:  eta: 0:00:12  iter: 159  roi_cover_ratio: 0.9375  cls_acc: 0.3381  fg_cls_acc: 0.2902  false_neg_ratio: 0.1818  total_loss: 15.36  aux_bce_loss_0: 0.5359  aux_dice_loss_0: 0.2405  rg_l1_loss_0: 0.08015  aux_bce_loss_1: 0.552  aux_dice_loss_1: 0.2474  rg_l1_loss_1: 0.08038  aux_bce_loss_2: 0.5393  aux_dice_loss_2: 0.2515  rg_l1_loss_2: 0.08289  aux_bce_loss_3: 0.544  aux_dice_loss_3: 0.2492  rg_l1_loss_3: 0.07923  aux_bce_loss_4: 0.664  aux_dice_loss_4: 0.2325  rg_l1_loss_4: 0.08037  focal_loss_0: 1.162  focal_loss_1: 1.006  focal_loss_2: 1.032  bbox_loss: 1.744  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.993  proto_contrastive_loss: 2.867  time: 0.1376  data_time: 0.0025  lr: 1e-05  max_mem: 1111M
+[12/30 10:52:05 d2.utils.events]:  eta: 0:00:09  iter: 179  roi_cover_ratio: 0.9  cls_acc: 0.3235  fg_cls_acc: 0.3022  false_neg_ratio: 0.1333  total_loss: 14.97  aux_bce_loss_0: 0.533  aux_dice_loss_0: 0.2409  rg_l1_loss_0: 0.07681  aux_bce_loss_1: 0.5307  aux_dice_loss_1: 0.2398  rg_l1_loss_1: 0.0808  aux_bce_loss_2: 0.5156  aux_dice_loss_2: 0.238  rg_l1_loss_2: 0.08136  aux_bce_loss_3: 0.5215  aux_dice_loss_3: 0.2377  rg_l1_loss_3: 0.08018  aux_bce_loss_4: 0.6183  aux_dice_loss_4: 0.2291  rg_l1_loss_4: 0.07407  focal_loss_0: 1.137  focal_loss_1: 0.9969  focal_loss_2: 0.9636  bbox_loss: 1.594  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.994  proto_contrastive_loss: 2.867  time: 0.1373  data_time: 0.0026  lr: 1e-05  max_mem: 1111M
+[12/30 10:52:08 d2.utils.events]:  eta: 0:00:06  iter: 199  roi_cover_ratio: 0.9091  cls_acc: 0.3431  fg_cls_acc: 0.3452  false_neg_ratio: 0.1742  total_loss: 15.14  aux_bce_loss_0: 0.5288  aux_dice_loss_0: 0.2354  rg_l1_loss_0: 0.08666  aux_bce_loss_1: 0.5549  aux_dice_loss_1: 0.2389  rg_l1_loss_1: 0.08683  aux_bce_loss_2: 0.5491  aux_dice_loss_2: 0.2396  rg_l1_loss_2: 0.08324  aux_bce_loss_3: 0.5463  aux_dice_loss_3: 0.2425  rg_l1_loss_3: 0.0881  aux_bce_loss_4: 0.6262  aux_dice_loss_4: 0.2292  rg_l1_loss_4: 0.07832  focal_loss_0: 1.146  focal_loss_1: 0.9892  focal_loss_2: 0.9614  bbox_loss: 1.706  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.994  proto_contrastive_loss: 2.867  time: 0.1375  data_time: 0.0025  lr: 1e-06  max_mem: 1111M
+[12/30 10:52:11 d2.utils.events]:  eta: 0:00:04  iter: 219  roi_cover_ratio: 0.9083  cls_acc: 0.309  fg_cls_acc: 0.25  false_neg_ratio: 0.1389  total_loss: 14.77  aux_bce_loss_0: 0.5193  aux_dice_loss_0: 0.2385  rg_l1_loss_0: 0.07618  aux_bce_loss_1: 0.5211  aux_dice_loss_1: 0.2372  rg_l1_loss_1: 0.08226  aux_bce_loss_2: 0.517  aux_dice_loss_2: 0.2352  rg_l1_loss_2: 0.07889  aux_bce_loss_3: 0.5317  aux_dice_loss_3: 0.2389  rg_l1_loss_3: 0.07876  aux_bce_loss_4: 0.6051  aux_dice_loss_4: 0.2347  rg_l1_loss_4: 0.07462  focal_loss_0: 1.118  focal_loss_1: 0.9522  focal_loss_2: 0.9174  bbox_loss: 1.544  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.994  proto_contrastive_loss: 2.867  time: 0.1376  data_time: 0.0026  lr: 1e-06  max_mem: 1111M
+[12/30 10:52:14 d2.utils.events]:  eta: 0:00:01  iter: 239  roi_cover_ratio: 0.9  cls_acc: 0.3832  fg_cls_acc: 0.3485  false_neg_ratio: 0.1339  total_loss: 14.69  aux_bce_loss_0: 0.5051  aux_dice_loss_0: 0.244  rg_l1_loss_0: 0.07804  aux_bce_loss_1: 0.5106  aux_dice_loss_1: 0.2426  rg_l1_loss_1: 0.08185  aux_bce_loss_2: 0.502  aux_dice_loss_2: 0.2391  rg_l1_loss_2: 0.0799  aux_bce_loss_3: 0.5169  aux_dice_loss_3: 0.2414  rg_l1_loss_3: 0.07811  aux_bce_loss_4: 0.5927  aux_dice_loss_4: 0.2332  rg_l1_loss_4: 0.07482  focal_loss_0: 1.081  focal_loss_1: 0.8661  focal_loss_2: 0.9007  bbox_loss: 1.499  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.994  proto_contrastive_loss: 2.868  time: 0.1383  data_time: 0.0025  lr: 1e-06  max_mem: 1111M
+[12/30 10:52:15 fvcore.common.checkpoint]: Saving checkpoint to output/vitb/dior_5shot/model_0000249.pth
+[12/30 10:52:19 fvcore.common.checkpoint]: Saving checkpoint to output/vitb/dior_5shot/model_final.pth
+xFormers not available
+[12/30 10:52:23 d2.utils.events]:  eta: 0:00:00  iter: 249  roi_cover_ratio: 0.8606  cls_acc: 0.3192  fg_cls_acc: 0.3636  false_neg_ratio: 0.1222  total_loss: 14.91  aux_bce_loss_0: 0.5219  aux_dice_loss_0: 0.2442  rg_l1_loss_0: 0.07959  aux_bce_loss_1: 0.5296  aux_dice_loss_1: 0.2408  rg_l1_loss_1: 0.08401  aux_bce_loss_2: 0.5083  aux_dice_loss_2: 0.238  rg_l1_loss_2: 0.07903  aux_bce_loss_3: 0.5312  aux_dice_loss_3: 0.2393  rg_l1_loss_3: 0.08284  aux_bce_loss_4: 0.5941  aux_dice_loss_4: 0.233  rg_l1_loss_4: 0.07454  focal_loss_0: 1.185  focal_loss_1: 1.009  focal_loss_2: 0.9652  bbox_loss: 1.526  domain_prompter_contrasitive_loss: 0.001919  prototype_cls_loss: 2.994  proto_contrastive_loss: 2.868  time: 0.1381  data_time: 0.0025  lr: 1e-06  max_mem: 1111M
+[12/30 10:52:23 d2.engine.hooks]: Overall training speed: 248 iterations in 0:00:34 (0.1381 s / it)
+[12/30 10:52:23 d2.engine.hooks]: Total training time: 0:00:42 (0:00:08 on hooks)
+[12/30 10:52:23 d2.data.datasets.coco]: Loaded 5000 images in COCO format from datasets/DIOR/annotations/test.json
+[12/30 10:52:23 d2.data.build]: Distribution of instances among all 20 categories:
+|   category    | #instances   |   category    | #instances   |   category    | #instances   |
+|:-------------:|:-------------|:-------------:|:-------------|:-------------:|:-------------|
+| Expressway-.. | 455          | Expressway-.. | 272          |   airplane    | 534          |
+|    airport    | 288          | baseballfield | 989          | basketballc.. | 444          |
+|    bridge     | 705          |    chimney    | 242          |      dam      | 217          |
+|   golffield   | 222          | groundtrack.. | 486          |    harbor     | 965          |
+|   overpass    | 639          |     ship      | 11183        |    stadium    | 261          |
+|  storagetank  | 1402         |  tenniscourt  | 2319         | trainstation  | 203          |
+|    vehicle    | 5727         |   windmill    | 1257         |               |              |
+|     total     | 28810        |               |              |               |              |
+[12/30 10:52:23 d2.data.dataset_mapper]: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[12/30 10:52:23 d2.data.common]: Serializing 5000 elements to byte tensors and concatenating them all ...
+[12/30 10:52:23 d2.data.common]: Serialized dataset takes 2.52 MiB
+[12/30 10:52:24 d2.evaluation.evaluator]: Start inference on 2500 batches
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+xFormers not available
+xFormers not available
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/structures/boxes.py:158: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:230.)
+  tensor = torch.as_tensor(tensor, dtype=torch.float32, device=device)
+[12/30 10:52:43 d2.evaluation.evaluator]: Inference done 11/2500. Dataloading: 0.0009 s / iter. Inference: 0.0411 s / iter. Eval: 0.0002 s / iter. Total: 0.0421 s / iter. ETA=0:01:44
 Traceback (most recent call last):
   File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 208, in <module>
     launch(
@@ -111,31 +212,41 @@ Traceback (most recent call last):
     raise ProcessRaisedException(msg, error_index, failed_process.pid)
 torch.multiprocessing.spawn.ProcessRaisedException: 
 
--- Process 2 terminated with the following error:
+-- Process 1 terminated with the following error:
 Traceback (most recent call last):
   File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 69, in _wrap
     fn(i, *args)
   File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/launch.py", line 125, in _distributed_worker
     main_func(*args)
-  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 196, in main
-    trainer = Trainer(cfg)
-  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 381, in __init__
-    model = self.build_model(cfg)
-  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 521, in build_model
-    model = build_model(cfg)
-  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/build.py", line 22, in build_model
-    model = META_ARCH_REGISTRY.get(meta_arch)(cfg)
-  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/config/config.py", line 174, in wrapped
-    explicit_args = _get_args_from_config(from_config_func, *args, **kwargs)
-  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/config/config.py", line 229, in _get_args_from_config
-    ret = from_config_func(*args, **kwargs)
-  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/devit.py", line 839, in from_config
-    offline_cfg.merge_from_file(cfg.DE.OFFLINE_RPN_CONFIG)
-  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/config/config.py", line 30, in merge_from_file
-    assert PathManager.isfile(cfg_filename), f"Config file '{cfg_filename}' does not exist!"
-  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/iopath/common/file_io.py", line 1160, in isfile
-    return self.__get_path_handler(path)._isfile(  # type: ignore
-  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/iopath/common/file_io.py", line 884, in __get_path_handler
-    path = os.fspath(path)  # pyre-ignore
-TypeError: expected str, bytes or os.PathLike object, not NoneType
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/train_net.py", line 202, in main
+    return trainer.train()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 500, in train
+    super().train(self.start_iter, self.max_iter)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/train_loop.py", line 159, in train
+    self.after_train()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/train_loop.py", line 168, in after_train
+    h.after_train()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/hooks.py", line 391, in after_train
+    self._do_eval()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/hooks.py", line 359, in _do_eval
+    results = self._func()
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 469, in test_and_save_results
+    self._last_eval_results = self.test(self.cfg, self.model)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/engine/defaults.py", line 622, in test
+    results_i = inference_on_dataset(model, data_loader, evaluator)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/evaluation/evaluator.py", line 181, in inference_on_dataset
+    outputs = model(inputs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1040, in forward
+    output = self._run_ddp_forward(*inputs, **kwargs)
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1000, in _run_ddp_forward
+    return module_to_run(*inputs[0], **kwargs[0])
+  File "/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data2/user/2025/flf/project_zyh/CDFSOD-benchmark/tools/../detectron2/modeling/meta_arch/devit.py", line 1304, in forward
+    intra_dist_emb = intra_dist_emb.reshape(bs, spatial_size, num_active_classes, -1)
+RuntimeError: cannot reshape tensor of 0 elements into shape [0, 49, 5, -1] because the unspecified dimension size -1 can be any value and is ambiguous
 
+/home/fee/sdb_flf/miniconda3/envs/cdfsod/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 40 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
